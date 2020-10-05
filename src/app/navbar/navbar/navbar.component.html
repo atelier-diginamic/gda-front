@@ -1,0 +1,23 @@
+<!--NAVBAR-->
+<div class="container-fluid p-0">
+    <nav ngbNav #nav="ngbNav" class="navbar navbar-dark bg-dark" [activeId]="route.fragment | async">
+      <div class="container">
+        <div *ngFor="let link of links">
+            <!-- HOME -->
+            <a ngbNavItem class="ml-3 fade-page" ngbNavLink
+              [routerLink]="link.fragment">{{ link.title }}</a>
+              <!-- Collapsable-->
+  
+            <!-- CONNEXION/INSCRIPTION -->
+ 
+  
+          
+        </div>
+  
+  
+        <!-- Fin Container-->
+      </div>
+      <div [ngbNavOutlet]="nav"></div>
+    </nav>
+    <!-- Fin Container Nav Bar-->
+  </div>
