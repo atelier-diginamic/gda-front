@@ -22,7 +22,7 @@ export class AppComponent {
    */
   seDeconnecter() {
     this.authSrv.seDeconnecter().subscribe(
-      () => this.router.navigate(['/auth'])
+      () => this.router.navigate(['/connection'])
     );
   }
 
@@ -31,6 +31,7 @@ export class AppComponent {
    *
    * Celui lui permet de rester à jour en fonction des connexions et déconnexions.
    */
+  // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit(): void {
 
     this.collegueConnecte = this.authSrv.collegueConnecteObs;
