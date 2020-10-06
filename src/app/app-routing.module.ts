@@ -8,7 +8,7 @@ import {AuthComponent} from './auth/auth.component';
 const routes: Routes =  [
   { path: 'tech', component: TechComponent, canActivate: [StatutConnecteService]}, // /tech accessible uniquement si connecté
   { path: 'connexion', component: AuthComponent},
-  { path: '', redirectTo: '/tech', pathMatch: 'full'}
+  { path: '', redirectTo: '/connexion', pathMatch: 'full'}
 ];
 
 
