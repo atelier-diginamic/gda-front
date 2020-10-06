@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Collegue} from './auth/auth.domains';
 import {AuthService} from './auth/auth.service';
+import { MenuService } from './menu.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,13 @@ export class AppComponent {
 
   collegueConnecte: Observable<Collegue>;
 
-  constructor(private authSrv: AuthService, private router: Router) {
+  relationValueRole = new Map([
+    [1, "ROLE_UTILISATEUR"],
+    [2, "ROLE_ADMINISTRATEUR"],
+    [3, "ROLE_MANAGER"]
+  ]); 
+
+  constructor(private authSrv: AuthService, private router: Router, private menuService : MenuService) {
 
   }
 
@@ -34,5 +41,9 @@ export class AppComponent {
   ngOnInit(): void {
 
     this.collegueConnecte = this.authSrv.collegueConnecteObs;
+  }
+
+  getRoles(collegue: Collegue) : string {
+    return this.relationValueRole.get(this.menuService.recupereLeDroitUtilisateur(collegue));
   }
 }
