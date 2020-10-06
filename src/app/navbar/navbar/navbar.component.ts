@@ -4,6 +4,7 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
 import { Collegue } from 'src/app/auth/auth.domains';
 import { AuthService } from 'src/app/auth/auth.service';
+import { MenuService } from 'src/app/menu.service';
 
 
 
@@ -15,7 +16,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class NavbarComponent implements OnInit {
 
  collegueConnecte: Observable<Collegue>
-
+  idDroit : number;
   links = [
     { title: 'Accueil', fragment: 'accueil' },
     { title: 'Gestion des absences', fragment: 'gestion' },
@@ -32,10 +33,13 @@ export class NavbarComponent implements OnInit {
   }
  
   constructor(public route: ActivatedRoute,
-    private authSrv : AuthService ) { }
+    private authSrv : AuthService, private menuService : MenuService ) { }
 
   ngOnInit(): void {
     this.collegueConnecte = this.authSrv.collegueConnecteObs;
   }
 
+  gererLeDroitUtilisateur(collegue: Collegue): number {
+    return this.menuService.recupereLeDroitUtilisateur(collegue);
+  }
 }
