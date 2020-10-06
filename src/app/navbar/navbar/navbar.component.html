@@ -1,23 +1,32 @@
 <!--NAVBAR-->
 <div class="container-fluid p-0">
-    <nav ngbNav #nav="ngbNav" class="navbar navbar-dark bg-dark" [activeId]="route.fragment | async">
-      <div class="container">
-        <div *ngFor="let link of links">
-            <!-- HOME -->
-            <a ngbNavItem class="ml-3 fade-page" ngbNavLink
-              [routerLink]="link.fragment">{{ link.title }}</a>
+  <nav ngbNav #nav="ngbNav" class="navbar navbar-dark bg-dark" [activeId]="route.fragment | async">
+    <div class="container">
+
+      <div *ngIf="collegueConnecte | async as col">
+        
+          <div *ngFor="let role of col.roles">
+            <div *ngIf="role === 'ROLE_MANAGER' ; else elseBlock">
+            <div *ngFor="let link of links">
+              <!-- HOME -->
+              <a ngbNavItem class="ml-3 fade-page" ngbNavLink [routerLink]="link.fragment">{{ link.title }}</a>
               <!-- Collapsable-->
-  
-            <!-- CONNEXION/INSCRIPTION -->
- 
-  
-          
+
+              <!-- CONNEXION/INSCRIPTION -->
+
+            </div>
+         </div>
+         <ng-template #elseBlock>
+          <p> Tu n'est pas un Manager </p>
+        </ng-template>
         </div>
-  
-  
-        <!-- Fin Container-->
+
       </div>
-      <div [ngbNavOutlet]="nav"></div>
-    </nav>
-    <!-- Fin Container Nav Bar-->
-  </div>
+
+
+      <!-- Fin Container-->
+    </div>
+    <div [ngbNavOutlet]="nav"></div>
+  </nav>
+  <!-- Fin Container Nav Bar-->
+</div>
