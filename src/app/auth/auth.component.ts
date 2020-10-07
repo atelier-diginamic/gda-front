@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Collegue} from './auth.domains';
 import {AuthService} from './auth.service';
 import {Router} from '@angular/router';
+import { MenuService } from '../services/menu.service';
 
 /**
  * Formulaire d'authentification.
@@ -13,11 +14,15 @@ import {Router} from '@angular/router';
 })
 export class AuthComponent implements OnInit {
 
-
+  relationValueRole = new Map([
+    [1, "ROLE_UTILISATEUR"],
+    [2, "ROLE_ADMINISTRATEUR"],
+    [3, "ROLE_MANAGER"]
+  ]); 
   collegue: Collegue = new Collegue({});
   err: boolean;
 
-  constructor(private authSrv: AuthService, private router: Router) { }
+  constructor(private authSrv: AuthService, private router: Router, private menuService : MenuService) { }
 
   ngOnInit() {
   }
@@ -26,11 +31,18 @@ export class AuthComponent implements OnInit {
     this.authSrv.connecter(this.collegue.email, this.collegue.motDePasse)
       .subscribe(
         // en cas de succès, redirection vers la page /tech
-        col => this.router.navigate(['/tech']),
+        col => {
+          localStorage.setItem("idUtilisateur", col.id.toString());
+          localStorage.setItem("roleUtilisateur", this.getRoles(col));
+          this.router.navigate(['/tech'])
+      },
 
         // en cas d'erreur, affichage d'un message d'erreur
         err => this.err = true
       );
   }
 
+  getRoles(collegue: Collegue) : string {
+    return this.relationValueRole.get(this.menuService.recupereLeDroitUtilisateur(collegue));
+  }
 }

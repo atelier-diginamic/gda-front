@@ -1,0 +1,25 @@
+<form (ngSubmit)="creerAbsence()">
+    <div class="form-group">
+      <label for="dateDebut">Date de debut</label>
+      <input type="date" class="form-control" id="dateDebut" name="dateDebut" placeholder="" [(ngModel)]="absence.dateDebut" #champ1="ngModel">
+    </div>
+
+    <p *ngIf="champ1.dirty && checkerDateFormVue(champ1) == false">
+        Tu fais de la merde
+    </p>
+
+    <div class="form-group">
+        <label for="dateFin">Date de fin</label>
+        <input type="date" class="form-control" id="dateFin" name="dateFin" placeholder="" [(ngModel)]="absence.dateFin" #champ2="ngModel">
+    </div>
+    <div class="form-group">
+        <label for="typeConge">Type de congé </label>
+        <input type="text" class="form-control" id="typeConge"  name="typeConge" placeholder="(CONGE_PAYE, RTT, JOUR_FERIE, CongeSansSolde)" [(ngModel)]="absence.typeConge" #champ3="ngModel">
+    </div>
+    <div class="form-group">
+        <label for="motif">Motif de l'absence</label>
+        <input type="text" class="form-control" id="motif"  name="motif" placeholder="Facultatif" [(ngModel)]="absence.motif" #champ4="ngModel">
+      </div>
+   
+    <button type="submit" class="btn btn-primary">Demander cette absence</button>
+</form>

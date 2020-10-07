@@ -16,6 +16,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { GestionAbsenceComponent } from './gestion-absence/gestion-absence/gestion-absence.component';
 import { GestionAbsenceService } from './services/gestion-absence.service';
 import { MenuService } from './services/menu.service';
+import { CreerAbsenceComponent } from './forms/creer-absence/creer-absence.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MenuService } from './services/menu.service';
     AuthComponent,
     TechComponent,
     NavbarComponent,
-    GestionAbsenceComponent
+    GestionAbsenceComponent,
+    CreerAbsenceComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,7 @@ import { MenuService } from './services/menu.service';
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptorService,
     multi: true
-  }, GestionAbsenceService, MenuService],
+  }, GestionAbsenceService, MenuService, GestionAbsenceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -17,7 +17,7 @@ import { MenuService } from 'src/app/services/menu.service';
 export class NavbarComponent implements OnInit {
 
  collegueConnecte: Observable<Collegue>
- idUtilisateur : number  = 0;
+ idUtilisateur : string  = "";
   links = [
     { title: 'Accueil', fragment: 'accueil' },
     { title: 'Gestion des absences', fragment: 'gestion' },
@@ -41,15 +41,14 @@ export class NavbarComponent implements OnInit {
   }
  
   constructor(public route: ActivatedRoute,
-    private authSrv : AuthService, private menuService : MenuService ) { }
+    private authSrv : AuthService, private menuService : MenuService ) {
+      this.idUtilisateur = localStorage.getItem("idUtilisateur");
+      console.log("iddddd ", this.idUtilisateur);
+     }
 
   ngOnInit(): void {
     this.collegueConnecte = this.authSrv.collegueConnecteObs;
-    this.authSrv.collegueConnecteObs.subscribe(collegue => {
-      
-      this.idUtilisateur = collegue.id;
-      console.log("id ", this.idUtilisateur);
-    })
+
   }
 
   gererLeDroitUtilisateur(collegue: Collegue): number {

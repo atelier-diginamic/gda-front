@@ -9,7 +9,7 @@ import { GestionAbsenceComponent } from './gestion-absence/gestion-absence/gesti
 const routes: Routes =  [
   { path: 'tech', component: TechComponent, canActivate: [StatutConnecteService]}, // /tech accessible uniquement si connecté
   { path: 'connexion', component: AuthComponent},
-  { path: 'tech/gestion/:idUtilisateur', component: GestionAbsenceComponent},
+  { path: 'tech/gestion', component: GestionAbsenceComponent},
   { path: '', redirectTo: '/connexion', pathMatch: 'full'}
 ];
 
