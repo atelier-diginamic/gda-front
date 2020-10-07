@@ -8,7 +8,6 @@ import { MenuService } from 'src/app/services/menu.service';
 
 
 
-
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -17,7 +16,9 @@ import { MenuService } from 'src/app/services/menu.service';
 export class NavbarComponent implements OnInit {
 
  collegueConnecte: Observable<Collegue>
+
  idUtilisateur : string  = "";
+
   links = [
     { title: 'Accueil', fragment: 'accueil' },
     { title: 'Gestion des absences', fragment: 'gestion' },
@@ -41,15 +42,18 @@ export class NavbarComponent implements OnInit {
   }
  
   constructor(public route: ActivatedRoute,
+
     private authSrv : AuthService, private menuService : MenuService ) {
       this.idUtilisateur = localStorage.getItem("idUtilisateur");
       console.log("iddddd ", this.idUtilisateur);
      }
 
+
   ngOnInit(): void {
     this.collegueConnecte = this.authSrv.collegueConnecteObs;
 
   }
+
 
   gererLeDroitUtilisateur(collegue: Collegue): number {
     return this.menuService.recupereLeDroitUtilisateur(collegue);
