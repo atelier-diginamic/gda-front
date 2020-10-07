@@ -13,13 +13,17 @@ import {FormsModule} from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { GestionAbsenceComponent } from './gestion-absence/gestion-absence/gestion-absence.component';
+import { GestionAbsenceService } from './services/gestion-absence.service';
+import { MenuService } from './services/menu.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     TechComponent,
-    NavbarComponent
+    NavbarComponent,
+    GestionAbsenceComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptorService,
     multi: true
-  }],
+  }, GestionAbsenceService, MenuService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

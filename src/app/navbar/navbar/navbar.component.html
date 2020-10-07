@@ -7,9 +7,9 @@
     [activeId]="route.fragment | async"
   >
     <div class="container">
-      <div *ngIf="collegueConnecte | async as col">
+      <div *ngIf="collegueConnecte | async as col" >
         <div class="d-flex" *ngIf="gererLeDroitUtilisateur(col) === 1 || gererLeDroitUtilisateur(col) === 2; else elseBlock">
-          <div *ngFor="let link of links">
+          <div *ngFor="let link of linksUtilisateur">
             <!-- HOME -->
             <a
               ngbNavItem
@@ -18,12 +18,22 @@
               [routerLink]="link.fragment"
               >{{ link.title }}</a>
             <!-- Collapsable-->
-
             <!-- CONNEXION/INSCRIPTION -->
           </div>
         </div>
         <ng-template #elseBlock>
-          <p>Je suis un manager</p>
+          <div  *ngFor="let link of links">
+            <!-- HOME -->
+            <a
+              ngbNavItem
+              class="ml-3 fade-page text-light"
+              ngbNavLink
+              [routerLink]="link.fragment"
+              >{{ link.title }}</a>
+            <!-- Collapsable-->
+            <!-- CONNEXION/INSCRIPTION -->
+          </div>
+          
         </ng-template>
       </div>
     </div>

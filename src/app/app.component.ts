@@ -3,7 +3,8 @@ import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Collegue} from './auth/auth.domains';
 import {AuthService} from './auth/auth.service';
-import { MenuService } from './menu.service';
+import { MenuService } from './services/menu.service';
+
 
 @Component({
   selector: 'app-root',

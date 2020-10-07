@@ -4,7 +4,8 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
 import { Collegue } from 'src/app/auth/auth.domains';
 import { AuthService } from 'src/app/auth/auth.service';
-import { MenuService } from 'src/app/menu.service';
+import { MenuService } from 'src/app/services/menu.service';
+
 
 
 
@@ -16,7 +17,7 @@ import { MenuService } from 'src/app/menu.service';
 export class NavbarComponent implements OnInit {
 
  collegueConnecte: Observable<Collegue>
-  idDroit : number;
+ idUtilisateur : number  = 0;
   links = [
     { title: 'Accueil', fragment: 'accueil' },
     { title: 'Gestion des absences', fragment: 'gestion' },
@@ -25,6 +26,13 @@ export class NavbarComponent implements OnInit {
     { title: 'Vue synthétique', fragment: 'vue' },
     { title: 'Jours feriés', fragment: 'jours' },
   ];
+
+  linksUtilisateur = [
+    { title: 'Accueil', fragment: 'accueil' },
+    { title: 'Gestion des absences', fragment: `gestion/${this.idUtilisateur}` },
+    { title: 'Planning des absences', fragment: 'planning' },
+    { title: 'Jours feriés', fragment: 'jours' }
+  ]
 
   faUserCircle = faUserCircle;
   isActive = true;
@@ -37,6 +45,11 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.collegueConnecte = this.authSrv.collegueConnecteObs;
+    this.authSrv.collegueConnecteObs.subscribe(collegue => {
+      
+      this.idUtilisateur = collegue.id;
+      console.log("id ", this.idUtilisateur);
+    })
   }
 
   gererLeDroitUtilisateur(collegue: Collegue): number {
