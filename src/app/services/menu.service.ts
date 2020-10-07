@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { async } from '@angular/core/testing';
 import { stringify } from 'querystring';
 import { Observable } from 'rxjs';
-import { Collegue } from './auth/auth.domains';
+import { Collegue } from '../auth/auth.domains';
+
 
 @Injectable({
   providedIn: 'root'

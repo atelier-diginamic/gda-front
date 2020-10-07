@@ -22,18 +22,21 @@
           </div>
         </div>
         <ng-template #elseBlock>
-          <div  *ngFor="let link of links">
-            <!-- HOME -->
-            <a
-              ngbNavItem
-              class="ml-3 fade-page text-light"
-              ngbNavLink
-              [routerLink]="link.fragment"
-              >{{ link.title }}</a>
-            <!-- Collapsable-->
-            <!-- CONNEXION/INSCRIPTION -->
+
+          <div class="d-flex">
+            <div  *ngFor="let link of links">
+              <!-- HOME -->
+              <a
+                ngbNavItem
+                class="ml-3 fade-page text-light"
+                ngbNavLink
+                [routerLink]="link.fragment"
+                >{{ link.title }}</a>
+              <!-- Collapsable-->
+              <!-- CONNEXION/INSCRIPTION -->
+            </div>
           </div>
-          
+
         </ng-template>
       </div>
     </div>
