@@ -7,7 +7,6 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { MenuService } from 'src/app/menu.service';
 
 
-
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -16,7 +15,7 @@ import { MenuService } from 'src/app/menu.service';
 export class NavbarComponent implements OnInit {
 
  collegueConnecte: Observable<Collegue>
-  idDroit : number;
+ idUtilisateur : number = 0;
   links = [
     { title: 'Accueil', fragment: 'accueil' },
     { title: 'Gestion des absences', fragment: 'gestion' },
@@ -26,6 +25,13 @@ export class NavbarComponent implements OnInit {
     { title: 'Jours feriés', fragment: 'jours' },
   ];
 
+  linksUtilisateur = [
+    { title: 'Accueil', fragment: 'accueil' },
+    { title: 'Gestion des absences', fragment: `gestion/${this.idUtilisateur}` },
+    { title: 'Planning des absences', fragment: 'planning' },
+    { title: 'Jours feriés', fragment: 'jours' }
+  ]
+
   faUserCircle = faUserCircle;
   isActive = true;
   onClickProfile() {
@@ -33,11 +39,19 @@ export class NavbarComponent implements OnInit {
   }
  
   constructor(public route: ActivatedRoute,
-    private authSrv : AuthService, private menuService : MenuService ) { }
+    private authSrv : AuthService, private menuService : MenuService ) { 
+      this.authSrv.collegueConnecteObs.subscribe(collegue => {
+        this.idUtilisateur = collegue.id;
+        console.log("id ", this.idUtilisateur);
+      })
+    }
 
   ngOnInit(): void {
     this.collegueConnecte = this.authSrv.collegueConnecteObs;
+
+    
   }
+
 
   gererLeDroitUtilisateur(collegue: Collegue): number {
     return this.menuService.recupereLeDroitUtilisateur(collegue);
