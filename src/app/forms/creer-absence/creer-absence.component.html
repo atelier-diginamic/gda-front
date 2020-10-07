@@ -1,17 +1,26 @@
-<form (ngSubmit)="creerAbsence()">
+<form class="mt-5" (ngSubmit)="creerAbsence()">
+    
     <div class="form-group">
+         <!---------------------------- DATE DE DEBUT -------------------------->
       <label for="dateDebut">Date de debut</label>
       <input type="date" class="form-control" id="dateDebut" name="dateDebut" placeholder="" [(ngModel)]="absence.dateDebut" #champ1="ngModel">
     </div>
+    <div class="alert alert-danger" role="alert" *ngIf="champ1.dirty && checkerDateFormVue() === false">
+        <span>Votre date de début doit être à J+2.</span>
+    </div>
+     <!---------------------------- !DATE DE DEBUT! -------------------------->
 
-    <p *ngIf="champ1.dirty && checkerDateFormVue(champ1) == false">
-        Tu fais de la merde
-    </p>
 
+    <!---------------------------- DATE DE FIN -------------------------->
     <div class="form-group">
         <label for="dateFin">Date de fin</label>
         <input type="date" class="form-control" id="dateFin" name="dateFin" placeholder="" [(ngModel)]="absence.dateFin" #champ2="ngModel">
     </div>
+    <div class="alert alert-danger" role="alert" *ngIf="champ2.dirty && checkEcartDateFin() === false">
+        <span>Votre date de fin ne doit pas être identique à la date de début.</span>
+    </div>
+     <!---------------------------- !DATE DE FIN! -------------------------->
+
     <div class="form-group">
         <label for="typeConge">Type de congé </label>
         <input type="text" class="form-control" id="typeConge"  name="typeConge" placeholder="(CONGE_PAYE, RTT, JOUR_FERIE, CongeSansSolde)" [(ngModel)]="absence.typeConge" #champ3="ngModel">

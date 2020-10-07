@@ -29,17 +29,26 @@ export class CreerAbsenceComponent implements OnInit {
                                       data => console.log(data),
                                       error => console.log("La date est inferieur à J+1")
                                   );
-
     }
   }
 
-  checkerDateFormVue(date: NgModel) {
+  checkerDateFormVue() : boolean {
     const dateDebut = new Date(this.absence.dateDebut);
     if(!this.gestionAbsenceService.checkDay(dateDebut.getDate())) {
+        return false;
+    } else {
+        return true;
+    }
+  }
 
+  checkEcartDateFin() : boolean {
+    const dateDebut = new Date(this.absence.dateDebut);
+    const dateFin = new Date(this.absence.dateFin);
+    if(this.gestionAbsenceService.checkDateFin(dateDebut, dateFin) === 0) {
       return false;
     } else {
       return true;
     }
+   
   }
 }
