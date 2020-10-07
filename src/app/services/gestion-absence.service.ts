@@ -50,6 +50,7 @@ i
       httpOptions);
   }
 
+  // Controle si le jour de debut d'absence est à J +2
   checkDay(dateDebut: number) : boolean {
     const dateNow = new Date();
     if((dateNow.getDate() + 1) < dateDebut) {
@@ -58,5 +59,11 @@ i
       return false;
     }
   }
+
+  // Controle si la date de fin est supérieure ou égale à la date de début
+  checkDateFin(dateDebut: Date, dateFin: Date) {
+    return (+dateFin) - (+dateDebut);
+  }
+
   
 }
