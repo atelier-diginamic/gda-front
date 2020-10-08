@@ -11,7 +11,9 @@ import { PageManagerComponent } from './pages/page-manager/page-manager.componen
 const routes: Routes =  [
   { path: 'tech', component: TechComponent, canActivate: [StatutConnecteService]}, // /tech accessible uniquement si connecté
   { path: 'connexion', component: AuthComponent},
-  { path: 'tech/gestion', component: GestionAbsenceComponent},
+  { path: 'PageUtilisateurComponent/gestion', component: GestionAbsenceComponent},
+  {path: 'PageManagerComponent/gestion', component: GestionAbsenceComponent},
+  {path: 'PageAdministrateurComponent/gestion', component: GestionAbsenceComponent},
   { path: 'PageUtilisateurComponent',  component:  PageUtilisateurComponent},
   { path: 'PageManagerComponent',  component: PageManagerComponent},
   { path: 'PageAdministrateurComponent', component: PageAdministrateurComponent},
