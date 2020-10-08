@@ -2,8 +2,8 @@
     
     <div class="form-group">
     <!---------------------------- DATE DE DEBUT -------------------------->
-      <label for="dateDebut">Date de debut</label>
-      <input type="date" class="form-control" id="dateDebut" name="dateDebut" placeholder="" [(ngModel)]="absence.dateDebut" #champ1="ngModel">
+      <label for="datePremierJourAbsence">Date de debut</label>
+      <input type="date" class="form-control" id="datePremierJourAbsence" name="datePremierJourAbsence" placeholder="" [(ngModel)]="absence.datePremierJourAbsence" #champ1="ngModel">
     </div>
     <div class="alert alert-danger" role="alert" *ngIf="champ1.dirty && checkerDateFormVue() === false">
         <span>Votre date de début doit être à J+2.</span>
@@ -13,8 +13,8 @@
 
     <!---------------------------- DATE DE FIN -------------------------->
     <div class="form-group">
-        <label for="dateFin">Date de fin</label>
-        <input type="date" class="form-control" id="dateFin" name="dateFin" placeholder="" [(ngModel)]="absence.dateFin" #champ2="ngModel">
+        <label for="dateDernierJourAbsence">Date de fin</label>
+        <input type="date" class="form-control" id="dateDernierJourAbsence" name="dateDernierJourAbsence" placeholder="" [(ngModel)]="absence.dateDernierJourAbsence" #champ2="ngModel">
     </div>
     <div class="alert alert-danger" role="alert" *ngIf="champ2.dirty && checkEcartDateFin() === false">
         <span>Votre dernier jour d'absence ne peut pas être avant votre premier jour d'absence</span>

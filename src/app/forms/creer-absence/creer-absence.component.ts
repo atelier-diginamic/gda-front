@@ -18,13 +18,13 @@ export class CreerAbsenceComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  absence : Absence;
+  absence : Absence = new Absence();
 
   creerAbsence() {
-    const dateDebut: Date = new Date(this.absence.datePremierJourAbsence)
+    const datePremierJourAbsence: Date = new Date(this.absence.datePremierJourAbsence)
     
-    if(this.gestionAbsenceService.checkDay(dateDebut.getDate())) {
-      // 1, this.absence.dateDebut, this.absence.dateFin, 
+    if(this.gestionAbsenceService.checkDay(datePremierJourAbsence.getDate())) {
+      // 1, this.absence.datePremierJourAbsence, this.absence.dateDernierJourAbsence, 
       //                                           this.absence.typeConge, this.absence.motif
         this.gestionAbsenceService.creerAbsence(this.absence)
                                   .subscribe(
@@ -36,8 +36,8 @@ export class CreerAbsenceComponent implements OnInit {
   }
 
   checkerDateFormVue() : boolean {
-    const dateDebut = new Date(this.absence.datePremierJourAbsence);
-    if(!this.gestionAbsenceService.checkDay(dateDebut.getDate())) {
+    const datePremierJourAbsence = new Date(this.absence.datePremierJourAbsence);
+    if(!this.gestionAbsenceService.checkDay(datePremierJourAbsence.getDate())) {
         return false;
     } else {
         return true;
@@ -45,9 +45,9 @@ export class CreerAbsenceComponent implements OnInit {
   }
 
   checkEcartDateFin() : boolean {
-    const dateDebut = new Date(this.absence.datePremierJourAbsence);
-    const dateFin = new Date(this.absence.dateDernierJourAbsence);
-    if(dateDebut <= dateFin) {
+    const datePremierJourAbsence = new Date(this.absence.datePremierJourAbsence);
+    const dateDernierJourAbsence = new Date(this.absence.dateDernierJourAbsence);
+    if(datePremierJourAbsence <= dateDernierJourAbsence) {
       return true;
     } else {
       return false;

@@ -13,10 +13,10 @@ const table: string[] = [];
 })
 export class GestionAbsenceService implements OnInit {
   private listeAbsencesSub: BehaviorSubject<string[]> = new BehaviorSubject(table);
-  private idUtilisateur: string;
+  private idCollegue: string;
   
   constructor(private http : HttpClient) { 
-    this.idUtilisateur = localStorage.getItem("idUtilisateur");
+    this.idCollegue = localStorage.getItem("idUtilisateur");
       
   }
 
@@ -44,7 +44,7 @@ export class GestionAbsenceService implements OnInit {
     
       return this.http.post(`${environment.baseUrl}${environment.apiCreerAbsence}`,
       { 
-        idUtilisateur: this.idUtilisateur,
+        idCollegue: this.idCollegue,
         datePremierJourAbsence: absence.datePremierJourAbsence,
         dateDernierJourAbsence: absence.dateDernierJourAbsence,
         typeConge: absence.typeConge,
@@ -53,9 +53,9 @@ export class GestionAbsenceService implements OnInit {
   }
 
   // Controle si le jour de debut d'absence est à J +2
-  checkDay(dateDebut: number) : boolean {
+  checkDay(datePremierJourAbsence: number) : boolean {
     const dateNow = new Date();
-    if((dateNow.getDate() + 1) < dateDebut) {
+    if((dateNow.getDate() + 1) < datePremierJourAbsence) {
       return true;
     } else {
       return false;
@@ -63,8 +63,8 @@ export class GestionAbsenceService implements OnInit {
   }
 
   // Controle si la date de fin est supérieure ou égale à la date de début
-  checkDateFin(dateDebut: Date, dateFin: Date) {
-    return (+dateFin) - (+dateDebut);
+  checkDateFin(datePremierJourAbsence: Date, dateDernierJourAbsence: Date) {
+    return (+dateDernierJourAbsence) - (+datePremierJourAbsence);
   }
 
   
