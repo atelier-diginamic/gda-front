@@ -22,7 +22,8 @@ export class AppComponent {
   collegueConnecte: Observable<Collegue>;
   role: string;
   
-
+  droitUtilisateur = Number.parseInt(localStorage.getItem("droitUtilisateur"));
+  
   constructor(private authSrv: AuthService, private router: Router, private menuService : MenuService) {
     this.role = localStorage.getItem("roleUtilisateur");
   }
@@ -42,15 +43,9 @@ export class AppComponent {
    * Celui lui permet de rester à jour en fonction des connexions et déconnexions.
    */
   ngOnInit(): void {
-
     this.collegueConnecte = this.authSrv.collegueConnecteObs;
-  }
-
-
-  gererLeDroitUtilisateur(collegue: Collegue): number {
-    return this.menuService.recupereLeDroitUtilisateur(collegue);
-  }
-
+    }
+  
   getRoles(collegue: Collegue) : string {
     return this.relationValueRole.get(this.menuService.recupereLeDroitUtilisateur(collegue));
   }
