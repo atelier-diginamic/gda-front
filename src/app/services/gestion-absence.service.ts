@@ -60,10 +60,6 @@ i
     }
   }
 
-  // Controle si la date de fin est supérieure ou égale à la date de début
-  checkDateFin(dateDebut: Date, dateFin: Date) {
-    return (+dateFin) - (+dateDebut);
-  }
 
   
 }

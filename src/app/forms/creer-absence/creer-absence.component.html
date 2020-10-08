@@ -1,3 +1,7 @@
+<span style="font-size: 3em; color: Tomato;">
+   <a (click)="retour()"><fa-icon [icon]="faWindowClose"></fa-icon></a> 
+</span>
+
 <form class="mt-5" (ngSubmit)="creerAbsence()" #f="ngForm">
     
     <div class="form-group">
@@ -16,9 +20,6 @@
         <label for="dateFin">Date de fin</label>
         <input type="date" class="form-control" id="dateFin" name="dateFin" placeholder="" [(ngModel)]="absence.dateFin" #champ2="ngModel">
     </div>
-    <div class="alert alert-danger" role="alert" *ngIf="champ2.dirty && checkEcartDateFin() === false">
-        <span>Votre date de fin ne doit pas être identique à la date de début.</span>
-    </div>
      <!---------------------------- !DATE DE FIN! -------------------------->
 
     <div class="form-group">
@@ -35,8 +36,9 @@
     </div>
 
     <div class="alert alert-danger" role="alert" *ngIf="champ3.dirty && champ4.invalid">>
-        <span>Le champ motif doit être rempli</span>
+        <span>Le champ "Motif de l'absence" doit être rempli</span>
     </div>
 
     <button type="submit" class="btn btn-primary">Demander cette absence</button>
+    <button (click)="f.resetForm({})" class="btn btn-danger ml-2">Annuler</button>
 </form>

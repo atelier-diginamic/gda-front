@@ -1,25 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm, NgModel } from '@angular/forms';
-import { stringify } from 'querystring';
-import { Observable } from 'rxjs';
 import { Absence } from 'src/app/entities/absence.model';
 import { GestionAbsenceService } from 'src/app/services/gestion-absence.service';
-
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-creer-absence',
   templateUrl: './creer-absence.component.html',
   styleUrls: ['./creer-absence.component.scss']
 })
 export class CreerAbsenceComponent implements OnInit {
-
-  constructor(private gestionAbsenceService: GestionAbsenceService) { }
+  faWindowClose = faWindowClose;
+  constructor(private gestionAbsenceService: GestionAbsenceService, private router : Router) { }
 
   ngOnInit(): void {
   }
   absence : Absence = new Absence();
 
   creerAbsence() {
-    const dateDebut: Date = new Date(this.absence.dateDebut)
+    const dateDebut: Date = new Date(this.absence.dateDebut);
     
     if(this.gestionAbsenceService.checkDay(dateDebut.getDate())) {
       // 1, this.absence.dateDebut, this.absence.dateFin, 
@@ -27,9 +25,13 @@ export class CreerAbsenceComponent implements OnInit {
         this.gestionAbsenceService.creerAbsence(this.absence)
                                   .subscribe(
                                       data => console.log(data),
-                                      error => console.log("La date est inferieur à J+1")
+                                      error => console.log("Erreur 200 Mais erreur parse JSON")
                                   );
     }
+  }
+
+  retour() {
+    this.router.navigate(["PageAdministrateurComponent/gestion"]);
   }
 
   checkerDateFormVue() : boolean {
@@ -41,15 +43,6 @@ export class CreerAbsenceComponent implements OnInit {
     }
   }
 
-  checkEcartDateFin() : boolean {
-    const dateDebut = new Date(this.absence.dateDebut);
-    const dateFin = new Date(this.absence.dateFin);
-    if(this.gestionAbsenceService.checkDateFin(dateDebut, dateFin) === 0) {
-      return false;
-    } else {
-      return true;
-    }
-  }
 
   checkStatus() : boolean {
     if(this.absence.typeConge === "CONGE_PAYE") {
