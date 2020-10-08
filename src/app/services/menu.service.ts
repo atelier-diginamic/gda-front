@@ -10,8 +10,6 @@ import { Collegue } from '../auth/auth.domains';
 })
 export class MenuService {
 
-
-
   constructor() { }
 
   recupereLeDroitUtilisateur(collegue : Collegue) : number {
@@ -25,6 +23,7 @@ export class MenuService {
         valuePrecedent = valueActuelle;
       } 
     });
+    localStorage.setItem("droitUtilisateur",valuePrecedent.toString());
     return valuePrecedent;
   }
 }

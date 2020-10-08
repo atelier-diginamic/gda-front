@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Collegue } from 'src/app/auth/auth.domains';
 import { AuthService } from 'src/app/auth/auth.service';
 import { MenuService } from 'src/app/services/menu.service';
+import {Router} from '@angular/router';
 
 
 
@@ -41,7 +42,9 @@ export class NavbarComponent implements OnInit {
   
   }
  
-  constructor(public route: ActivatedRoute,
+  droitUtilisateur = Number.parseInt(localStorage.getItem("droitUtilisateur"));
+
+  constructor(public route: ActivatedRoute,private router: Router,
 
     private authSrv : AuthService, private menuService : MenuService ) {
       this.idUtilisateur = localStorage.getItem("idUtilisateur");
@@ -52,8 +55,13 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.collegueConnecte = this.authSrv.collegueConnecteObs;
 
-  }
-
+   /* if((Number.parseInt(localStorage.getItem("droitUtilisateur"))) === 3) {
+      this.router.navigate(['/PageManagerComponent'])
+      } else if (Number.parseInt(localStorage.getItem("droitUtilisateur")) === 2) 
+      { this.router.navigate(['/PageAdministrateurComponent'])
+    }  else {this.router.navigate(['/PageUtilisateurComponent'])}*/
+ 
+}
 
   gererLeDroitUtilisateur(collegue: Collegue): number {
     return this.menuService.recupereLeDroitUtilisateur(collegue);
