@@ -13,6 +13,12 @@ import { MenuService } from './services/menu.service';
 })
 export class AppComponent {
 
+  relationValueRole = new Map([
+    [1, "ROLE_UTILISATEUR"],
+    [2, "ROLE_ADMINISTRATEUR"],
+    [3, "ROLE_MANAGER"]
+  ]);
+  
   collegueConnecte: Observable<Collegue>;
   role: string;
   
@@ -40,5 +46,13 @@ export class AppComponent {
     this.collegueConnecte = this.authSrv.collegueConnecteObs;
   }
 
+
+  gererLeDroitUtilisateur(collegue: Collegue): number {
+    return this.menuService.recupereLeDroitUtilisateur(collegue);
+  }
+
+  getRoles(collegue: Collegue) : string {
+    return this.relationValueRole.get(this.menuService.recupereLeDroitUtilisateur(collegue));
+  }
 
 }
