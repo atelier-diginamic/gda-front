@@ -47,7 +47,7 @@ i
         motif: absence.motif,
   
       },
-      httpOptions);
+      {responseType: 'json'});
   }
 
   // Controle si le jour de debut d'absence est à J +2

@@ -26,8 +26,8 @@ export class CreerAbsenceComponent implements OnInit {
       //                                           this.absence.typeConge, this.absence.motif
         this.gestionAbsenceService.creerAbsence(this.absence)
                                   .subscribe(
-                                      data => console.log(data),
-                                      error => console.log("La date est inferieur à J+1")
+                                      data => console.log("ma data ", JSON.stringify(data)),
+                                      error => console.log(error)
                                   );
     }
   }
