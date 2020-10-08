@@ -49,6 +49,13 @@ export class CreerAbsenceComponent implements OnInit {
     } else {
       return false;
     }
-   
+  }
+
+  checkStatus() : boolean {
+    if(this.absence.typeConge === "CONGE_PAYE") {
+      return false;
+    } else {
+      return true;
+    }
   }
 }

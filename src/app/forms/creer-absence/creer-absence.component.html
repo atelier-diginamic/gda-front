@@ -1,4 +1,4 @@
-<form class="mt-5" (ngSubmit)="creerAbsence()">
+<form class="mt-5" (ngSubmit)="creerAbsence()" #f="ngForm">
     
     <div class="form-group">
     <!---------------------------- DATE DE DEBUT -------------------------->
@@ -24,18 +24,27 @@
 
     <div class="form-group">
         <label for="typeConge">Type de congé </label>
+
             <select name="typeConge" id="typeConge"  [(ngModel)]="absence.typeConge" class="form-control" #champ3="ngModel">
                 <option value="CONGE_PAYE">Congés payés</option>
                 <option value="RTT"> RTT </option>
                 <option value="JOUR_FERIE"> Jour Ferié</option>
                 <option value="CONGE_SANS_SOLDE"> Congé sans solde </option>
             </select>
+
     </div>
 
     <div class="form-group">
         <label for="motif">Motif de l'absence</label>
-        <input type="text" class="form-control" id="motif"  name="motif" placeholder="Facultatif" [(ngModel)]="absence.motif" #champ4="ngModel">
-      </div>
-   
+        <div>
+            <input type="text" class="form-control" id="motif"  name="motif" placeholder="Facultatif" [(ngModel)]="absence.motif" #champ4="ngModel" 
+           [required]="checkStatus()">
+        </div>
+    </div>
+
+    <div class="alert alert-danger" role="alert" *ngIf="champ3.dirty && champ4.invalid">>
+        <span>Le champ motif doit être rempli</span>
+    </div>
+
     <button type="submit" class="btn btn-primary">Demander cette absence</button>
 </form>
