@@ -5,7 +5,7 @@
 
 <div class="d-flex justify-content-start ml-5 mb-2">
   <!--  <h1 class="display-4">Gestion des Absences</h1> -->
-  <ng-container *ngIf="git | async as col">
+  <ng-container *ngIf="collegueConnecte | async as col">
         <div class="lead" *ngIf="!col.estAnonyme()">
       <p>Utilisateur connecté : {{col.email}}</p>
       <p>Votre rôle est :</p>
