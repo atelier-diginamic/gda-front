@@ -1,7 +1,7 @@
 <form class="mt-5" (ngSubmit)="creerAbsence()">
     
     <div class="form-group">
-         <!---------------------------- DATE DE DEBUT -------------------------->
+    <!---------------------------- DATE DE DEBUT -------------------------->
       <label for="dateDebut">Date de debut</label>
       <input type="date" class="form-control" id="dateDebut" name="dateDebut" placeholder="" [(ngModel)]="absence.dateDebut" #champ1="ngModel">
     </div>
@@ -17,14 +17,21 @@
         <input type="date" class="form-control" id="dateFin" name="dateFin" placeholder="" [(ngModel)]="absence.dateFin" #champ2="ngModel">
     </div>
     <div class="alert alert-danger" role="alert" *ngIf="champ2.dirty && checkEcartDateFin() === false">
-        <span>Votre date de fin ne doit pas être identique à la date de début.</span>
+        <span>Votre dernier jour d'absence ne peut pas être avant votre premier jour d'absence</span>
     </div>
      <!---------------------------- !DATE DE FIN! -------------------------->
 
+
     <div class="form-group">
         <label for="typeConge">Type de congé </label>
-        <input type="text" class="form-control" id="typeConge"  name="typeConge" placeholder="(CONGE_PAYE, RTT, JOUR_FERIE, CongeSansSolde)" [(ngModel)]="absence.typeConge" #champ3="ngModel">
+            <select name="typeConge" id="typeConge"  [(ngModel)]="absence.typeConge" class="form-control" #champ3="ngModel">
+                <option value="CONGE_PAYE">Congés payés</option>
+                <option value="RTT"> RTT </option>
+                <option value="JOUR_FERIE"> Jour Ferié</option>
+                <option value="CONGE_SANS_SOLDE"> Congé sans solde </option>
+            </select>
     </div>
+
     <div class="form-group">
         <label for="motif">Motif de l'absence</label>
         <input type="text" class="form-control" id="motif"  name="motif" placeholder="Facultatif" [(ngModel)]="absence.motif" #champ4="ngModel">
