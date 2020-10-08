@@ -18,17 +18,17 @@ export class CreerAbsenceComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  absence : Absence = new Absence();
+  absence : Absence;
 
   creerAbsence() {
-    const dateDebut: Date = new Date(this.absence.dateDebut)
+    const dateDebut: Date = new Date(this.absence.datePremierJourAbsence)
     
     if(this.gestionAbsenceService.checkDay(dateDebut.getDate())) {
       // 1, this.absence.dateDebut, this.absence.dateFin, 
       //                                           this.absence.typeConge, this.absence.motif
         this.gestionAbsenceService.creerAbsence(this.absence)
                                   .subscribe(
-                                      data =>  { alert("Demande de congés enregistrée. Retour à l'tech.");
+                                      data =>  { alert(`Demande de congés enregistrée. ${data}`);
                                       this.router.navigate(['/tech']) },
                                       error => console.log(error)
                                   );
@@ -36,7 +36,7 @@ export class CreerAbsenceComponent implements OnInit {
   }
 
   checkerDateFormVue() : boolean {
-    const dateDebut = new Date(this.absence.dateDebut);
+    const dateDebut = new Date(this.absence.datePremierJourAbsence);
     if(!this.gestionAbsenceService.checkDay(dateDebut.getDate())) {
         return false;
     } else {
@@ -45,8 +45,8 @@ export class CreerAbsenceComponent implements OnInit {
   }
 
   checkEcartDateFin() : boolean {
-    const dateDebut = new Date(this.absence.dateDebut);
-    const dateFin = new Date(this.absence.dateFin);
+    const dateDebut = new Date(this.absence.datePremierJourAbsence);
+    const dateFin = new Date(this.absence.dateDernierJourAbsence);
     if(dateDebut <= dateFin) {
       return true;
     } else {

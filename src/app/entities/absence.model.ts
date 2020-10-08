@@ -1,7 +1,11 @@
 export class Absence {
-    idUtilisateur: number; 
-    dateDebut: number;
-    dateFin: Date; 
-    typeConge: string; 
-    motif: string;
+    constructor( 
+        public idCollegue: number,
+        public datePremierJourAbsence: Date,
+        public dateDernierJourAbsence: Date,
+        public typeConge: string,
+        public commentaireAbsence: string,
+        public statutDemande: string
+    ) {}
+    
 }

@@ -8,6 +8,6 @@ export const config = {
   apiLogin: 'login',
   apiLogout: 'logout',
   apiAuthMe: 'me',
-  apiListeAbsence: 'absences/all',
-  apiCreerAbsence: 'absences/create'
+  apiListeAbsence: 'absence/all',
+  apiCreerAbsence: 'absence/create'
 };

@@ -36,21 +36,20 @@ export class GestionAbsenceService implements OnInit {
   
 
   creerAbsence(absence : Absence) : Observable<Object>{
-    /*const httpOptions = {
+    const httpOptions = {
       headers: new HttpHeaders({
         "Content-Type": "application/json"
       })
-    }; */
+    }; 
     
       return this.http.post(`${environment.baseUrl}${environment.apiCreerAbsence}`,
       { 
         idUtilisateur: this.idUtilisateur,
-        dateDebut: absence.dateDebut,
-        dateFin: absence.dateFin,
+        datePremierJourAbsence: absence.datePremierJourAbsence,
+        dateDernierJourAbsence: absence.dateDernierJourAbsence,
         typeConge: absence.typeConge,
-        motif: absence.motif,
-      },
-      {responseType : "text"});
+        commentaireAbsence: absence.commentaireAbsence,
+      })
   }
 
   // Controle si le jour de debut d'absence est à J +2

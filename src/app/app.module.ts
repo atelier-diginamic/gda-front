@@ -17,6 +17,7 @@ import { GestionAbsenceComponent } from './gestion-absence/gestion-absence/gesti
 import { GestionAbsenceService } from './services/gestion-absence.service';
 import { MenuService } from './services/menu.service';
 import { CreerAbsenceComponent } from './forms/creer-absence/creer-absence.component';
+import { VisuAbsencesComponent } from './visu-absences/visu-absences.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CreerAbsenceComponent } from './forms/creer-absence/creer-absence.compo
     TechComponent,
     NavbarComponent,
     GestionAbsenceComponent,
-    CreerAbsenceComponent
+    CreerAbsenceComponent,
+    VisuAbsencesComponent
   ],
   imports: [
     BrowserModule,
