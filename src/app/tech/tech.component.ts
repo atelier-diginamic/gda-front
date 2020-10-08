@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {TechService} from './tech.service';
 import {BackendLink} from './tech.domains';
+import { AuthService } from 'src/app/auth/auth.service';
+import { MenuService } from 'src/app/services/menu.service';
+import { Observable } from 'rxjs';
+import { Collegue } from 'src/app/auth/auth.domains';
+import { ActivatedRoute } from '@angular/router';
+import {Router} from '@angular/router';
+
 
 /**
  * Composant d'affichage d'informations techniques (liens utiles pour connaître l'état du backend).
@@ -14,15 +21,20 @@ import {BackendLink} from './tech.domains';
 })
 export class TechComponent implements OnInit {
 
+  collegue: Collegue = new Collegue({});
+  collegueConnecte: Observable<Collegue>
+  idUtilisateur : string  = "";
   links: BackendLink[] = [];
 
-  constructor(private _techSrv: TechService) { }
+  constructor(public route: ActivatedRoute) {
+    
+    this.idUtilisateur = localStorage.getItem("idUtilisateur");
+    console.log("iddddd ", this.idUtilisateur);
+  }
+  
 
   ngOnInit() {
-   this._techSrv.listBackendLinks().subscribe(
-     link => this.links.push(link)
-   );
-  }
 
+  }
 
 }
