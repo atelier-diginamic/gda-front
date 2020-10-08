@@ -17,7 +17,8 @@ export class AppComponent {
     [1, "ROLE_UTILISATEUR"],
     [2, "ROLE_ADMINISTRATEUR"],
     [3, "ROLE_MANAGER"]
-  ]); 
+  ]);
+  
   collegueConnecte: Observable<Collegue>;
   role: string;
   
