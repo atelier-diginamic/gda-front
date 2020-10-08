@@ -17,6 +17,9 @@ import { GestionAbsenceComponent } from './gestion-absence/gestion-absence/gesti
 import { GestionAbsenceService } from './services/gestion-absence.service';
 import { MenuService } from './services/menu.service';
 import { CreerAbsenceComponent } from './forms/creer-absence/creer-absence.component';
+import { PageAdministrateurComponent } from './pages/page-administrateur/page-administrateur.component';
+import { PageUtilisateurComponent } from './pages/page-utilisateur/page-utilisateur.component';
+import { PageManagerComponent } from './pages/page-manager/page-manager.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { CreerAbsenceComponent } from './forms/creer-absence/creer-absence.compo
     TechComponent,
     NavbarComponent,
     GestionAbsenceComponent,
-    CreerAbsenceComponent
+    CreerAbsenceComponent,
+    PageAdministrateurComponent,
+    PageUtilisateurComponent,
+    PageManagerComponent
   ],
   imports: [
     BrowserModule,

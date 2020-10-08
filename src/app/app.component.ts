@@ -13,10 +13,17 @@ import { MenuService } from './services/menu.service';
 })
 export class AppComponent {
 
+  relationValueRole = new Map([
+    [1, "ROLE_UTILISATEUR"],
+    [2, "ROLE_ADMINISTRATEUR"],
+    [3, "ROLE_MANAGER"]
+  ]);
+  
   collegueConnecte: Observable<Collegue>;
   role: string;
   
-
+  droitUtilisateur = Number.parseInt(localStorage.getItem("droitUtilisateur"));
+  
   constructor(private authSrv: AuthService, private router: Router, private menuService : MenuService) {
     this.role = localStorage.getItem("roleUtilisateur");
   }
@@ -37,7 +44,10 @@ export class AppComponent {
    */
   ngOnInit(): void {
     this.collegueConnecte = this.authSrv.collegueConnecteObs;
+    }
+  
+  getRoles(collegue: Collegue) : string {
+    return this.relationValueRole.get(this.menuService.recupereLeDroitUtilisateur(collegue));
   }
-
 
 }
