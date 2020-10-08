@@ -31,7 +31,7 @@ export class CreerAbsenceComponent implements OnInit {
   }
 
   retour() {
-    this.router.navigate(["PageAdministrateurComponent/gestion"]);
+    this.router.navigate(["tech"]);
   }
 
   checkerDateFormVue() : boolean {
