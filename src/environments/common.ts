@@ -7,5 +7,7 @@ export const config = {
   apiActuator: 'actuator',
   apiLogin: 'login',
   apiLogout: 'logout',
-  apiAuthMe: 'me'
+  apiAuthMe: 'me',
+  apiListeAbsence: 'gestion/collegue/absences/all',
+  apiCreerAbsence: 'gestion/collegue/absence/create'
 };

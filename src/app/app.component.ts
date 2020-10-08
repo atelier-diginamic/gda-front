@@ -3,6 +3,8 @@ import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Collegue} from './auth/auth.domains';
 import {AuthService} from './auth/auth.service';
+import { MenuService } from './services/menu.service';
+
 
 @Component({
   selector: 'app-root',
@@ -12,9 +14,10 @@ import {AuthService} from './auth/auth.service';
 export class AppComponent {
 
   collegueConnecte: Observable<Collegue>;
+  role: string;
 
-  constructor(private authSrv: AuthService, private router: Router) {
-
+  constructor(private authSrv: AuthService, private router: Router, private menuService: MenuService) {
+    this.role = localStorage.getItem('roleUtilisateur');
   }
 
   /**
@@ -36,4 +39,6 @@ export class AppComponent {
 
     this.collegueConnecte = this.authSrv.collegueConnecteObs;
   }
+
+
 }
