@@ -4,6 +4,8 @@ import { stringify } from 'querystring';
 import { Observable } from 'rxjs';
 import { Absence } from 'src/app/entities/absence.model';
 import { GestionAbsenceService } from 'src/app/services/gestion-absence.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-creer-absence',
@@ -12,7 +14,7 @@ import { GestionAbsenceService } from 'src/app/services/gestion-absence.service'
 })
 export class CreerAbsenceComponent implements OnInit {
 
-  constructor(private gestionAbsenceService: GestionAbsenceService) { }
+  constructor(private gestionAbsenceService: GestionAbsenceService, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -26,7 +28,8 @@ export class CreerAbsenceComponent implements OnInit {
       //                                           this.absence.typeConge, this.absence.motif
         this.gestionAbsenceService.creerAbsence(this.absence)
                                   .subscribe(
-                                      data => console.log(data),
+                                      data =>  { alert("Demande de congés enregistrée. Retour à l'tech.");
+                                      this.router.navigate(['/tech']) },
                                       error => console.log(error)
                                   );
     }
