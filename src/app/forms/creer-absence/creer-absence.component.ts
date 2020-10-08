@@ -26,7 +26,7 @@ export class CreerAbsenceComponent implements OnInit {
       //                                           this.absence.typeConge, this.absence.motif
         this.gestionAbsenceService.creerAbsence(this.absence)
                                   .subscribe(
-                                      data => console.log("ma data ", JSON.stringify(data)),
+                                      data => console.log(data),
                                       error => console.log(error)
                                   );
     }
@@ -44,10 +44,10 @@ export class CreerAbsenceComponent implements OnInit {
   checkEcartDateFin() : boolean {
     const dateDebut = new Date(this.absence.dateDebut);
     const dateFin = new Date(this.absence.dateFin);
-    if(this.gestionAbsenceService.checkDateFin(dateDebut, dateFin) === 0) {
-      return false;
-    } else {
+    if(dateDebut <= dateFin) {
       return true;
+    } else {
+      return false;
     }
    
   }

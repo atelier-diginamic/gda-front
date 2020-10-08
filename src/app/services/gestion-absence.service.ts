@@ -1,6 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { text } from '@fortawesome/fontawesome-svg-core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Absence } from '../entities/absence.model';
@@ -31,13 +32,16 @@ export class GestionAbsenceService implements OnInit {
     this.http.get<string[]>(`${environment.baseUrl}${environment.apiListeAbsence}${idUtilisateur}`, {withCredentials: true})
     
   }
-i
+
+  
+
   creerAbsence(absence : Absence) : Observable<Object>{
-    const httpOptions = {
+    /*const httpOptions = {
       headers: new HttpHeaders({
         "Content-Type": "application/json"
       })
-    };
+    }; */
+    
       return this.http.post(`${environment.baseUrl}${environment.apiCreerAbsence}`,
       { 
         idUtilisateur: this.idUtilisateur,
@@ -45,9 +49,8 @@ i
         dateFin: absence.dateFin,
         typeConge: absence.typeConge,
         motif: absence.motif,
-  
       },
-      {responseType: 'json'});
+      {responseType : "text"});
   }
 
   // Controle si le jour de debut d'absence est à J +2
