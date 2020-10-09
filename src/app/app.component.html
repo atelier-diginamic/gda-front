@@ -1,16 +1,16 @@
 <!-- <app-navbar></app-navbar> -->
-<header> 
+<header>
 
 </header>
 
-<div class="container"> 
+<div class="d-flex justify-content-start ml-5 mb-2"> 
   <!--  <h1 class="display-4">Gestion des Absences</h1> -->
    <ng-container *ngIf="collegueConnecte | async as col">
      <div class="lead" *ngIf="!col.estAnonyme()">
        <p  >Utilisateur connecté : {{col.email}}</p>
        <p>Les rôles :</p>
        <ul>
-         <li>{{role}}</li>
+         <li>{{getRoles(col)}}</li>
        </ul>
        <button  class="btn btn-danger" (click)="seDeconnecter()">Se déconnecter</button>
      </div>
@@ -18,11 +18,11 @@
  </div>
 
 <main class="container-fluid">
+
   <router-outlet></router-outlet>
+
 </main>
 
 <footer>
 
 </footer>
-
-
