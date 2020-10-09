@@ -1,26 +1,52 @@
+/* Import UTILITAIRES */ 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {AuthComponent} from './auth/auth.component';
-import {TechComponent} from './composants/tech/tech.component';
 import {RouterModule, Routes} from '@angular/router';
 import {StatutConnecteService} from './auth/statut-connecte.service';
 import {AuthInterceptorService} from './auth/auth-interceptor.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
-import { NavbarComponent } from './composants/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CommonModule } from '@angular/common';
+
+
+/* Import COMPOSANTS */
+import {AuthComponent} from './auth/auth.component';
+import {TechComponent} from './composants/tech/tech.component';
+import { NavbarComponent } from './composants/navbar/navbar.component';
+import { CreerAbsenceComponent } from './composants/forms/creer-absence/creer-absence.component';
+import { VisuAbsencesComponent } from './visu-absences/visu-absences.component';
 import { GestionAbsenceComponent } from './composants/gestion-absence/gestion-absence.component';
 import { GestionAbsenceService } from './services/gestion-absence.service';
 import { MenuService } from './services/menu.service';
-import { CreerAbsenceComponent } from './composants/forms/creer-absence/creer-absence.component';
-import { VisuAbsencesComponent } from './visu-absences/visu-absences.component';
-import { PageAdministrateurComponent } from './pages/page-administrateur/page-administrateur.component';
-import { PageUtilisateurComponent } from './pages/page-utilisateur/page-utilisateur.component';
-import { PageManagerComponent } from './pages/page-manager/page-manager.component';
+
+
+
+/* Import PAGES */
+
+// Collegue
+import { PageAcceuilCollegueComponent } from './pages/pages-collegue/page-acceuil-collegue/page-acceuil-collegue.component'
+import { PageGestionAbsenceCollegueComponent } from './pages/pages-collegue/page-gestion-absence-collegue/page-gestion-absence-collegue.component';
+import { PageJoursFeriesCollegueComponent } from './pages/pages-collegue/page-jours-feries-collegue/page-jours-feries-collegue.component'
+import { PagePlanningAbsenceCollegueComponent } from './pages/pages-collegue/page-planning-absence-collegue/page-planning-absence-collegue.component';
+
+// Manager
+import { PageAcceuilManagerComponent } from './pages/pages-manager/page-acceuil-manager/page-acceuil-manager.component';
+import { PageValidationDemandesManagerComponent } from './pages/pages-manager/page-validation-demandes-manager/page-validation-demandes-manager.component';
+import { PageGestionAbsenceManagerComponent } from './pages/pages-manager/page-gestion-absence-manager/page-gestion-absence-manager.component';
+import { PageVuesSynthetiquesManagerComponent } from './pages/pages-manager/page-vues-synthetiques-manager/page-vues-synthetiques-manager.component';
+import { PageJoursFeriesManagerComponent } from './pages/pages-manager/page-jours-feries-manager/page-jours-feries-manager.component';
+import { PagePlanningAbsenceManagerComponent } from './pages/pages-manager/page-planning-absence-manager/page-planning-absence-manager.component';
+
+// Administrateur
+import { PageAcceuilAdministrateurComponent } from './pages/pages-administrateur/page-acceuil-administrateur/page-acceuil-administrateur.component';
+import { PageGestionAbsenceAdministrateurComponent } from './pages/pages-administrateur/page-gestion-absence-administrateur/page-gestion-absence-administrateur.component';
+import { PageJoursFeriesAdministrateurComponent } from './pages/pages-administrateur/page-jours-feries-administrateur/page-jours-feries-administrateur.component';
+import { PagePlanningAbsenceAdministrateurComponent } from './pages/pages-administrateur/page-planning-absence-administrateur/page-planning-absence-administrateur.component';
+
 
 
 @NgModule({
@@ -32,9 +58,26 @@ import { PageManagerComponent } from './pages/page-manager/page-manager.componen
     GestionAbsenceComponent,
     CreerAbsenceComponent,
     VisuAbsencesComponent,
-    PageAdministrateurComponent,
-    PageUtilisateurComponent,
-    PageManagerComponent
+    
+    /* Pages COLLEGUE */
+    PageAcceuilCollegueComponent,
+    PageGestionAbsenceCollegueComponent,
+    PageJoursFeriesCollegueComponent,
+    PagePlanningAbsenceCollegueComponent,
+
+    /* Pages COLLEGUE */
+    PageAcceuilManagerComponent,
+    PageValidationDemandesManagerComponent,
+    PageGestionAbsenceManagerComponent,
+    PageVuesSynthetiquesManagerComponent,
+    PageJoursFeriesManagerComponent,
+    PagePlanningAbsenceManagerComponent,
+
+    /* Pages COLLEGUE */
+    PageAcceuilAdministrateurComponent,
+    PageGestionAbsenceAdministrateurComponent,
+    PageJoursFeriesAdministrateurComponent,
+    PagePlanningAbsenceAdministrateurComponent
 
   ],
   imports: [
@@ -43,7 +86,9 @@ import { PageManagerComponent } from './pages/page-manager/page-manager.componen
     HttpClientModule,
     NgbModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    RouterModule,
+    CommonModule,
 
   ],
   providers: [{

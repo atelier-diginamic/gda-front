@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageUtilisateurComponent } from './page-utilisateur.component';
+import { PageAcceuilCollegueComponent } from './page-acceuil-collegue.component';
 
-describe('PageUtilisateurComponent', () => {
-  let component: PageUtilisateurComponent;
-  let fixture: ComponentFixture<PageUtilisateurComponent>;
+describe('PageCollegueComponent', () => {
+  let component: PageAcceuilCollegueComponent;
+  let fixture: ComponentFixture<PageAcceuilCollegueComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PageUtilisateurComponent ]
+      declarations: [ PageAcceuilCollegueComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PageUtilisateurComponent);
+    fixture = TestBed.createComponent(PageAcceuilCollegueComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

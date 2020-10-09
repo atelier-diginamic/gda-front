@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageAdministrateurComponent } from './page-administrateur.component';
+import { PageAcceuilManagerComponent } from './page-acceuil-manager.component';
 
-describe('PageAdministrateurComponent', () => {
-  let component: PageAdministrateurComponent;
-  let fixture: ComponentFixture<PageAdministrateurComponent>;
+describe('PageAcceuilManagerComponent', () => {
+  let component: PageAcceuilManagerComponent;
+  let fixture: ComponentFixture<PageAcceuilManagerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PageAdministrateurComponent ]
+      declarations: [ PageAcceuilManagerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PageAdministrateurComponent);
+    fixture = TestBed.createComponent(PageAcceuilManagerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
