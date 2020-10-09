@@ -51,8 +51,7 @@ export class AuthService {
                     map(colServeur => new Collegue(colServeur)),
                     tap(col => this.collegueConnecteSub.next(col)),
                     catchError(err => of(COLLEGUE_ANONYME))
-                  ) :     of(this.collegueConnecteSub.getValue())
-              ;
+                  ) :     of(this.collegueConnecteSub.getValue());
   }
 
   /**

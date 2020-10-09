@@ -1,6 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { text } from '@fortawesome/fontawesome-svg-core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Absence } from '../entities/absence.model';
@@ -12,10 +13,10 @@ const table: string[] = [];
 })
 export class GestionAbsenceService implements OnInit {
   private listeAbsencesSub: BehaviorSubject<string[]> = new BehaviorSubject(table);
-  private idUtilisateur: string;
+  private idCollegue: string;
   
   constructor(private http : HttpClient) { 
-    this.idUtilisateur = localStorage.getItem("idUtilisateur");
+    this.idCollegue = localStorage.getItem("idUtilisateur");
       
   }
 
@@ -31,29 +32,30 @@ export class GestionAbsenceService implements OnInit {
     this.http.get<string[]>(`${environment.baseUrl}${environment.apiListeAbsence}${idUtilisateur}`, {withCredentials: true})
     
   }
-i
+
+  
+
   creerAbsence(absence : Absence) : Observable<Object>{
     const httpOptions = {
       headers: new HttpHeaders({
         "Content-Type": "application/json"
       })
-    };
+    }; 
+    
       return this.http.post(`${environment.baseUrl}${environment.apiCreerAbsence}`,
       { 
-        idUtilisateur: this.idUtilisateur,
-        dateDebut: absence.dateDebut,
-        dateFin: absence.dateFin,
+        idCollegue: this.idCollegue,
+        datePremierJourAbsence: absence.datePremierJourAbsence,
+        dateDernierJourAbsence: absence.dateDernierJourAbsence,
         typeConge: absence.typeConge,
-        motif: absence.motif,
-  
-      },
-      httpOptions);
+        commentaireAbsence: absence.commentaireAbsence,
+      })
   }
 
   // Controle si le jour de debut d'absence est à J +2
-  checkDay(dateDebut: number) : boolean {
+  checkDay(datePremierJourAbsence: number) : boolean {
     const dateNow = new Date();
-    if((dateNow.getDate() + 1) < dateDebut) {
+    if((dateNow.getDate() + 1) < datePremierJourAbsence) {
       return true;
     } else {
       return false;
@@ -61,8 +63,8 @@ i
   }
 
   // Controle si la date de fin est supérieure ou égale à la date de début
-  checkDateFin(dateDebut: Date, dateFin: Date) {
-    return (+dateFin) - (+dateDebut);
+  checkDateFin(datePremierJourAbsence: Date, dateDernierJourAbsence: Date) {
+    return (+dateDernierJourAbsence) - (+datePremierJourAbsence);
   }
 
   

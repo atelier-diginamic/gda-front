@@ -4,6 +4,8 @@ import { stringify } from 'querystring';
 import { Observable } from 'rxjs';
 import { Absence } from 'src/app/entities/absence.model';
 import { GestionAbsenceService } from 'src/app/services/gestion-absence.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-creer-absence',
@@ -12,29 +14,30 @@ import { GestionAbsenceService } from 'src/app/services/gestion-absence.service'
 })
 export class CreerAbsenceComponent implements OnInit {
 
-  constructor(private gestionAbsenceService: GestionAbsenceService) { }
+  constructor(private gestionAbsenceService: GestionAbsenceService, private router:Router) { }
 
   ngOnInit(): void {
   }
   absence : Absence = new Absence();
 
   creerAbsence() {
-    const dateDebut: Date = new Date(this.absence.dateDebut)
+    const datePremierJourAbsence: Date = new Date(this.absence.datePremierJourAbsence)
     
-    if(this.gestionAbsenceService.checkDay(dateDebut.getDate())) {
-      // 1, this.absence.dateDebut, this.absence.dateFin, 
+    if(this.gestionAbsenceService.checkDay(datePremierJourAbsence.getDate())) {
+      // 1, this.absence.datePremierJourAbsence, this.absence.dateDernierJourAbsence, 
       //                                           this.absence.typeConge, this.absence.motif
         this.gestionAbsenceService.creerAbsence(this.absence)
                                   .subscribe(
-                                      data => console.log(data),
-                                      error => console.log("La date est inferieur à J+1")
+                                      data =>  { alert(`Demande de congés enregistrée. ${data}`);
+                                      this.router.navigate(['/tech']) },
+                                      error => console.log(error)
                                   );
     }
   }
 
   checkerDateFormVue() : boolean {
-    const dateDebut = new Date(this.absence.dateDebut);
-    if(!this.gestionAbsenceService.checkDay(dateDebut.getDate())) {
+    const datePremierJourAbsence = new Date(this.absence.datePremierJourAbsence);
+    if(!this.gestionAbsenceService.checkDay(datePremierJourAbsence.getDate())) {
         return false;
     } else {
         return true;
@@ -42,12 +45,12 @@ export class CreerAbsenceComponent implements OnInit {
   }
 
   checkEcartDateFin() : boolean {
-    const dateDebut = new Date(this.absence.dateDebut);
-    const dateFin = new Date(this.absence.dateFin);
-    if(this.gestionAbsenceService.checkDateFin(dateDebut, dateFin) === 0) {
-      return false;
-    } else {
+    const datePremierJourAbsence = new Date(this.absence.datePremierJourAbsence);
+    const dateDernierJourAbsence = new Date(this.absence.dateDernierJourAbsence);
+    if(datePremierJourAbsence <= dateDernierJourAbsence) {
       return true;
+    } else {
+      return false;
     }
   }
 
