@@ -31,7 +31,7 @@ import { PageManagerComponent } from './pages/page-manager/page-manager.componen
     NavbarComponent,
     GestionAbsenceComponent,
     CreerAbsenceComponent,
-    VisuAbsencesComponent
+    VisuAbsencesComponent,
     PageAdministrateurComponent,
     PageUtilisateurComponent,
     PageManagerComponent
