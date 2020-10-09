@@ -53,6 +53,7 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.authSrv.verifierAuthentification().subscribe();
     this.collegueConnecte = this.authSrv.collegueConnecteObs;
 
    /* if((Number.parseInt(localStorage.getItem("droitUtilisateur"))) === 3) {

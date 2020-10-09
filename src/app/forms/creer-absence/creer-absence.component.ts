@@ -10,22 +10,26 @@ import { Router } from '@angular/router';
 })
 export class CreerAbsenceComponent implements OnInit {
   faWindowClose = faWindowClose;
+  
   constructor(private gestionAbsenceService: GestionAbsenceService, private router : Router) { }
+
+
 
   ngOnInit(): void {
   }
   absence : Absence = new Absence();
 
   creerAbsence() {
-    const dateDebut: Date = new Date(this.absence.dateDebut);
+    const datePremierJourAbsence: Date = new Date(this.absence.datePremierJourAbsence)
     
-    if(this.gestionAbsenceService.checkDay(dateDebut.getDate())) {
-      // 1, this.absence.dateDebut, this.absence.dateFin, 
+    if(this.gestionAbsenceService.checkDay(datePremierJourAbsence.getDate())) {
+      // 1, this.absence.datePremierJourAbsence, this.absence.dateDernierJourAbsence, 
       //                                           this.absence.typeConge, this.absence.motif
         this.gestionAbsenceService.creerAbsence(this.absence)
                                   .subscribe(
-                                      data => console.log(data),
-                                      error => console.log("Erreur 200 Mais erreur parse JSON")
+                                      data =>  { alert(`Demande de congés enregistrée. ${data}`);
+                                      this.router.navigate(['/tech']) },
+                                      error => console.log(error)
                                   );
     }
   }
@@ -35,14 +39,23 @@ export class CreerAbsenceComponent implements OnInit {
   }
 
   checkerDateFormVue() : boolean {
-    const dateDebut = new Date(this.absence.dateDebut);
-    if(!this.gestionAbsenceService.checkDay(dateDebut.getDate())) {
+    const datePremierJourAbsence = new Date(this.absence.datePremierJourAbsence);
+    if(!this.gestionAbsenceService.checkDay(datePremierJourAbsence.getDate())) {
         return false;
     } else {
         return true;
     }
   }
 
+  checkEcartDateFin() : boolean {
+    const datePremierJourAbsence = new Date(this.absence.datePremierJourAbsence);
+    const dateDernierJourAbsence = new Date(this.absence.dateDernierJourAbsence);
+    if(datePremierJourAbsence <= dateDernierJourAbsence) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   checkStatus() : boolean {
     if(this.absence.typeConge === "CONGE_PAYE") {
