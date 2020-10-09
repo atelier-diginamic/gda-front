@@ -5,8 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {AuthComponent} from './auth/auth.component';
 import {TechComponent} from './tech/tech.component';
-import {RouterModule, Routes} from '@angular/router';
-import {StatutConnecteService} from './auth/statut-connecte.service';
 import {AuthInterceptorService} from './auth/auth-interceptor.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
@@ -21,6 +19,18 @@ import { PageAdministrateurComponent } from './pages/page-administrateur/page-ad
 import { PageUtilisateurComponent } from './pages/page-utilisateur/page-utilisateur.component';
 import { PageManagerComponent } from './pages/page-manager/page-manager.component';
 
+// --------- CALENDRIER ANGULAR OFFICIEL -------------- \\
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import { CalendrierAbsencesComponent } from './calendrier-absences/calendrier-absences/calendrier-absences.component';
+// --------- !CALENDRIER ANGULAR OFFICIEL! -------------- \\
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +41,8 @@ import { PageManagerComponent } from './pages/page-manager/page-manager.componen
     CreerAbsenceComponent,
     PageAdministrateurComponent,
     PageUtilisateurComponent,
-    PageManagerComponent
+    PageManagerComponent,
+    CalendrierAbsencesComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +50,8 @@ import { PageManagerComponent } from './pages/page-manager/page-manager.componen
     HttpClientModule,
     NgbModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    FullCalendarModule
 
   ],
   providers: [{

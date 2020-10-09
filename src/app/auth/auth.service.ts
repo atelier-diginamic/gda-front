@@ -48,6 +48,7 @@ export class AuthService {
     return this.collegueConnecteSub.getValue().estAnonyme() ?
             this.http.get<Collegue>(`${environment.baseUrl}${environment.apiAuthMe}`, {withCredentials: true})
                   .pipe(
+                    
                     map(colServeur => new Collegue(colServeur)),
                     tap(col => this.collegueConnecteSub.next(col)),
                     catchError(err => of(COLLEGUE_ANONYME))
