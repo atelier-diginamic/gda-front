@@ -58,6 +58,7 @@ import { PagePlanningAbsenceAdministrateurComponent } from './pages/pages-admini
     GestionAbsenceComponent,
     CreerAbsenceComponent,
     VisuAbsencesComponent,
+<<<<<<< HEAD
     
     /* Pages COLLEGUE */
     PageAcceuilCollegueComponent,
@@ -78,6 +79,12 @@ import { PagePlanningAbsenceAdministrateurComponent } from './pages/pages-admini
     PageGestionAbsenceAdministrateurComponent,
     PageJoursFeriesAdministrateurComponent,
     PagePlanningAbsenceAdministrateurComponent
+=======
+    PageAdministrateurComponent,
+    PageUtilisateurComponent,
+    PageManagerComponent,
+    PagesVisualisationAbsencesComponent
+>>>>>>> visualisationDesAbsences
 
   ],
   imports: [
