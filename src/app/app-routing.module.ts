@@ -29,7 +29,6 @@ import { CalendrierAbsencesComponent } from './composants/calendrier-absences/ca
 import { CreerAbsenceComponent } from './composants/forms/creer-absence/creer-absence.component';
 
 
-
 const routes: Routes =  [
   
   { path: '', redirectTo: '/connexion', pathMatch: 'full'},
