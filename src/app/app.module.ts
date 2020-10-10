@@ -48,6 +48,17 @@ import { PageJoursFeriesAdministrateurComponent } from './pages/pages-administra
 import { PagePlanningAbsenceAdministrateurComponent } from './pages/pages-administrateur/page-planning-absence-administrateur/page-planning-absence-administrateur.component';
 
 
+// --------- CALENDRIER ANGULAR OFFICIEL -------------- \\
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import { CalendrierAbsencesComponent } from './calendrier-absences/calendrier-absences/calendrier-absences.component';
+// --------- !CALENDRIER ANGULAR OFFICIEL! -------------- \\
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
 
 @NgModule({
   declarations: [
@@ -58,6 +69,7 @@ import { PagePlanningAbsenceAdministrateurComponent } from './pages/pages-admini
     GestionAbsenceComponent,
     CreerAbsenceComponent,
     VisuAbsencesComponent,
+    CalendrierAbsencesComponent,
     
     /* Pages COLLEGUE */
     PageAcceuilCollegueComponent,
@@ -89,6 +101,7 @@ import { PagePlanningAbsenceAdministrateurComponent } from './pages/pages-admini
     FormsModule,
     RouterModule,
     CommonModule,
+    FullCalendarModule
 
   ],
   providers: [{

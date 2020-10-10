@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class CreerAbsenceComponent implements OnInit {
   faWindowClose = faWindowClose;
+  
   constructor(private gestionAbsenceService: GestionAbsenceService, private router : Router) { }
 
   ngOnInit(): void {

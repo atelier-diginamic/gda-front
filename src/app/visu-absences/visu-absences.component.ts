@@ -20,25 +20,25 @@ export class VisuAbsencesComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  afficherListeAbsence() {
-    this.absenceService.listerAllAbsences()
-      .subscribe(listeFromBack => {
-        this.erreurTechnique = false;
-        if (listeFromBack.length > 0) {
-          this.aucuneAbsenceTrouvee = false;
-          this.listeAllAbsences = listeFromBack;
-          for (var absence of this.listeAllAbsences) {
-            console.log(absence);
-          }
-        } else {
-          this.aucuneAbsenceTrouvee = true;
-        }
-      },
-        error => {
-          this.erreurTechnique = true;
-          console.log(error);
-        });
-  }
+  // afficherListeAbsence() {
+  //   this.absenceService.listerAllAbsences()
+  //     .subscribe(listeFromBack => {
+  //       this.erreurTechnique = false;
+  //       if (listeFromBack.length > 0) {
+  //         this.aucuneAbsenceTrouvee = false;
+  //         this.listeAllAbsences = listeFromBack;
+  //         for (var absence of this.listeAllAbsences) {
+  //           console.log(absence);
+  //         }
+  //       } else {
+  //         this.aucuneAbsenceTrouvee = true;
+  //       }
+  //     },
+  //       error => {
+  //         this.erreurTechnique = true;
+  //         console.log(error);
+  //       });
+  // }
 
   afficherListeAbsenceByUser() {
     this.absenceService.listerAbsencesByUser()

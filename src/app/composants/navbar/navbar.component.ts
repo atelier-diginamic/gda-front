@@ -31,7 +31,7 @@ export class NavbarComponent implements OnInit {
 
   linksUtilisateur = [
     { title: 'Accueil', fragment: 'accueil' },
-    { title: 'Gestion des absences', fragment: `gestion/${this.idUtilisateur}` },
+    { title: 'Gestion des absences', fragment: `manager/planningAbsence/${this.idUtilisateur}` },
     { title: 'Planning des absences', fragment: 'planning' },
     { title: 'Jours feriés', fragment: 'jours' }
   ]

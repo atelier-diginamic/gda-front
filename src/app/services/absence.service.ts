@@ -16,10 +16,9 @@ export class AbsenceService {
     this.idUtilisateur = localStorage.getItem("idUtilisateur");
    }
 
-  listerAllAbsences() : Observable<Absence[]> {
-    return this.http.get<Absence[]>(`${environment.baseUrl}${environment.apiListeAbsence}`);
-  }
-
+  //  listerAllAbsences() : Observable<Absence[]> {
+  //   return this.http.get<Absence[]>(`${environment.baseUrl}${environment.apiListeAbsence}`);
+  // }
 
   listerAbsencesByUser() : Observable<Absence[]> {
     
