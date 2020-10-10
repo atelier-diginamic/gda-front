@@ -12,18 +12,37 @@ export class MenuService {
 
   constructor() { }
 
-  recupereLeDroitUtilisateur(collegue : Collegue) : number {
+  recupereLeDroitUtilisateur(collegue : Collegue) : string {
     let valuePrecedent: number = 0;
     let valueActuelle = 0;
+    let roleFinal;
 
     collegue.roles.forEach(valeurRole => {
       valueActuelle = +valeurRole;
 
       if(valueActuelle > valuePrecedent) {
         valuePrecedent = valueActuelle;
-      } 
+      }
+    
+    
+      
+    switch ( valuePrecedent ){
+      case 3 :
+          roleFinal = "manager";
+        break;
+      
+      case 2 :
+        roleFinal = "admin";
+        break;
+
+      case 1 :
+        roleFinal = "collegue";
+        break;
+    }
+      
     });
-    localStorage.setItem("droitUtilisateur",valuePrecedent.toString());
-    return valuePrecedent;
+
+    //localStorage.setItem("roleUtilisateur", roleFinal);
+    return roleFinal;
   }
 }

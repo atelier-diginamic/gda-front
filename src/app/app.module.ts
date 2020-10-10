@@ -52,7 +52,7 @@ import { PagePlanningAbsenceAdministrateurComponent } from './pages/pages-admini
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { CalendrierAbsencesComponent } from './calendrier-absences/calendrier-absences/calendrier-absences.component';
+import { CalendrierAbsencesComponent } from './composants/calendrier-absences/calendrier-absences.component';
 // --------- !CALENDRIER ANGULAR OFFICIEL! -------------- \\
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins

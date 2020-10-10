@@ -19,21 +19,22 @@ export class NavbarComponent implements OnInit {
  collegueConnecte: Observable<Collegue>
 
  idUtilisateur : string  = "";
+ roleUtilisateur : string = localStorage.getItem("roleUtilisateur").toString();
 
   links = [
-    { title: 'Accueil', fragment: 'accueil' },
-    { title: 'Gestion des absences', fragment: 'gestion' },
-    { title: 'Planning des absences', fragment: 'planning' },
-    { title: 'Validation demandes', fragment: 'validation' },
-    { title: 'Vue synthétique', fragment: 'vue' },
-    { title: 'Jours feriés', fragment: 'jours' },
+    { title: 'Accueil', fragment: `/${this.roleUtilisateur}/accueil` },
+    { title: 'Gestion des absences', fragment: `${this.roleUtilisateur}/gestion` },
+    { title: 'Planning des absences', fragment: `${this.roleUtilisateur}/planning` },
+    { title: 'Validation demandes', fragment: `${this.roleUtilisateur}/validation` },
+    { title: 'Vue synthétique', fragment: `${this.roleUtilisateur}/vue` },
+    { title: 'Jours feriés', fragment: `${this.roleUtilisateur}/jours` },
   ];
 
-  linksUtilisateur = [
-    { title: 'Accueil', fragment: 'accueil' },
-    { title: 'Gestion des absences', fragment: `manager/planningAbsence/${this.idUtilisateur}` },
-    { title: 'Planning des absences', fragment: 'planning' },
-    { title: 'Jours feriés', fragment: 'jours' }
+  linksCollegueEtAdmin = [
+    { title: 'Accueil', fragment: `/${this.roleUtilisateur}/accueil` },
+    { title: 'Gestion des absences', fragment: `${this.roleUtilisateur}/gestionAbsence` },
+    { title: 'Planning des absences', fragment: `${this.roleUtilisateur}/planningAbsence` },
+    { title: 'Jours feriés', fragment: `${this.roleUtilisateur}/joursFeries` }
   ]
 
   faUserCircle = faUserCircle;
@@ -42,8 +43,6 @@ export class NavbarComponent implements OnInit {
   
   }
  
-  droitUtilisateur = Number.parseInt(localStorage.getItem("droitUtilisateur"));
-
   constructor(public route: ActivatedRoute,private router: Router,
 
     private authSrv : AuthService, private menuService : MenuService ) {
@@ -56,15 +55,7 @@ export class NavbarComponent implements OnInit {
     this.authSrv.verifierAuthentification().subscribe();
     this.collegueConnecte = this.authSrv.collegueConnecteObs;
 
-   /* if((Number.parseInt(localStorage.getItem("droitUtilisateur"))) === 3) {
-      this.router.navigate(['/PageManagerComponent'])
-      } else if (Number.parseInt(localStorage.getItem("droitUtilisateur")) === 2) 
-      { this.router.navigate(['/PageAdministrateurComponent'])
-    }  else {this.router.navigate(['/PageUtilisateurComponent'])}*/
- 
-}
-
-  gererLeDroitUtilisateur(collegue: Collegue): number {
-    return this.menuService.recupereLeDroitUtilisateur(collegue);
+    console.log("test = " + this.roleUtilisateur);
   }
+
 }
