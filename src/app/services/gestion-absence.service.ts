@@ -62,10 +62,6 @@ export class GestionAbsenceService implements OnInit {
     }
   }
 
-  // Controle si la date de fin est supérieure ou égale à la date de début
-  checkDateFin(datePremierJourAbsence: Date, dateDernierJourAbsence: Date) {
-    return (+dateDernierJourAbsence) - (+datePremierJourAbsence);
-  }
 
   
 }

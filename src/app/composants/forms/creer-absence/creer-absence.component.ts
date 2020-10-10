@@ -1,20 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm, NgModel } from '@angular/forms';
-import { stringify } from 'querystring';
-import { Observable } from 'rxjs';
 import { Absence } from 'src/app/entities/absence.model';
 import { GestionAbsenceService } from 'src/app/services/gestion-absence.service';
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
-
-
 @Component({
   selector: 'app-creer-absence',
   templateUrl: './creer-absence.component.html',
   styleUrls: ['./creer-absence.component.scss']
 })
 export class CreerAbsenceComponent implements OnInit {
-
-  constructor(private gestionAbsenceService: GestionAbsenceService, private router:Router) { }
+  faWindowClose = faWindowClose;
+  constructor(private gestionAbsenceService: GestionAbsenceService, private router : Router) { }
 
   ngOnInit(): void {
   }
@@ -33,6 +29,10 @@ export class CreerAbsenceComponent implements OnInit {
                                       error => console.log(error)
                                   );
     }
+  }
+
+  retour() {
+    this.router.navigate(["tech"]);
   }
 
   checkerDateFormVue() : boolean {
