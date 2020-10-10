@@ -58,9 +58,23 @@ export class CalendrierAbsencesComponent implements OnInit {
     const eventsAbsences = []
 
     for (let i = 0; i < tableau.length; i++) {
-      eventsAbsences.push({
-        title: `${tableau[i].typeConge}`, start: tableau[i].datePremierJourAbsence, end:  tableau[i].dateDernierJourAbsence, display: 'background'
-      })
+      if(tableau[i].typeConge === "JOUR_FERIE") {
+        eventsAbsences.push({
+          title: `${tableau[i].typeConge}`, 
+          start: tableau[i].datePremierJourAbsence, 
+          end:  tableau[i].dateDernierJourAbsence, 
+          display: 'background',
+          color: 'red'
+        })
+      } else {
+        eventsAbsences.push({
+          title: `${tableau[i].typeConge}`, 
+          start: tableau[i].datePremierJourAbsence, 
+          end:  tableau[i].dateDernierJourAbsence, 
+          display: 'background'
+        })
+
+      }
     }
 
     return eventsAbsences;
