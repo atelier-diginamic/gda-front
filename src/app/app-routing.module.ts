@@ -25,7 +25,9 @@ import { PageAcceuilAdministrateurComponent} from './pages/pages-administrateur/
 import { PageGestionAbsenceAdministrateurComponent} from './pages/pages-administrateur/page-gestion-absence-administrateur/page-gestion-absence-administrateur.component';
 import { PagePlanningAbsenceAdministrateurComponent} from './pages/pages-administrateur/page-planning-absence-administrateur/page-planning-absence-administrateur.component';
 import { PageJoursFeriesAdministrateurComponent} from './pages/pages-administrateur/page-jours-feries-administrateur/page-jours-feries-administrateur.component';
-import { CalendrierAbsencesComponent } from './calendrier-absences/calendrier-absences/calendrier-absences.component';
+import { CalendrierAbsencesComponent } from './composants/calendrier-absences/calendrier-absences.component';
+import { CreerAbsenceComponent } from './composants/forms/creer-absence/creer-absence.component';
+
 
 
 const routes: Routes =  [
@@ -51,8 +53,8 @@ const routes: Routes =  [
 
   /* ROUTES ADMIN */
   { path: 'admin',  component: PageAcceuilAdministrateurComponent},
-  { path: 'admin/gestionAbsence', component: PageGestionAbsenceAdministrateurComponent},
-  { path: 'admin/planningAbsence', component: PagePlanningAbsenceAdministrateurComponent},
+  { path: 'admin/gestionAbsence', component: CreerAbsenceComponent},
+  { path: 'admin/planningAbsence', component: CalendrierAbsencesComponent},
   { path: 'admin/collegue/joursFeries', component : PageJoursFeriesAdministrateurComponent },
 
 ];
