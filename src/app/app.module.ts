@@ -19,6 +19,7 @@ import { VisuAbsencesComponent } from './visu-absences/visu-absences.component';
 import { PageAdministrateurComponent } from './pages/page-administrateur/page-administrateur.component';
 import { PageUtilisateurComponent } from './pages/page-utilisateur/page-utilisateur.component';
 import { PageManagerComponent } from './pages/page-manager/page-manager.component';
+import { PagesVisualisationAbsencesComponent } from './pages/pages-visualisation-absences/pages-visualisation-absences.component';
 
 // --------- CALENDRIER ANGULAR OFFICIEL -------------- \\
 import { FullCalendarModule } from '@fullcalendar/angular';
@@ -44,7 +45,9 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     PageAdministrateurComponent,
     PageUtilisateurComponent,
     PageManagerComponent,
-    CalendrierAbsencesComponent
+    CalendrierAbsencesComponent,
+    PagesVisualisationAbsencesComponent
+
   ],
   imports: [
     BrowserModule,

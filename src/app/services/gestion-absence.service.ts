@@ -24,10 +24,10 @@ export class GestionAbsenceService implements OnInit {
   }
 
 
-  afficherListeAbsence(idUtilisateur: string) : void {
-    this.http.get<string[]>(`${environment.baseUrl}${environment.apiListeAbsence}${idUtilisateur}`, {withCredentials: true})
+  // afficherListeAbsence(idUtilisateur: string) : void {
+  //   this.http.get<string[]>(`${environment.baseUrl}${environment.apiVisualisationDesAbsencesByUser}${idUtilisateur}`, {withCredentials: true})
     
-  }
+  // }
 
   
 
