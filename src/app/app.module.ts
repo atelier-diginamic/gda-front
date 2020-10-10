@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {RouterModule, Routes} from '@angular/router';
-import {StatutConnecteService} from './auth/statut-connecte.service';
 import {AuthInterceptorService} from './auth/auth-interceptor.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
@@ -53,6 +52,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { CalendrierAbsencesComponent } from './composants/calendrier-absences/calendrier-absences.component';
+import { VueSynthetiqueComponent } from './composants/vue-synthetique/vue-synthetique/vue-synthetique.component';
 
 // --------- !CALENDRIER ANGULAR OFFICIEL! -------------- \\
 
@@ -90,7 +90,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     PageAcceuilAdministrateurComponent,
     PageGestionAbsenceAdministrateurComponent,
     PageJoursFeriesAdministrateurComponent,
-    PagePlanningAbsenceAdministrateurComponent
+    PagePlanningAbsenceAdministrateurComponent,
+    VueSynthetiqueComponent
 
   ],
   imports: [
