@@ -27,6 +27,7 @@ import { PagePlanningAbsenceAdministrateurComponent} from './pages/pages-adminis
 import { PageJoursFeriesAdministrateurComponent} from './pages/pages-administrateur/page-jours-feries-administrateur/page-jours-feries-administrateur.component';
 import { CalendrierAbsencesComponent } from './composants/calendrier-absences/calendrier-absences.component';
 import { CreerAbsenceComponent } from './composants/forms/creer-absence/creer-absence.component';
+import { VueSynthetiqueComponent } from './composants/vue-synthetique/vue-synthetique/vue-synthetique.component';
 
 
 const routes: Routes =  [
@@ -49,13 +50,13 @@ const routes: Routes =  [
   { path: 'manager/validationDemandeAbsence', component : PageValidationDemandesManagerComponent},
   { path: 'manager/vueSynthetique', component : PageVuesSynthetiquesManagerComponent},
   { path: 'manager/joursFeries', component: PageJoursFeriesManagerComponent },
+  { path: 'manager/vueSynthetique', component: VueSynthetiqueComponent},
 
   /* ROUTES ADMIN */
   { path: 'admin',  component: PageAcceuilAdministrateurComponent},
   { path: 'admin/gestionAbsence', component: CreerAbsenceComponent},
   { path: 'admin/planningAbsence', component: CalendrierAbsencesComponent},
-  { path: 'admin/collegue/joursFeries', component : PageJoursFeriesAdministrateurComponent },
-
+  { path: 'admin/collegue/joursFeries', component : PageJoursFeriesAdministrateurComponent }
 ];
 
 
