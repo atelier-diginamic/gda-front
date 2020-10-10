@@ -18,7 +18,11 @@
  </div>
 
 <main class="container-fluid">
-
+  <ng-container *ngIf="collegueConnecte | async as col">
+    <div class="lead" *ngIf="!col.estAnonyme()">
+      <app-navbar></app-navbar>
+    </div>
+  </ng-container>
   <router-outlet></router-outlet>
 
 </main>

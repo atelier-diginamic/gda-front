@@ -39,10 +39,10 @@ export class AuthComponent implements OnInit {
           localStorage.setItem("roleUtilisateur", this.getRoles(col));
          
          if(this.gererLeDroitUtilisateur(col) === 3) {
-            this.router.navigate(['/PageManagerComponent'])
+            this.router.navigate(['/manager'])
             } else if (this.gererLeDroitUtilisateur(col) === 2) 
-            { this.router.navigate(['/PageAdministrateurComponent'])
-          }  else {this.router.navigate(['/PageUtilisateurComponent'])}
+            { this.router.navigate(['/admin'])
+          }  else {this.router.navigate(['/collegue'])}
        
       },
         // en cas d'erreur, affichage d'un message d'erreur
