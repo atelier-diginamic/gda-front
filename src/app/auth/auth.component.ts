@@ -58,7 +58,7 @@ export class AuthComponent implements OnInit {
   }
 
   getRoles(collegue: Collegue) : string {
-    return this.menuService.recupereLeDroitUtilisateur(collegue);
+    return this.menuService.recupererRoleUtilisateur(collegue);
   }
 
 }

@@ -12,7 +12,7 @@ export class MenuService {
 
   constructor() { }
 
-  recupereLeDroitUtilisateur(collegue : Collegue) : string {
+  recupererRoleUtilisateur(collegue : Collegue) : string {
     let valuePrecedent: number = 0;
     let valueActuelle = 0;
     let roleFinal;

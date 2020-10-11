@@ -47,7 +47,7 @@ export class NavbarComponent implements OnInit {
 
     private authSrv : AuthService, private menuService : MenuService ) {
       this.idUtilisateur = localStorage.getItem("idUtilisateur");
-      console.log("iddddd ", this.idUtilisateur);
+      console.log("id User = ", this.idUtilisateur);
      }
 
 
@@ -55,7 +55,7 @@ export class NavbarComponent implements OnInit {
     this.authSrv.verifierAuthentification().subscribe();
     this.collegueConnecte = this.authSrv.collegueConnecteObs;
 
-    console.log("test = " + this.roleUtilisateur);
+    console.log("Role User  = " + this.roleUtilisateur);
   }
 
 }

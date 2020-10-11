@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+
 import {TechComponent} from './composants/tech/tech.component';
 import {AuthComponent} from './auth/auth.component';
 import {StatutConnecteService} from './auth/statut-connecte.service';
@@ -39,13 +40,13 @@ const routes: Routes =  [
   { path: 'connexion', component: AuthComponent},
   
   /* ROUTES COLLEGUES */
-  { path: 'collegue',  component:  PageAcceuilCollegueComponent},
+  { path: 'collegue/accueil',  component:  PageAcceuilCollegueComponent},
   { path: 'collegue/gestionAbsence', component: PageGestionAbsenceCollegueComponent},
   { path: 'collegue/planningAbsence', component : PagePlanningAbsenceCollegueComponent },
   { path: 'collegue/joursFeries', component : PageJoursFeriesCollegueComponent },
   
   /* ROUTES MANAGER */
-  { path: 'manager',  component: PageAcceuilManagerComponent},
+  { path: 'manager/accueil',  component: PageAcceuilManagerComponent},
   { path: 'manager/gestionAbsence', component: PageGestionAbsenceManagerComponent},
   { path: 'manager/planningAbsence', component : CalendrierAbsencesComponent},
   { path: 'manager/validationDemandeAbsence', component : PageValidationDemandesManagerComponent},
@@ -56,7 +57,7 @@ const routes: Routes =  [
 
 
   /* ROUTES ADMIN */
-  { path: 'admin',  component: PageAcceuilAdministrateurComponent},
+  { path: 'admin/accueil',  component: PageAcceuilAdministrateurComponent},
   { path: 'admin/gestionAbsence', component: CreerAbsenceComponent},
   { path: 'admin/planningAbsence', component: CalendrierAbsencesComponent},
   { path: 'admin/collegue/joursFeries', component : PageJoursFeriesAdministrateurComponent }

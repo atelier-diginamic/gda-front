@@ -96,4 +96,12 @@ export class AuthService {
         tap(col => this.collegueConnecteSub.next(COLLEGUE_ANONYME))
       );
   }
+
+  isLoggedIn(){
+    if ( localStorage.getItem("idUtilisateur") != null){
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

@@ -14,12 +14,13 @@ import { MenuService } from './services/menu.service';
 export class AppComponent {
  
   collegueConnecte: Observable<Collegue>;
-  role: string;
+  isConnected : Observable<Collegue>;
+  roleUtilisateur: string;
   
-  droitUtilisateur = Number.parseInt(localStorage.getItem("droitUtilisateur"));
   
   constructor(private authSrv: AuthService, private router: Router, private menuService : MenuService) {
-    this.role = localStorage.getItem("roleUtilisateur");
+    this.roleUtilisateur = localStorage.getItem("roleUtilisateur");
+    this.isConnected = authSrv.verifierAuthentification();
   }
 
   /**
@@ -41,7 +42,11 @@ export class AppComponent {
     }
   
   getRoles(collegue: Collegue) : string {
-    return this.menuService.recupereLeDroitUtilisateur(collegue);
+    return this.menuService.recupererRoleUtilisateur(collegue);
+  }
+
+  getId(): string {
+    return localStorage.getItem("idUtilisateur");
   }
 
 }
