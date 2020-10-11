@@ -1,1 +1,32 @@
-<p>page-vues-synthetiques-manager works!</p>
+<div class="container m-auto">
+    <div class="col-12">
+        <div class="text-center">
+            <h1>Vues Synthétiques</h1>
+        </div>
+        <div class="row">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                  <th scope="col">Liste des rapports</th>
+                  <th scope="col"></th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <th scope="row">Vue par département par jour et par collaborateur</th>
+                  <td>
+                   <fa-icon routerLink="departement-collaborateur" [icon]="faEye"></fa-icon>
+                  </td>
+                </tr>
+                <tr>
+                    <th scope="row">Histogramme par département et par jour</th>
+                    <td>
+                        <fa-icon routerLink="histogramme" [icon]="faEye"></fa-icon>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

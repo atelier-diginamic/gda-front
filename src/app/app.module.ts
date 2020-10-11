@@ -52,7 +52,8 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { CalendrierAbsencesComponent } from './composants/calendrier-absences/calendrier-absences.component';
-import { VueSynthetiqueComponent } from './composants/vue-synthetique/vue-synthetique/vue-synthetique.component';
+import { PageVuesDepartementCollaborateurComponent } from './pages/pages-manager/page-vues-departement-collaborateur/page-vues-departement-collaborateur.component';
+import { PageVuesSynthetiquesHistogrammeComponent } from './pages/pages-manager/page-vues-synthetiques-histogramme/page-vues-synthetiques-histogramme.component';
 
 // --------- !CALENDRIER ANGULAR OFFICIEL! -------------- \\
 
@@ -91,7 +92,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     PageGestionAbsenceAdministrateurComponent,
     PageJoursFeriesAdministrateurComponent,
     PagePlanningAbsenceAdministrateurComponent,
-    VueSynthetiqueComponent
+    PageVuesSynthetiquesHistogrammeComponent,
+    PageVuesDepartementCollaborateurComponent,
 
   ],
   imports: [

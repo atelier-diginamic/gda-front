@@ -18,8 +18,8 @@
  </div>
 
 <main class="container-fluid">
-  <ng-container *ngIf="collegueConnecte | async as col">
-    <div class="lead" *ngIf="!col.estAnonyme()">
+  <ng-container *ngIf="droitUtilisateur != null">
+    <div class="lead">
       <app-navbar></app-navbar>
     </div>
   </ng-container>

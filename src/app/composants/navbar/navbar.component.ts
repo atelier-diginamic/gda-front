@@ -23,11 +23,11 @@ export class NavbarComponent implements OnInit {
 
   links = [
     { title: 'Accueil', fragment: `/${this.roleUtilisateur}/accueil` },
-    { title: 'Gestion des absences', fragment: `${this.roleUtilisateur}/gestion` },
-    { title: 'Planning des absences', fragment: `${this.roleUtilisateur}/planning` },
-    { title: 'Validation demandes', fragment: `${this.roleUtilisateur}/validation` },
-    { title: 'Vue synthétique', fragment: `${this.roleUtilisateur}/vue` },
-    { title: 'Jours feriés', fragment: `${this.roleUtilisateur}/jours` },
+    { title: 'Gestion des absences', fragment: `${this.roleUtilisateur}/gestionAbsence` },
+    { title: 'Planning des absences', fragment: `${this.roleUtilisateur}/planningAbsence` },
+    { title: 'Validation demandes', fragment: `${this.roleUtilisateur}/validationDemandeAbsence` },
+    { title: 'Vue synthétique', fragment: `${this.roleUtilisateur}/vueSynthetique` },
+    { title: 'Jours feriés', fragment: `${this.roleUtilisateur}/joursFeries` },
   ];
 
   linksCollegueEtAdmin = [
