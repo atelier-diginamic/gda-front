@@ -54,6 +54,9 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { CalendrierAbsencesComponent } from './composants/calendrier-absences/calendrier-absences.component';
 import { PageVuesDepartementCollaborateurComponent } from './pages/pages-manager/page-vues-departement-collaborateur/page-vues-departement-collaborateur.component';
 import { PageVuesSynthetiquesHistogrammeComponent } from './pages/pages-manager/page-vues-synthetiques-histogramme/page-vues-synthetiques-histogramme.component';
+import { GoogleChartsModule } from 'angular-google-charts';
+import { SelectBarComponent } from './pages/pages-manager/page-vues-synthetiques-histogramme/select-bar/select-bar.component';
+import { DropdownComponent } from './pages/pages-manager/page-vues-synthetiques-histogramme/dropdown/dropdown.component';
 
 // --------- !CALENDRIER ANGULAR OFFICIEL! -------------- \\
 
@@ -94,6 +97,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     PagePlanningAbsenceAdministrateurComponent,
     PageVuesSynthetiquesHistogrammeComponent,
     PageVuesDepartementCollaborateurComponent,
+    SelectBarComponent,
+    DropdownComponent,
 
   ],
   imports: [
@@ -105,7 +110,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     FormsModule,
     RouterModule,
     CommonModule,
-    FullCalendarModule
+    FullCalendarModule,
+    GoogleChartsModule
 
   ],
   providers: [{
