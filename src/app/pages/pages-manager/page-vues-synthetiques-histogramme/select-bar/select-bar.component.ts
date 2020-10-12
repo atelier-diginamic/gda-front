@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { EventEmitter } from 'protractor';
 import { Histogramme } from 'src/app/entities/histogramme.model';
 import { CalendrierMois } from 'src/app/enum/calendrier-mois.enum';
 import { HistogrammeService } from 'src/app/services/histogramme.service';
@@ -27,8 +28,11 @@ export class SelectBarComponent implements OnInit {
 
 
   chooseInterval(f) : void {
+    const absences = [];
     this.histogrammeService.getIntervalHistogramme(this.histogramme.departement, this.histogramme.mois, this.histogramme.annee)
                            .subscribe(absences => {
+                             
+                         
                              console.log("Les absences histogrammes ", absences);
                            },
                            error => console.log("erreur ", error));

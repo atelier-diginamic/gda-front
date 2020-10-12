@@ -10,6 +10,7 @@ export const config = {
   apiAuthMe: 'me',
   apiVisualisationDesAbsencesByUser: 'absence/visualisation/user/',
   apiCreerAbsence: 'absence/create',
-  apiHistogramme: 'absence/manager/histogramme'
-
+  apiHistogramme: 'absence/manager/histogramme',
+  apiNbCongePayeRestant : 'collegue/nbCongePayeRestants?idUtilisateur',
+  apiNbRttRestant : 'collegue/nbRttRestants?idUtilisateur'
 };

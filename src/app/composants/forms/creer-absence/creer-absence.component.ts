@@ -20,7 +20,7 @@ export class CreerAbsenceComponent implements OnInit {
   absence : Absence = new Absence();
 
   creerAbsence() {
-    const datePremierJourAbsence: Date = new Date(this.absence.datePremierJourAbsence)
+    const datePremierJourAbsence: Date = new Date(this.absence.datePremierJourAbsence);
     
     if(this.gestionAbsenceService.checkDay(datePremierJourAbsence)) {
       // 1, this.absence.datePremierJourAbsence, this.absence.dateDernierJourAbsence, 

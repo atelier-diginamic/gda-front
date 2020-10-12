@@ -32,6 +32,6 @@ export class PageVuesSynthetiquesHistogrammeComponent implements OnInit {
   }
 
   test() {
-    console.log(this.histogramme.annee);
+    return this.histogramme.annee;
   }
 }
