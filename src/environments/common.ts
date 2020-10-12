@@ -8,6 +8,9 @@ export const config = {
   apiLogin: 'login',
   apiLogout: 'logout',
   apiAuthMe: 'me',
-  apiListeAbsence: 'absence/all',
-  apiCreerAbsence: 'absence/create'
+  apiVisualisationDesAbsencesByUser: 'absence/visualisation/user/',
+  apiCreerAbsence: 'absence/create',
+  apiHistogramme: 'absence/manager/histogramme',
+  apiNbCongePayeRestant : 'collegue/nbCongePayeRestants?idUtilisateur',
+  apiNbRttRestant : 'collegue/nbRttRestants?idUtilisateur'
 };

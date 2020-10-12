@@ -1,0 +1,13 @@
+<!-- <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">
+    <button class="btn btn-outline-primary mr-2" id="dropdownManual" ngbDropdownAnchor (focus)="myDrop.open()">{{title}}</button>
+    <div ngbDropdownMenu aria-labelledby="dropdownManual">
+      <button ngbDropdownItem  *ngFor="let valeur of valeurDropDown | keyvalue">{{valeur.value}}</button>
+    </div>
+</div> -->
+
+<select [name]="name"  [(ngModel)]="ngModel" class="form-control" #{{name}}="ngModel">
+  <option *ngFor="let valeur of valeurDropDown | keyvalue; let i=index" value={{valeur.value}}>
+    {{valeur.value}}
+  </option>
+</select>
+

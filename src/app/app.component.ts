@@ -12,20 +12,15 @@ import { MenuService } from './services/menu.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
-  relationValueRole = new Map([
-    [1, "ROLE_UTILISATEUR"],
-    [2, "ROLE_ADMINISTRATEUR"],
-    [3, "ROLE_MANAGER"]
-  ]);
-  
+ 
   collegueConnecte: Observable<Collegue>;
-  role: string;
+  isConnected : Observable<Collegue>;
+  roleUtilisateur: string;
   
-  droitUtilisateur = Number.parseInt(localStorage.getItem("droitUtilisateur"));
   
   constructor(private authSrv: AuthService, private router: Router, private menuService : MenuService) {
-    this.role = localStorage.getItem("roleUtilisateur");
+    this.roleUtilisateur = localStorage.getItem("roleUtilisateur");
+    this.isConnected = authSrv.verifierAuthentification();
   }
 
   /**
@@ -42,12 +37,17 @@ export class AppComponent {
    *
    * Celui lui permet de rester à jour en fonction des connexions et déconnexions.
    */
+  // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit(): void {
     this.collegueConnecte = this.authSrv.collegueConnecteObs;
     }
   
   getRoles(collegue: Collegue) : string {
-    return this.relationValueRole.get(this.menuService.recupereLeDroitUtilisateur(collegue));
+    return this.menuService.recupererRoleUtilisateur(collegue);
+  }
+
+  getId(): string {
+    return localStorage.getItem("idUtilisateur");
   }
 
 }
