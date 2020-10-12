@@ -59,8 +59,8 @@ const routes: Routes =  [
 
   /* ROUTES ADMIN */
   { path: 'admin/accueil',  component: PageAcceuilAdministrateurComponent, canActivate: [ AuthGuard ]},
-  { path: 'admin/gestionAbsence', component: CreerAbsenceComponent, canActivate: [ AuthGuard ]},
-  { path: 'admin/planningAbsence', component: CalendrierAbsencesComponent, canActivate: [ AuthGuard ]},
+  { path: 'admin/gestionAbsence', component: PageGestionAbsenceAdministrateurComponent, canActivate: [ AuthGuard ]},
+  { path: 'admin/planningAbsence', component: PagePlanningAbsenceAdministrateurComponent, canActivate: [ AuthGuard ]},
   { path: 'admin/collegue/joursFeries', component : PageJoursFeriesAdministrateurComponent, canActivate: [ AuthGuard ] }
 ];
 
