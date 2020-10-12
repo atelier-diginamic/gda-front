@@ -1,1 +1,12 @@
-<p>page-vues-synthetiques-histogramme works!</p>
+
+<h1>Histogramme par département et par jour</h1>
+<app-select-bar></app-select-bar>
+<google-chart #chart
+   [title]="title"
+   [type]="type"
+   [data]="data"
+   [options]="options"
+   [columns]="columnNames"
+   [width]="width"
+   [height]="height">
+</google-chart>
