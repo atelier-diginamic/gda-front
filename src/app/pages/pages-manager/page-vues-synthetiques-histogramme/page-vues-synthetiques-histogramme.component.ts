@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Histogramme } from 'src/app/entities/histogramme.model';
 
 @Component({
   selector: 'app-page-vues-synthetiques-histogramme',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class PageVuesSynthetiquesHistogrammeComponent implements OnInit {
 
   constructor() { }
-  
+  histogramme = new Histogramme();
   title = 'Population (in millions)';
    type = 'ColumnChart';
    data = [
@@ -23,9 +24,14 @@ export class PageVuesSynthetiquesHistogrammeComponent implements OnInit {
    options = {};
    width = 550;
    height = 400;
-
+   annee: string;
    
   ngOnInit(): void {
+    this.annee = this.histogramme.annee;
+    
   }
 
+  test() {
+    console.log(this.histogramme.annee);
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Histogramme } from 'src/app/entities/histogramme.model';
 import { CalendrierMois } from 'src/app/enum/calendrier-mois.enum';
 import { HistogrammeService } from 'src/app/services/histogramme.service';
@@ -11,7 +11,10 @@ import { HistogrammeService } from 'src/app/services/histogramme.service';
 export class SelectBarComponent implements OnInit {
 
   constructor(private histogrammeService : HistogrammeService) { }
-  histogramme = new Histogramme();
+  @Input()
+  histogramme
+
+  
   enumsMois = CalendrierMois;
   departements = [];
   annees = [];

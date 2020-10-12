@@ -22,7 +22,7 @@ export class CreerAbsenceComponent implements OnInit {
   creerAbsence() {
     const datePremierJourAbsence: Date = new Date(this.absence.datePremierJourAbsence)
     
-    if(this.gestionAbsenceService.checkDay(datePremierJourAbsence.getDate())) {
+    if(this.gestionAbsenceService.checkDay(datePremierJourAbsence)) {
       // 1, this.absence.datePremierJourAbsence, this.absence.dateDernierJourAbsence, 
       //                                           this.absence.typeConge, this.absence.motif
         this.gestionAbsenceService.creerAbsence(this.absence)
@@ -40,7 +40,8 @@ export class CreerAbsenceComponent implements OnInit {
 
   checkerDateFormVue() : boolean {
     const datePremierJourAbsence = new Date(this.absence.datePremierJourAbsence);
-    if(!this.gestionAbsenceService.checkDay(datePremierJourAbsence.getDate())) {
+    
+    if(!this.gestionAbsenceService.checkDay(datePremierJourAbsence)) {
         return false;
     } else {
         return true;

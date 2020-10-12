@@ -1,6 +1,6 @@
 
 <h1>Histogramme par département et par jour</h1>
-<app-select-bar></app-select-bar>
+<app-select-bar [(histogramme)]="histogramme"></app-select-bar>
 <google-chart #chart
    [title]="title"
    [type]="type"
@@ -10,3 +10,4 @@
    [width]="width"
    [height]="height">
 </google-chart>
+<p>Annee : </p>

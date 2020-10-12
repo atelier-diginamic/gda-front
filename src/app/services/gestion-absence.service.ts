@@ -50,9 +50,10 @@ export class GestionAbsenceService implements OnInit {
 
 
   // Controle si le jour de debut d'absence est à J +2
-  checkDay(datePremierJourAbsence: number) : boolean {
+  checkDay(datePremierJourAbsence: Date) : boolean {
     const dateNow = new Date();
-    if((dateNow.getDate() + 1) < datePremierJourAbsence) {
+    const datePlusUn = new Date(dateNow.setDate(dateNow.getDate() + 1));
+    if(datePlusUn < datePremierJourAbsence) {
       return true;
     } else {
       return false;
