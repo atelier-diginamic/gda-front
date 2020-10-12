@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
 
 
 import {TechComponent} from './composants/tech/tech.component';
@@ -40,27 +41,27 @@ const routes: Routes =  [
   { path: 'connexion', component: AuthComponent},
   
   /* ROUTES COLLEGUES */
-  { path: 'collegue/accueil',  component:  PageAcceuilCollegueComponent},
-  { path: 'collegue/gestionAbsence', component: PageGestionAbsenceCollegueComponent},
-  { path: 'collegue/planningAbsence', component : PagePlanningAbsenceCollegueComponent },
-  { path: 'collegue/joursFeries', component : PageJoursFeriesCollegueComponent },
+  { path: 'collegue/accueil',  component:  PageAcceuilCollegueComponent, canActivate: [ AuthGuard ] },
+  { path: 'collegue/gestionAbsence', component: PageGestionAbsenceCollegueComponent, canActivate: [ AuthGuard ]},
+  { path: 'collegue/planningAbsence', component : PagePlanningAbsenceCollegueComponent, canActivate: [ AuthGuard ]},
+  { path: 'collegue/joursFeries', component : PageJoursFeriesCollegueComponent, canActivate: [ AuthGuard ] },
   
   /* ROUTES MANAGER */
-  { path: 'manager/accueil',  component: PageAcceuilManagerComponent},
-  { path: 'manager/gestionAbsence', component: PageGestionAbsenceManagerComponent},
-  { path: 'manager/planningAbsence', component : CalendrierAbsencesComponent},
-  { path: 'manager/validationDemandeAbsence', component : PageValidationDemandesManagerComponent},
-  { path: 'manager/vueSynthetique', component : PageVuesSynthetiquesManagerComponent},
-  { path: 'manager/vueSynthetique/histogramme', component: PageVuesSynthetiquesHistogrammeComponent },
-  { path: 'manager/vueSynthetique/departement-collaborateur', component: PageVuesDepartementCollaborateurComponent },
-  { path: 'manager/joursFeries', component: PageJoursFeriesManagerComponent },
+  { path: 'manager/accueil',  component: PageAcceuilManagerComponent, canActivate: [ AuthGuard ]},
+  { path: 'manager/gestionAbsence', component: PageGestionAbsenceManagerComponent, canActivate: [ AuthGuard ]},
+  { path: 'manager/planningAbsence', component : CalendrierAbsencesComponent, canActivate: [ AuthGuard ]},
+  { path: 'manager/validationDemandeAbsence', component : PageValidationDemandesManagerComponent, canActivate: [ AuthGuard ]},
+  { path: 'manager/vueSynthetique', component : PageVuesSynthetiquesManagerComponent, canActivate: [ AuthGuard ]},
+  { path: 'manager/vueSynthetique/histogramme', component: PageVuesSynthetiquesHistogrammeComponent, canActivate: [ AuthGuard ] },
+  { path: 'manager/vueSynthetique/departement-collaborateur', component: PageVuesDepartementCollaborateurComponent, canActivate: [ AuthGuard ] },
+  { path: 'manager/joursFeries', component: PageJoursFeriesManagerComponent ,canActivate: [ AuthGuard ] },
 
 
   /* ROUTES ADMIN */
-  { path: 'admin/accueil',  component: PageAcceuilAdministrateurComponent},
-  { path: 'admin/gestionAbsence', component: CreerAbsenceComponent},
-  { path: 'admin/planningAbsence', component: CalendrierAbsencesComponent},
-  { path: 'admin/collegue/joursFeries', component : PageJoursFeriesAdministrateurComponent }
+  { path: 'admin/accueil',  component: PageAcceuilAdministrateurComponent, canActivate: [ AuthGuard ]},
+  { path: 'admin/gestionAbsence', component: CreerAbsenceComponent, canActivate: [ AuthGuard ]},
+  { path: 'admin/planningAbsence', component: CalendrierAbsencesComponent, canActivate: [ AuthGuard ]},
+  { path: 'admin/collegue/joursFeries', component : PageJoursFeriesAdministrateurComponent, canActivate: [ AuthGuard ] }
 ];
 
 

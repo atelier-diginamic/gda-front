@@ -17,7 +17,7 @@ import {AuthComponent} from './auth/auth.component';
 import {TechComponent} from './composants/tech/tech.component';
 import { NavbarComponent } from './composants/navbar/navbar.component';
 import { CreerAbsenceComponent } from './composants/forms/creer-absence/creer-absence.component';
-import { VisuAbsencesComponent } from './visu-absences/visu-absences.component';
+import { VisuAbsencesComponent } from './composants/visu-absences/visu-absences.component';
 import { GestionAbsenceComponent } from './composants/gestion-absence/gestion-absence.component';
 import { GestionAbsenceService } from './services/gestion-absence.service';
 import { MenuService } from './services/menu.service';

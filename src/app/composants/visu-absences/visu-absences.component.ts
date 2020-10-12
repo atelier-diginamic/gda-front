@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { of } from 'rxjs';
-import { Absence } from '../entities/absence.model';
-import { AbsenceService } from '../services/absence.service';
+import { Absence } from '../../entities/absence.model';
+import { AbsenceService } from '../../services/absence.service';
 
 @Component({
   selector: 'app-visu-absences',

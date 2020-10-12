@@ -29,7 +29,7 @@ export class AuthComponent implements OnInit {
     this.authSrv.connecter(this.collegue.email, this.collegue.motDePasse)
       .subscribe(
        
-        // en cas de succès, redirection vers la page /tech
+        // en cas de succès, redirection vers la page /d'acceuil
        col => {
 
           let roleUtilisateur = this.getRoles(col);
@@ -37,20 +37,8 @@ export class AuthComponent implements OnInit {
           localStorage.setItem("idUtilisateur", col.id.toString());
           localStorage.setItem("roleUtilisateur", roleUtilisateur);
          
-         switch (roleUtilisateur) {
-          case "manager" :
-            this.router.navigate(['/manager']);
-          break;
-
-          case "admin" : 
-            this.router.navigate(['/admin']);
-          break;
-
-          case "collegue" :
-            this.router.navigate(['/collegue']);
-          break;
-
-         }     
+          this.router.navigate([`/${roleUtilisateur}/accueil`]);
+             
       },
         // en cas d'erreur, affichage d'un message d'erreur
         err => this.err = true

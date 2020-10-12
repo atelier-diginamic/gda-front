@@ -3,11 +3,13 @@ import { Absence } from 'src/app/entities/absence.model';
 import { GestionAbsenceService } from 'src/app/services/gestion-absence.service';
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-creer-absence',
   templateUrl: './creer-absence.component.html',
   styleUrls: ['./creer-absence.component.scss']
 })
+
 export class CreerAbsenceComponent implements OnInit {
   faWindowClose = faWindowClose;
   
@@ -26,15 +28,15 @@ export class CreerAbsenceComponent implements OnInit {
         this.gestionAbsenceService.creerAbsence(this.absence)
                                   .subscribe(
                                       data =>  { alert(`Demande de congés enregistrée. ${data}`);
-                                      this.router.navigate(['/tech']) },
+                                      this.router.navigate([`${localStorage.getItem("roleUtilisateur")}/gestionAbsence`]) },
                                       error => console.log(error)
                                   );
     }
   }
 
-  retour() {
-    this.router.navigate(["tech"]);
-  }
+  /*retour() {
+    this.router.navigate([""]);
+  }*/
 
   checkerDateFormVue() : boolean {
     const datePremierJourAbsence = new Date(this.absence.datePremierJourAbsence);

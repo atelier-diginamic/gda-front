@@ -1,0 +1,22 @@
+<!-- <button class="btn btn-blue" > Afficher toutes les absences</button> -->
+<div class="container-fluid align-content-center">
+    <button class="btn btn-light" (click)="afficherListeAbsenceByUser()">Afficher mes absences enregistrées</button>
+    <div *ngIf="listeAbsencesByUser" class="row">
+
+        <ul class="list-unstyled mt-5 ml-5">
+            <li *ngFor="let abs of listeAbsencesByUser" >
+            
+                <div class="card mb-3" style="width: 9rem;">
+                    <div class="card-body ">
+                        <h5 class="card-title">{{abs.typeConge}}</h5>
+                        <p class="card-text">Du {{abs.datePremierJourAbsence}} au {{abs.dateDernierJourAbsence}}</p> 
+                        <p class="card-text">{{abs.commentaireAbsence}}</p>
+                        <p class="card-text">{{abs.statutDemande}}</p>
+                        <a href="#" class="btn btn-primary">Modifier</a>
+                    </div>
+                
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

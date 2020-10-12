@@ -91,17 +91,24 @@ export class AuthService {
       })
     };
 
+    localStorage.removeItem("idUtilisateur");
+    localStorage.removeItem("roleUtilisateur");
+
     return this.http.post<Collegue>(`${environment.baseUrl}${environment.apiLogout}`, null , config)
       .pipe(
         tap(col => this.collegueConnecteSub.next(COLLEGUE_ANONYME))
       );
   }
 
-  isLoggedIn(){
-    if ( localStorage.getItem("idUtilisateur") != null){
+
+  isAuthenticated() {
+
+    if ( localStorage.getItem("idUtilisateur") != null ){
       return true;
     } else {
-      return false;
+      return false
     }
-  }
+    
+}
+
 }
