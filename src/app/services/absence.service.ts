@@ -28,4 +28,8 @@ export class AbsenceService {
   getNbCongePayeRestantsByUser() : Observable<BigInteger> {
     return this.http.get<BigInteger>(`${environment.baseUrl}${environment.apiNbCongePayeRestant}=${this.idUtilisateur}`)
   }
+  getNbRTTRestantsByUser() : Observable<BigInteger> {
+    return this.http.get<BigInteger>(`${environment.baseUrl}${environment.apiNbRttRestant}=${this.idUtilisateur}`)
+  }
+  
 }

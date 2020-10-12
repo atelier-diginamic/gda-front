@@ -11,5 +11,5 @@ export const config = {
   apiVisualisationDesAbsencesByUser: 'absence/visualisation/user/',
   apiCreerAbsence: 'absence/create',
   apiNbCongePayeRestant : 'collegue/nbCongePayeRestants?idUtilisateur',
-  apiNbRttRestant : 'collegue/nbRttRestants?idUser'
+  apiNbRttRestant : 'collegue/nbRttRestants?idUtilisateur'
 };
