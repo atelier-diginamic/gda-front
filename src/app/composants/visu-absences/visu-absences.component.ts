@@ -16,17 +16,21 @@ export class VisuAbsencesComponent implements OnInit {
   erreurTechnique: boolean;
   listeAllAbsences: Absence[];
   listeAbsencesByUser: Absence[] = [];
-  nbJour = null;
+  nbCPRestants = null;
 
   ngOnInit(): void {
-    this.absenceService.listerNbJourRestantByUser()
+    this.absenceService.getNbCongePayeRestantsByUser()
     .subscribe(solde => {
-      this.nbJour = solde;
+      this.nbCPRestants = solde;
     }, 
     error => {
       this.erreurTechnique = true;
       console.log(error);
     })
+
+    this.getNbCongePayeRestantsByUser();
+
+
   }
 
   // afficherListeAbsence() {
@@ -70,16 +74,16 @@ export class VisuAbsencesComponent implements OnInit {
         });
   }
 
- /* afficherNbJourRestantByUser() {
-    this.absenceService.listerNbJourRestantByUser()
-    .subscribe(solde => {
-      this.nbJour = solde;
+ getNbCongePayeRestantsByUser() {
+    this.absenceService.getNbCongePayeRestantsByUser()
+    .subscribe(soldeCP => {
+      this.nbCPRestants = soldeCP;
     }, 
     error => {
       this.erreurTechnique = true;
       console.log(error);
     })
-  } */
+  } 
 
 }
 
