@@ -10,5 +10,5 @@ export const config = {
   apiAuthMe: 'me',
   apiVisualisationDesAbsencesByUser: 'absence/visualisation/user/',
   apiCreerAbsence: 'absence/create',
-
+  apiNbJourRestant : 'absence/visualisation/nbJourRestant?idUser',
 };

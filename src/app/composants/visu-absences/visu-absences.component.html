@@ -1,6 +1,6 @@
 <!-- <button class="btn btn-blue" > Afficher toutes les absences</button> -->
 <div class="container-fluid align-content-center">
-    <button class="btn btn-light" (click)="afficherListeAbsenceByUser()">Afficher mes absences enregistrées</button>
+    <button class="btn btn-primary" (click)="afficherListeAbsenceByUser()">Afficher mes absences enregistrées</button>
     <div *ngIf="listeAbsencesByUser" class="row">
 
         <ul class="list-unstyled mt-5 ml-5">
@@ -16,7 +16,10 @@
                     </div>
                 
                 </div>
+               
+                <div *ngIf="nbJour != null">{{nbJour}}  : jour </div>
             </li>
         </ul>
     </div>
+   
 </div>

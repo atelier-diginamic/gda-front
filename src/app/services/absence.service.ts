@@ -24,4 +24,9 @@ export class AbsenceService {
     
     return this.http.get<Absence[]>(`${environment.baseUrl}${environment.apiVisualisationDesAbsencesByUser}${this.idUtilisateur}`)
   }
+
+  listerNbJourRestantByUser() : Observable<BigInteger> {
+
+  return this.http.get<BigInteger>(`${environment.baseUrl}${environment.apiNbJourRestant}=${this.idUtilisateur}`)
+  }
 }
