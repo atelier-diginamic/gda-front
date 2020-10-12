@@ -13,14 +13,10 @@ import {FormsModule} from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-<<<<<<< HEAD
-import { MenuAdministrateurComponent } from './menu-administrateur/menu-administrateur.component';
-=======
 import { GestionAbsenceComponent } from './gestion-absence/gestion-absence/gestion-absence.component';
 import { GestionAbsenceService } from './services/gestion-absence.service';
 import { MenuService } from './services/menu.service';
 import { CreerAbsenceComponent } from './forms/creer-absence/creer-absence.component';
->>>>>>> 5a57b253da68139bc27316389c830840fe8d5717
 
 @NgModule({
   declarations: [
@@ -28,12 +24,8 @@ import { CreerAbsenceComponent } from './forms/creer-absence/creer-absence.compo
     AuthComponent,
     TechComponent,
     NavbarComponent,
-<<<<<<< HEAD
-    MenuAdministrateurComponent
-=======
     GestionAbsenceComponent,
     CreerAbsenceComponent
->>>>>>> 5a57b253da68139bc27316389c830840fe8d5717
   ],
   imports: [
     BrowserModule,
