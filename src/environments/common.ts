@@ -10,5 +10,6 @@ export const config = {
   apiAuthMe: 'me',
   apiVisualisationDesAbsencesByUser: 'absence/visualisation/user/',
   apiCreerAbsence: 'absence/create',
+  apiHistogramme: 'absence/manager/histogramme'
 
 };

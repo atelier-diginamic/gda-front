@@ -57,6 +57,7 @@ import { PageVuesSynthetiquesHistogrammeComponent } from './pages/pages-manager/
 import { GoogleChartsModule } from 'angular-google-charts';
 import { SelectBarComponent } from './pages/pages-manager/page-vues-synthetiques-histogramme/select-bar/select-bar.component';
 import { DropdownComponent } from './pages/pages-manager/page-vues-synthetiques-histogramme/dropdown/dropdown.component';
+import { HistogrammeService } from './services/histogramme.service';
 
 // --------- !CALENDRIER ANGULAR OFFICIEL! -------------- \\
 
@@ -118,7 +119,12 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptorService,
     multi: true
-  }, GestionAbsenceService, MenuService, GestionAbsenceService],
+  }, 
+    GestionAbsenceService, 
+    MenuService, 
+    GestionAbsenceService,
+    HistogrammeService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

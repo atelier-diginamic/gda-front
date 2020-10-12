@@ -1,11 +1,15 @@
-<div class="row">
-    <div class="col-4">
-        <app-dropdown [title]="'Département'"></app-dropdown>
+<form (ngSubmit)="chooseInterval(f)" #f="ngForm" class="col-6">
+    <div class="row">
+        <div class="col-3">
+            <app-dropdown [(ngModel)]="histogramme.departement" [valeurDropDown]="departements"  [name]="'departements'" [title]="'Département'" ngDefaultControl></app-dropdown>
+        </div>
+        <div class="col-2">
+            <app-dropdown [(ngModel)]="histogramme.mois" [valeurDropDown]="enumsMois" [name]="'enumsMois'" [title]="'Mois'" ngDefaultControl></app-dropdown>
+        </div>
+        <div class="col-2">
+            <app-dropdown [(ngModel)]="histogramme.annee" [valeurDropDown]="annees" [name]="'annees'" [title]="'Année'" ngDefaultControl></app-dropdown>
+        </div>
+        <button type="submit" class="btn btn-info">Rechercher</button>
+        <button class="btn btn-danger">Annuler</button>
     </div>
-    <div class="col-4">
-        <app-dropdown [title]="'Mois'"></app-dropdown>
-    </div>
-    <div class="col-4">
-        <app-dropdown [title]="'Année'"></app-dropdown>
-    </div>
-</div>
+</form>

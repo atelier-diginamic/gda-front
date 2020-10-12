@@ -9,10 +9,21 @@ export class DropdownComponent implements OnInit {
 
   @Input()
   title: string;
+
+  @Input()
+  valeurDropDown;
+
+  @Input()
+  name;
+
+  @Input()
+  ngModel
+ 
+
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.title)
+
   }
 
 }
