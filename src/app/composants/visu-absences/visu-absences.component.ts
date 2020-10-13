@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Absence } from '../../entities/absence.model';
 import { AbsenceService } from '../../services/absence.service';
 
@@ -10,7 +12,7 @@ import { AbsenceService } from '../../services/absence.service';
 })
 export class VisuAbsencesComponent implements OnInit {
 
-  constructor(private absenceService: AbsenceService) { }
+  constructor(private absenceService: AbsenceService, private router : Router) { }
 
   aucuneAbsenceTrouvee: boolean;
   erreurTechnique: boolean;
@@ -18,10 +20,8 @@ export class VisuAbsencesComponent implements OnInit {
   listeAbsencesByUser: Absence[] = [];
   nbCPRestants = null;
   nbRTTRestants = null;
+  
   ngOnInit(): void {
-
-
-    
   }
 
   // afficherListeAbsence() {
@@ -91,6 +91,13 @@ export class VisuAbsencesComponent implements OnInit {
           console.log(error);
         })
   }
+
+  toModificationAbsenceForm( absenceAModifie : Absence ){
+    
+    this.absenceService.publierAbsenceAModifie(absenceAModifie);
+
+  }
+
 
 }
 
