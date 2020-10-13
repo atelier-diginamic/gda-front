@@ -16,7 +16,11 @@ import { isBuffer } from 'util';
 })
 export class AuthComponent implements OnInit {
  
- 
+  relationValueRole = new Map([
+    [1, "ROLE_UTILISATEUR"],
+    [2, "ROLE_ADMINISTRATEUR"],
+    [3, "ROLE_MANAGER"]
+  ]); 
   collegue: Collegue = new Collegue({});
   err: boolean;
 
@@ -29,16 +33,17 @@ export class AuthComponent implements OnInit {
     this.authSrv.connecter(this.collegue.email, this.collegue.motDePasse)
       .subscribe(
        
-        // en cas de succès, redirection vers la page /d'acceuil
+        // en cas de succès, redirection vers la page /tech
        col => {
-
-          let roleUtilisateur = this.getRoles(col);
-
           localStorage.setItem("idUtilisateur", col.id.toString());
-          localStorage.setItem("roleUtilisateur", roleUtilisateur);
+          localStorage.setItem("roleUtilisateur", this.getRoles(col));
          
-          this.router.navigate([`/${roleUtilisateur}/accueil`]);
-             
+         if(this.gererLeDroitUtilisateur(col) === 3) {
+            this.router.navigate(['/PageManagerComponent'])
+            } else if (this.gererLeDroitUtilisateur(col) === 2) 
+            { this.router.navigate(['/PageAdministrateurComponent'])
+          }  else {this.router.navigate(['/PageUtilisateurComponent'])}
+       
       },
         // en cas d'erreur, affichage d'un message d'erreur
         err => this.err = true
@@ -46,7 +51,10 @@ export class AuthComponent implements OnInit {
   }
 
   getRoles(collegue: Collegue) : string {
-    return this.menuService.recupererRoleUtilisateur(collegue);
+    return this.relationValueRole.get(this.menuService.recupereLeDroitUtilisateur(collegue));
   }
 
+  gererLeDroitUtilisateur(collegue: Collegue): number {
+    return this.menuService.recupereLeDroitUtilisateur(collegue);
+  }
 }

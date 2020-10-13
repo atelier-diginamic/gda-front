@@ -1,0 +1,46 @@
+ <!--NAVBAR -->
+ <div class="container-fluid p-0">
+    <nav
+      ngbNav
+      #nav="ngbNav"
+      class="navbar navbar-dark bg-dark"
+      [activeId]="route.fragment | async"
+    >
+      <div class="container">
+        <div *ngIf="collegueConnecte | async as col" >
+          <div class="d-flex" *ngIf="droitUtilisateur === 1 || droitUtilisateur === 2; else elseBlock">
+            <div *ngFor="let link of linksUtilisateur">
+              <!-- HOME -->
+              <a
+                ngbNavItem
+                class="ml-3 fade-page text-light"
+                ngbNavLink
+                [routerLink]="link.fragment"
+                >{{ link.title }}</a>
+              <!-- Collapsable-->
+              <!-- CONNEXION/INSCRIPTION -->
+            </div>
+          </div>
+          <ng-template #elseBlock>
+  
+            <div class="d-flex">
+              <div  *ngFor="let link of links">
+                <!-- HOME -->
+                <a
+                  ngbNavItem
+                  class="ml-3 fade-page text-light"
+                  ngbNavLink
+                  [routerLink]="link.fragment"
+                  >{{ link.title }}</a>
+                <!-- Collapsable-->
+                <!-- CONNEXION/INSCRIPTION -->
+              </div>
+            </div>
+  
+          </ng-template>
+        </div>
+      </div>
+      <div [ngbNavOutlet]="nav"></div>
+    </nav>
+    <!-- Fin Container Nav Bar-->
+  </div> 

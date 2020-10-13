@@ -1,38 +1,28 @@
-<body>
-  <header class="site-header">
-    <ng-container *ngIf="isConnected | async as col; else elseBlock">
-        <app-navbar></app-navbar>
-    </ng-container>
-  </header>
+<!-- <app-navbar></app-navbar> -->
+<header>
 
-  <main class="container-fluid site-content">
-    
-    <ng-container *ngIf="isConnected | async as col; else elseBlock">
-      <div class="lead">
-        <router-outlet></router-outlet>
-      </div>
-    </ng-container>
+</header>
 
-    <ng-template #elseBlock> 
-      <app-auth></app-auth>
-    </ng-template>
+<div class="d-flex justify-content-start ml-5 mb-2"> 
+  <!--  <h1 class="display-4">Gestion des Absences</h1> -->
+   <ng-container *ngIf="collegueConnecte | async as col">
+     <div class="lead" *ngIf="!col.estAnonyme()">
+       <p  >Utilisateur connecté : {{col.email}}</p>
+       <p>Les rôles :</p>
+       <ul>
+         <li>{{getRoles(col)}}</li>
+       </ul>
+       <button  class="btn btn-danger" (click)="seDeconnecter()">Se déconnecter</button>
+     </div>
+   </ng-container>
+ </div>
 
-  </main>
+<main class="container-fluid">
 
-  <footer class="bg-dark site-footer">
+  <router-outlet></router-outlet>
 
-    <div class="d-flex justify-content-start ml-5 mb-2"> 
-      <!--  <h1 class="display-4">Gestion des Absences</h1> -->
-      <ng-container *ngIf="collegueConnecte | async as col">
-        <div class="lead" *ngIf="!col.estAnonyme()">
-          <p> Utilisateur connecté : {{col.email}}</p>
-          <p>Le rôle : {{getRoles(col)}}</p>
-          <p>Le ID : {{ getId() }} </p> 
-          
-          <button  class="btn btn-danger" (click)="seDeconnecter()">Se déconnecter</button>
-        </div>
-      </ng-container>
-    </div>
+</main>
 
-  </footer>
-</body>
+<footer>
+
+</footer>

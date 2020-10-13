@@ -24,10 +24,14 @@ export class GestionAbsenceService implements OnInit {
   }
 
 
-  // afficherListeAbsence(idUtilisateur: string) : void {
-  //   this.http.get<string[]>(`${environment.baseUrl}${environment.apiVisualisationDesAbsencesByUser}${idUtilisateur}`, {withCredentials: true})
+  get listeAbsencesObs() : Observable<string[]> {
+    return this.listeAbsencesSub.asObservable();
+  }
+
+  afficherListeAbsence(idUtilisateur: string) : void {
+    this.http.get<string[]>(`${environment.baseUrl}${environment.apiListeAbsence}${idUtilisateur}`, {withCredentials: true})
     
-  // }
+  }
 
   
 
@@ -48,18 +52,20 @@ export class GestionAbsenceService implements OnInit {
       })
   }
 
-
   // Controle si le jour de debut d'absence est à J +2
-  checkDay(datePremierJourAbsence: Date) : boolean {
+  checkDay(datePremierJourAbsence: number) : boolean {
     const dateNow = new Date();
-    const datePlusUn = new Date(dateNow.setDate(dateNow.getDate() + 1));
-    if(datePlusUn < datePremierJourAbsence) {
+    if((dateNow.getDate() + 1) < datePremierJourAbsence) {
       return true;
     } else {
       return false;
     }
   }
 
+  // Controle si la date de fin est supérieure ou égale à la date de début
+  checkDateFin(datePremierJourAbsence: Date, dateDernierJourAbsence: Date) {
+    return (+dateDernierJourAbsence) - (+datePremierJourAbsence);
+  }
 
   
 }
