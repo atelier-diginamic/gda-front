@@ -48,7 +48,9 @@ export class VisuAbsencesComponent implements OnInit {
     this.getNbCongePayeRestantsByUser();
 
     this.getNbRTTRestantsByUser();
-    
+
+    this.listeAbsencesByUser = [];
+    this.listeAllAbsences = [];
     this.absenceService.listerAbsencesByUser()
       .subscribe(listeFromBack => {
         this.erreurTechnique = false;
