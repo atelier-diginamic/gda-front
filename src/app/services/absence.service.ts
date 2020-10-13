@@ -42,6 +42,25 @@ export class AbsenceService {
       })
   }
 
+  modifierAbsence( absence : Absence ) : Observable<Object> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    }; 
+    
+      return this.http.put(`${environment.baseUrl}${environment.apiModifierAbsence}`,
+      { 
+        idCollegue: this.idUtilisateur,
+        idAbsence : absence.idAbsence,
+        datePremierJourAbsence: absence.datePremierJourAbsence,
+        dateDernierJourAbsence: absence.dateDernierJourAbsence,
+        typeConge: absence.typeConge,
+        commentaireAbsence: absence.commentaireAbsence,
+        statutDemande : absence.statutDemande,
+      })
+  }
+
 
   // Controle si le jour de debut d'absence est à J +2
   checkDay(datePremierJourAbsence: Date) : boolean {

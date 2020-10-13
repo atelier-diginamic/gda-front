@@ -78,6 +78,9 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     VisuAbsencesComponent,
     CalendrierAbsencesComponent,
    AbsenceFormComponent,
+   
+
+
     /* Pages COLLEGUE */
     PageAcceuilCollegueComponent,
     PageGestionAbsenceCollegueComponent,

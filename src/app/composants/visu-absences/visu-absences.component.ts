@@ -93,7 +93,7 @@ export class VisuAbsencesComponent implements OnInit {
   }
 
   toModificationAbsenceForm( absenceAModifie : Absence ){
-    
+
     this.absenceService.publierAbsenceAModifie(absenceAModifie);
 
   }
