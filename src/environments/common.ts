@@ -12,5 +12,6 @@ export const config = {
   apiCreerAbsence: 'absence/create',
   apiHistogramme: 'absence/manager/histogramme',
   apiNbCongePayeRestant : 'collegue/nbCongePayeRestants?idUtilisateur',
-  apiNbRttRestant : 'collegue/nbRttRestants?idUtilisateur'
+  apiNbRttRestant : 'collegue/nbRttRestants?idUtilisateur',
+  apiVisualisationJoursFeriesEtRTT : 'absence/joursferies'
 };

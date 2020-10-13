@@ -6,5 +6,5 @@ export class Absence {
         public typeConge: string;
         public commentaireAbsence: string;
         public statutDemande: string;
-
+        public jourSemaine: String; 
 }

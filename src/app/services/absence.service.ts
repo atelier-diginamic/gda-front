@@ -11,6 +11,7 @@ import { map } from 'rxjs/operators';
 
 export class AbsenceService {
   idUtilisateur : string;
+ 
 
   constructor(private http : HttpClient) {
     this.idUtilisateur = localStorage.getItem("idUtilisateur");
@@ -30,6 +31,10 @@ export class AbsenceService {
   }
   getNbRTTRestantsByUser() : Observable<BigInteger> {
     return this.http.get<BigInteger>(`${environment.baseUrl}${environment.apiNbRttRestant}=${this.idUtilisateur}`)
+  }
+
+  listerJoursFeriesEtRTT(saisieAnnee : number) : Observable<Absence[]> {
+        return this.http.get<Absence[]>(`${environment.baseUrl}${environment.apiVisualisationJoursFeriesEtRTT}?annee=${saisieAnnee}`)
   }
   
 }
