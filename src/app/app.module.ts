@@ -23,7 +23,6 @@ import { AbsenceService } from './services/absence.service';
 import { MenuService } from './services/menu.service';
 
 
-
 /* Import PAGES */
 
 // Collegue
@@ -59,6 +58,7 @@ import { SelectBarComponent } from './pages/pages-manager/page-vues-synthetiques
 import { DropdownComponent } from './pages/pages-manager/page-vues-synthetiques-histogramme/dropdown/dropdown.component';
 import { HistogrammeService } from './services/histogramme.service';
 import { VisualisationjoursferiesComponent } from './composants/visualisationjoursferies/visualisationjoursferies.component';
+import { ValidationDemandesComponent } from './composants/validation-demandes/validation-demandes.component';
 
 
 // --------- !CALENDRIER ANGULAR OFFICIEL! -------------- \\
@@ -79,6 +79,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     VisuAbsencesComponent,
     CalendrierAbsencesComponent,
    AbsenceFormComponent,
+   ValidationDemandesComponent,
    
 
 
@@ -88,7 +89,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     PageJoursFeriesCollegueComponent,
     PagePlanningAbsenceCollegueComponent,
 
-    /* Pages COLLEGUE */
+    /* Pages manager */
     PageAcceuilManagerComponent,
     PageValidationDemandesManagerComponent,
     PageGestionAbsenceManagerComponent,
@@ -96,7 +97,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     PageJoursFeriesManagerComponent,
     PagePlanningAbsenceManagerComponent,
 
-    /* Pages COLLEGUE */
+    /* Pages administrateur */
     PageAcceuilAdministrateurComponent,
     PageGestionAbsenceAdministrateurComponent,
     PageJoursFeriesAdministrateurComponent,
@@ -106,6 +107,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     SelectBarComponent,
     DropdownComponent,
     VisualisationjoursferiesComponent,
+    ValidationDemandesComponent,
 
   ],
   imports: [
