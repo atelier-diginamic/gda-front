@@ -85,6 +85,10 @@ export class AbsenceService {
     return this.http.get<Absence[]>(`${environment.baseUrl}${environment.apiListeEnAttente}`)
   }
 
+  listeAbsenceValider() : Observable<Absence[]> {
+    return this.http.get<Absence[]>(`${environment.baseUrl}${environment.apiListeAbsenceValider}`)
+  }
+
   listerAbsencesByUser() : Observable<Absence[]> {
     
     return this.http.get<Absence[]>(`${environment.baseUrl}${environment.apiVisualisationDesAbsencesByUser}${this.idUtilisateur}`)

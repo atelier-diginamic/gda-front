@@ -59,6 +59,7 @@ import { DropdownComponent } from './pages/pages-manager/page-vues-synthetiques-
 import { HistogrammeService } from './services/histogramme.service';
 import { VisualisationjoursferiesComponent } from './composants/visualisationjoursferies/visualisationjoursferies.component';
 import { ValidationDemandesComponent } from './composants/validation-demandes/validation-demandes.component';
+import { SelectbarComponent } from './pages/pages-manager/page-vues-departement-collaborateur/selectbar/selectbar.component';
 
 
 // --------- !CALENDRIER ANGULAR OFFICIEL! -------------- \\
@@ -80,6 +81,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     CalendrierAbsencesComponent,
    AbsenceFormComponent,
    ValidationDemandesComponent,
+   PageVuesDepartementCollaborateurComponent,
    
 
 
@@ -108,6 +110,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     DropdownComponent,
     VisualisationjoursferiesComponent,
     ValidationDemandesComponent,
+    SelectbarComponent,
 
   ],
   imports: [

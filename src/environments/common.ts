@@ -17,5 +17,6 @@ export const config = {
   apiVisualisationJoursFeriesEtRTT : 'absence/joursferies/',
   apiListeEnAttente : 'absence/liste/en-attente',
   apiValiderAbsence : 'absence/valider',
-  apiRefuserAbsence : 'absence/rejeter'
+  apiRefuserAbsence : 'absence/rejeter',
+  apiListeAbsenceValider : 'absence/liste/valider',
 };
