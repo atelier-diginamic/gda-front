@@ -16,10 +16,10 @@ import { CommonModule } from '@angular/common';
 import {AuthComponent} from './auth/auth.component';
 import {TechComponent} from './composants/tech/tech.component';
 import { NavbarComponent } from './composants/navbar/navbar.component';
-import { CreerAbsenceComponent } from './composants/forms/creer-absence/creer-absence.component';
+import {AbsenceFormComponent } from './composants/forms/absence-form/absence-form.component';
 import { VisuAbsencesComponent } from './composants/visu-absences/visu-absences.component';
 import { GestionAbsenceComponent } from './composants/gestion-absence/gestion-absence.component';
-import { GestionAbsenceService } from './services/gestion-absence.service';
+import { AbsenceService } from './services/absence.service';
 import { MenuService } from './services/menu.service';
 
 
@@ -58,6 +58,8 @@ import { GoogleChartsModule } from 'angular-google-charts';
 import { SelectBarComponent } from './pages/pages-manager/page-vues-synthetiques-histogramme/select-bar/select-bar.component';
 import { DropdownComponent } from './pages/pages-manager/page-vues-synthetiques-histogramme/dropdown/dropdown.component';
 import { HistogrammeService } from './services/histogramme.service';
+import { VisualisationjoursferiesComponent } from './composants/visualisationjoursferies/visualisationjoursferies.component';
+
 
 // --------- !CALENDRIER ANGULAR OFFICIEL! -------------- \\
 
@@ -73,10 +75,13 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     TechComponent,
     NavbarComponent,
     GestionAbsenceComponent,
-    CreerAbsenceComponent,
+    AbsenceFormComponent,
     VisuAbsencesComponent,
     CalendrierAbsencesComponent,
-    CreerAbsenceComponent,
+   AbsenceFormComponent,
+   
+
+
     /* Pages COLLEGUE */
     PageAcceuilCollegueComponent,
     PageGestionAbsenceCollegueComponent,
@@ -100,6 +105,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     PageVuesDepartementCollaborateurComponent,
     SelectBarComponent,
     DropdownComponent,
+    VisualisationjoursferiesComponent,
 
   ],
   imports: [
@@ -120,9 +126,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     useClass: AuthInterceptorService,
     multi: true
   }, 
-    GestionAbsenceService, 
+    AbsenceService, 
     MenuService, 
-    GestionAbsenceService,
     HistogrammeService
   ],
   bootstrap: [AppComponent]

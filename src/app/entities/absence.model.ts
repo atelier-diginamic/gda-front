@@ -7,4 +7,12 @@ export class Absence {
         public commentaireAbsence: string;
         public statutDemande: string;
 
+        public jourSemaine: String; 
+
+        public idAbsence: number;
+
+        public toString(){
+                return `${this.idCollegue}  ${this.datePremierJourAbsence} ${this.dateDernierJourAbsence} ${this.typeConge} ${this.commentaireAbsence} ${this.statutDemande} `
+        }
+
 }

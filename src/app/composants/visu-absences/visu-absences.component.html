@@ -12,7 +12,7 @@
                         <p class="card-text">Du {{abs.datePremierJourAbsence}} au {{abs.dateDernierJourAbsence}}</p> 
                         <p class="card-text">{{abs.commentaireAbsence}}</p>
                         <p class="card-text">{{abs.statutDemande}}</p>
-                        <a href="#" class="btn btn-primary">Modifier</a>
+                        <a (click)="toModificationAbsenceForm(abs)" class="btn btn-primary">Modifier</a>
                     </div>
                 </div>
                
