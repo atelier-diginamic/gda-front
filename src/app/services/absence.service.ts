@@ -19,7 +19,11 @@ export class AbsenceService {
   private listeAbsencesSub: BehaviorSubject<string[]> = new BehaviorSubject(table);
 
   idUtilisateur : string;
+
+ 
+
   absenceAModifie : Subject<Absence> = new Subject<Absence>();
+
 
   constructor(private http : HttpClient) {
     this.idUtilisateur = localStorage.getItem("idUtilisateur");
@@ -89,6 +93,10 @@ export class AbsenceService {
   getNbRTTRestantsByUser() : Observable<BigInteger> {
     return this.http.get<BigInteger>(`${environment.baseUrl}${environment.apiNbRttRestant}=${this.idUtilisateur}`)
   }
+
+
+  listerJoursFeriesEtRTT(saisieAnnee : number) : Observable<Absence[]> {
+        return this.http.get<Absence[]>(`${environment.baseUrl}${environment.apiVisualisationJoursFeriesEtRTT}${saisieAnnee}`)
 
   publierAbsenceAModifie( absenceParam : Absence) : void {
     return this.absenceAModifie.next(absenceParam);

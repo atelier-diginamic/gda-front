@@ -20,8 +20,10 @@ export class VisuAbsencesComponent implements OnInit {
   listeAbsencesByUser: Absence[] = [];
   nbCPRestants = null;
   nbRTTRestants = null;
-  
+
+   
   ngOnInit(): void {
+
   }
 
   // afficherListeAbsence() {
@@ -46,9 +48,9 @@ export class VisuAbsencesComponent implements OnInit {
 
   afficherListeAbsenceByUser() {
     this.getNbCongePayeRestantsByUser();
-
     this.getNbRTTRestantsByUser();
-    
+    this.listeAbsencesByUser =[];
+    this.listeAllAbsences =[];
     this.absenceService.listerAbsencesByUser()
       .subscribe(listeFromBack => {
         this.erreurTechnique = false;
@@ -80,7 +82,6 @@ export class VisuAbsencesComponent implements OnInit {
         })
   }
 
-
   getNbRTTRestantsByUser() {
     this.absenceService.getNbRTTRestantsByUser()
       .subscribe(soldeRTT => {
@@ -92,11 +93,13 @@ export class VisuAbsencesComponent implements OnInit {
         })
   }
 
+
   toModificationAbsenceForm( absenceAModifie : Absence ){
 
     this.absenceService.publierAbsenceAModifie(absenceAModifie);
 
   }
+
 
 
 }
