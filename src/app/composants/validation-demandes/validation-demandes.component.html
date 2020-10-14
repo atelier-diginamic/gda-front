@@ -17,6 +17,7 @@
                 <th scope="col">Actions</th>
             </tr>
         </thead>
+<<<<<<< HEAD
 
         <tbody>
             <tr *ngFor="let abs of listeAllAbsenceEnAttente">
@@ -28,7 +29,18 @@
             </tr>
         </tbody>
 
+=======
+>>>>>>> 9761d17b8a12af61b5bf489a0168b6765c63dab1
 
+        <tbody>
+            <tr *ngFor="let abs of listeAllAbsenceEnAttente">
+                <td>{{abs.datePremierJourAbsence}}</td>
+                <td>{{abs.dateDernierJourAbsence}}</td>
+                <td>{{abs.typeConge}}</td>
+                <td>{{abs.nomDemandeur}}</td>
+                <td>{{abs.prenomDemandeur}}</td>
+            </tr>
+        </tbody>
     </table>
 
 
