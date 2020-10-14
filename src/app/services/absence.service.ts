@@ -97,6 +97,7 @@ export class AbsenceService {
 
   listerJoursFeriesEtRTT(saisieAnnee : number) : Observable<Absence[]> {
         return this.http.get<Absence[]>(`${environment.baseUrl}${environment.apiVisualisationJoursFeriesEtRTT}${saisieAnnee}`)
+  }
 
   publierAbsenceAModifie( absenceParam : Absence) : void {
     return this.absenceAModifie.next(absenceParam);
