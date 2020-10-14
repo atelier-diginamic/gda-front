@@ -15,5 +15,7 @@ export const config = {
   apiNbCongePayeRestant : 'collegue/nbCongePayeRestants?idUtilisateur',
   apiNbRttRestant : 'collegue/nbRttRestants?idUtilisateur',
   apiVisualisationJoursFeriesEtRTT : 'absence/joursferies/',
-  apiListeEnAttente : 'absence/liste/en-attente'
+  apiListeEnAttente : 'absence/liste/en-attente',
+  apiValiderAbsence : 'absence/valider',
+  apiRefuserAbsence : 'absence/rejeter'
 };

@@ -111,4 +111,39 @@ export class AbsenceService {
     return this.absenceAModifie.asObservable();
   }
   
+  validerAbsence(absence : Absence) : Observable<Object> {
+    const httpOptions = {
+    headers: new HttpHeaders({
+      "Content-Type": "application/json"
+    })
+  }; 
+  
+    return this.http.put(`${environment.baseUrl}${environment.apiValiderAbsence}`,
+    { 
+      idAbsence : absence.idAbsence,
+      datePremierJourAbsence: absence.datePremierJourAbsence,
+      dateDernierJourAbsence: absence.dateDernierJourAbsence,
+      typeConge: absence.typeConge,
+      commentaireAbsence: absence.commentaireAbsence,
+    })
+}
+
+  refuserAbsence(absence : Absence): Observable<Object> {
+    const httpOptions = {
+    headers: new HttpHeaders({
+      "Content-Type": "application/json"
+    })
+  }; 
+  
+    return this.http.put(`${environment.baseUrl}${environment.apiRefuserAbsence}`,
+    { 
+      idAbsence : absence.idAbsence,
+      datePremierJourAbsence: absence.datePremierJourAbsence,
+      dateDernierJourAbsence: absence.dateDernierJourAbsence,
+      typeConge: absence.typeConge,
+      commentaireAbsence: absence.commentaireAbsence,
+    })
+}
+
+
 }
