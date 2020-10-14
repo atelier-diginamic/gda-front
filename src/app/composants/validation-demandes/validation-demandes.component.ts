@@ -45,4 +45,25 @@ export class ValidationDemandesComponent implements OnInit {
         console.log(error);
       });
   }
+
+  valider(absence: Absence) {
+
+  this.absenceService.validerAbsence(absence)
+  .subscribe(absenceFromBack => {
+    console.log(absence);
+  },
+  error => {
+    console.log(error);
+  })
+  }
+
+  refuser(absence : Absence) {
+    this.absenceService.refuserAbsence(absence)
+    .subscribe(absenceFromBack => {
+      console.log(absence)
+    },
+    error => {
+      console.log(error);
+    })
+  } 
 }

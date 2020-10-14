@@ -1,11 +1,9 @@
 <div class="container m-auto">
-
     <div class="col-12">
         <div class="text-center">
             <h1>Validation des demandes</h1>
         </div>
     </div>
-
     <table class="table table-striped">
         <thead>
             <tr>
@@ -17,7 +15,6 @@
                 <th scope="col">Actions</th>
             </tr>
         </thead>
-
         <tbody>
             <tr *ngFor="let abs of listeAllAbsenceEnAttente">
                 <td>{{abs.datePremierJourAbsence}}</td>
@@ -25,12 +22,10 @@
                 <td>{{abs.typeConge}}</td>
                 <td>{{abs.nomDemandeur}}</td>
                 <td>{{abs.prenomDemandeur}}</td>
+                <td><button class="btn btn-success mr-3" (click)="valider(abs)">Valider</button>
+                   <button class="btn btn-danger" (click)="refuser(abs)">Refuser</button>
+                </td>
             </tr>
         </tbody>
-
-
     </table>
-
-
-
 </div>
