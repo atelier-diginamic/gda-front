@@ -21,6 +21,10 @@ export class VisualisationjoursferiesComponent implements OnInit {
 
   afficherListeJoursFeries(saisieAnnee : number) {
     this.listeJoursFerieByAnnee = [];
+
+    // this.listeAllJoursFerie = [];
+    this.listeJoursFerieByAnnee = [];
+    
     this.absService.listerJoursFeriesEtRTT(saisieAnnee)
       .subscribe(listeFromBack => {
         this.erreurTechnique = false;
