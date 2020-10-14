@@ -1,0 +1,37 @@
+<H1>visualisation des jours fériés et RTT employeurs</H1>
+
+<div class="container-fluid align-content-center col-6">
+
+    <div class="input-group mb-5">
+        <input type="text" class="form-control mt-5" placeholder="Selectionner une annee pour afficher la liste"
+            aria-label="Recipient's username" aria-describedby="button-addon2" #saisieAnnee>
+        <div class="input-group-append">
+            <button class="btn btn-primary btn-outline mt-5" type="button"
+                (click)="afficherListeJoursFeries(saisieAnnee.value)">Afficher la liste</button>
+        </div>
+    </div>
+    <div *ngIf=" listeJoursFerieByAnnee" class="row">
+        <table class="table table-striped mb-5">
+            <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Type de Congé</th>
+                    <th scope="col">Jours</th>
+                    <th scope="col">Commentaire</th>
+                </tr>
+            </thead>
+            <ul class="list-unstyled mt-5 ml-5">
+                <li *ngFor="let abs of listeJoursFerieByAnnee">
+                    <tbody>
+                        <tr>
+                            <td>{{abs.jourSemaine}}</td>
+                            <td>{{abs.typeConge}}</td>
+                            <td>{{abs.datePremierJourAbsence}}</td>
+                            <td>{{abs.commentaireAbsence}}</td>
+                        </tr>
+                    </tbody>
+                </li>
+            </ul>
+        </table>
+    </div>
+</div>

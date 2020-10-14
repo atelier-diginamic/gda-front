@@ -19,7 +19,11 @@ export class AbsenceService {
   private listeAbsencesSub: BehaviorSubject<string[]> = new BehaviorSubject(table);
 
   idUtilisateur : string;
+
+ 
+
   absenceAModifie : Subject<Absence> = new Subject<Absence>();
+
 
   constructor(private http : HttpClient) {
     this.idUtilisateur = localStorage.getItem("idUtilisateur");
@@ -39,6 +43,25 @@ export class AbsenceService {
         dateDernierJourAbsence: absence.dateDernierJourAbsence,
         typeConge: absence.typeConge,
         commentaireAbsence: absence.commentaireAbsence,
+      })
+  }
+
+  modifierAbsence( absence : Absence ) : Observable<Object> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    }; 
+    
+      return this.http.put(`${environment.baseUrl}${environment.apiModifierAbsence}`,
+      { 
+        idCollegue: this.idUtilisateur,
+        idAbsence : absence.idAbsence,
+        datePremierJourAbsence: absence.datePremierJourAbsence,
+        dateDernierJourAbsence: absence.dateDernierJourAbsence,
+        typeConge: absence.typeConge,
+        commentaireAbsence: absence.commentaireAbsence,
+        statutDemande : absence.statutDemande,
       })
   }
 
@@ -69,6 +92,11 @@ export class AbsenceService {
 
   getNbRTTRestantsByUser() : Observable<BigInteger> {
     return this.http.get<BigInteger>(`${environment.baseUrl}${environment.apiNbRttRestant}=${this.idUtilisateur}`)
+  }
+
+
+  listerJoursFeriesEtRTT(saisieAnnee : number) : Observable<Absence[]> {
+        return this.http.get<Absence[]>(`${environment.baseUrl}${environment.apiVisualisationJoursFeriesEtRTT}${saisieAnnee}`)
   }
 
   publierAbsenceAModifie( absenceParam : Absence) : void {

@@ -3,8 +3,8 @@
 </span> -->
 
 
-<p> {{ absenceForm.toString()}} </p> 
-<form class="mt-5" (ngSubmit)="creerAbsence()" #f="ngForm">
+
+<form class="mt-5" (ngSubmit)=" modeModification ? modifierAbsence() : creerAbsence() " #f="ngForm">
     
     <div class="form-group">
     <!---------------------------- DATE DE DEBUT -------------------------->
@@ -20,7 +20,7 @@
     <!---------------------------- DATE DE FIN -------------------------->
     <div class="form-group">
         <label for="dateDernierJourAbsence">Date de fin</label>
-        <input type="date" class="form-control" id="dateDernierJourAbsence" name="dateDernierJourAbsence" placeholder="modeModification}} ? this.absenceAModifie.dateDernierJourAbsence" [(ngModel)]="absenceForm.dateDernierJourAbsence" #champ2="ngModel">
+        <input type="date" class="form-control" id="dateDernierJourAbsence" name="dateDernierJourAbsence" [(ngModel)]="absenceForm.dateDernierJourAbsence" #champ2="ngModel">
     </div>
      <!---------------------------- !DATE DE FIN! -------------------------->
 
@@ -49,6 +49,7 @@
         <span>Le champ "Motif de l'absence" doit être rempli</span>
     </div>
 
-    <button type="submit" class="btn btn-primary">Demander cette absence</button>
+    <button *ngIf="modeModification"  type="submit" class="btn btn-primary"> Modifier cette absence </button>
+    <button *ngIf="!modeModification" type="submit" class="btn btn-primary">Demander cette absence</button>
     <button (click)="f.resetForm({})" class="btn btn-danger ml-2">Annuler</button>
 </form>

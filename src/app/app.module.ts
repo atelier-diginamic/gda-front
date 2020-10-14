@@ -58,6 +58,7 @@ import { GoogleChartsModule } from 'angular-google-charts';
 import { SelectBarComponent } from './pages/pages-manager/page-vues-synthetiques-histogramme/select-bar/select-bar.component';
 import { DropdownComponent } from './pages/pages-manager/page-vues-synthetiques-histogramme/dropdown/dropdown.component';
 import { HistogrammeService } from './services/histogramme.service';
+import { VisualisationjoursferiesComponent } from './composants/visualisationjoursferies/visualisationjoursferies.component';
 
 
 // --------- !CALENDRIER ANGULAR OFFICIEL! -------------- \\
@@ -78,6 +79,9 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     VisuAbsencesComponent,
     CalendrierAbsencesComponent,
    AbsenceFormComponent,
+   
+
+
     /* Pages COLLEGUE */
     PageAcceuilCollegueComponent,
     PageGestionAbsenceCollegueComponent,
@@ -101,7 +105,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     PageVuesDepartementCollaborateurComponent,
     SelectBarComponent,
     DropdownComponent,
-  
+    VisualisationjoursferiesComponent,
 
   ],
   imports: [
