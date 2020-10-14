@@ -17,20 +17,16 @@
                 <th scope="col">Actions</th>
             </tr>
         </thead>
-        <ul class="list-unstyled mt-5">
-            <li *ngFor="let abs of listeAllAbsenceEnAttente">
-                <tbody>
-                    <tr>
-                        <td>{{abs.datePremierJourAbsence}}</td>
-                        <td>{{abs.dateDernierJourAbsence}}</td>
-                        <td>{{abs.typeConge}}</td>
-                        <td>{{abs.nomDemandeur}}</td>
-                        <td>{{abs.prenomDemandeur}}</td>
-                    </tr>
-                </tbody>
-            </li>
-        </ul>
 
+        <tbody>
+            <tr *ngFor="let abs of listeAllAbsenceEnAttente">
+                <td>{{abs.datePremierJourAbsence}}</td>
+                <td>{{abs.dateDernierJourAbsence}}</td>
+                <td>{{abs.typeConge}}</td>
+                <td>{{abs.nomDemandeur}}</td>
+                <td>{{abs.prenomDemandeur}}</td>
+            </tr>
+        </tbody>
     </table>
 
 
