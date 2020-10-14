@@ -1,0 +1,38 @@
+<div class="container m-auto">
+
+    <div class="col-12">
+        <div class="text-center">
+            <h1>Validation des demandes</h1>
+        </div>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Date de début</th>
+                <th scope="col">Date de fin</th>
+                <th scope="col">Type</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prenom</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <ul class="list-unstyled mt-5">
+            <li *ngFor="let abs of listeAllAbsenceEnAttente">
+                <tbody>
+                    <tr>
+                        <td>{{abs.datePremierJourAbsence}}</td>
+                        <td>{{abs.dateDernierJourAbsence}}</td>
+                        <td>{{abs.typeConge}}</td>
+                        <td>{{abs.nomDemandeur}}</td>
+                        <td>{{abs.prenomDemandeur}}</td>
+                    </tr>
+                </tbody>
+            </li>
+        </ul>
+
+    </table>
+
+
+
+</div>
