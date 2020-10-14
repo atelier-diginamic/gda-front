@@ -10,7 +10,7 @@ export class PageVuesSynthetiquesHistogrammeComponent implements OnInit {
 
   constructor() { }
   histogramme = new Histogramme();
-  title = 'Population (in millions)';
+  title = 'Jour ( Semaine )';
    type = 'ColumnChart';
    data = [
       ["2012", 12, 12],
