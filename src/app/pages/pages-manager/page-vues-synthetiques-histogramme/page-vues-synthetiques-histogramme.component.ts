@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Histogramme } from 'src/app/entities/histogramme.model';
+import { HistogrammeService } from 'src/app/services/histogramme.service';
 
 @Component({
   selector: 'app-page-vues-synthetiques-histogramme',
@@ -8,7 +9,7 @@ import { Histogramme } from 'src/app/entities/histogramme.model';
 })
 export class PageVuesSynthetiquesHistogrammeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private srvhisto: HistogrammeService) { }
   histogramme = new Histogramme();
   title = 'Population (in millions)';
    type = 'ColumnChart';
@@ -28,10 +29,14 @@ export class PageVuesSynthetiquesHistogrammeComponent implements OnInit {
    
   ngOnInit(): void {
     this.annee = this.histogramme.annee;
-    
+      
   }
 
   test() {
     return this.histogramme.annee;
   }
+
+  exportToExel() {
+    this.srvhisto.getExportToExcel().subscribe();
+   }
 }
