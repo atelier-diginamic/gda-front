@@ -1,1 +1,81 @@
-<p>page-vues-departement-collaborateur works!</p>
+<app-selectbar (selectionPicked)="getForm($event)" [(selectBar)]="selectBar"></app-selectbar>
+
+<div class="container m-auto">
+    <div class="col-6">
+        <div class="text-center">
+            <h1>Vue par département par jour et par collaborateur</h1>
+        </div>
+    </div>
+    <div class="container">
+        <!-- <app-selectbar [(vueParJour)]="vueParJour"></app-selectbar> -->
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <!-- il faudrait réussir a déclarer les journées du mois plutot que de les déclarer en dur -->
+                <th scope="col">Nom</th>
+                <th scope="col">01</th>
+                <th scope="col">02</th>
+                <th scope="col">03</th>
+                <th scope="col">04</th>
+                <th scope="col">05</th>
+                <th scope="col">06</th>
+                <th scope="col">07</th>
+                <th scope="col">08</th>
+                <th scope="col">09</th>
+                <th scope="col">10</th>
+                <th scope="col">11</th>
+                <th scope="col">12</th>
+                <th scope="col">13</th>
+                <th scope="col">14</th>
+                <th scope="col">15</th>
+                <th scope="col">16</th>
+                <th scope="col">17</th>
+                <th scope="col">18</th>
+                <th scope="col">19</th>
+                <th scope="col">20</th>
+                <th scope="col">21</th>
+                <th scope="col">22</th>
+                <th scope="col">23</th>
+                <th scope="col">24</th>
+                <th scope="col">25</th>
+                <th scope="col">26</th>
+                <th scope="col">27</th>
+                <th scope="col">28</th>
+                <th scope="col">29</th>
+                <th scope="col">30</th>
+                <th scope="col">31</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let abs of dataCalendrier">
+                <td>{{abs.nomDemandeur}}</td>
+                <td>{{abs.typeConge}}</td>
+                <td>{{abs.typeConge}}</td>
+                <td>{{abs.typeConge}}</td>
+                <td>{{abs.typeConge}}</td>
+                <td>{{abs.typeConge}}</td>
+                <td>{{abs.typeConge}}</td>
+                <td>{{abs.typeConge}}</td>
+                <td>{{abs.typeConge}}</td>
+                <td>{{abs.typeConge}}</td>
+                <td>{{abs.typeConge}}</td>
+                <td>{{abs.typeConge}}</td>
+                <td>{{abs.typeConge}}</td>
+                <td>{{abs.typeConge}}</td>
+                <td>{{abs.typeConge}}</td>
+                <td>{{abs.typeConge}}</td>
+                <td>{{abs.typeConge}}</td>
+                <td>{{abs.typeConge}}</td>
+                <td>{{abs.typeConge}}</td>
+                <td>{{abs.typeConge}}</td>
+                <td>{{abs.typeConge}}</td>
+                <td>{{abs.typeConge}}</td>
+                <td>{{abs.typeConge}}</td>
+                <td>{{abs.typeConge}}</td>
+                <td>{{abs.typeConge}}</td>
+                <td>{{abs.typeConge}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

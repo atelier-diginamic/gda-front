@@ -10,6 +10,8 @@
                 (click)="afficherListeJoursFeries(saisieAnnee.value)">Afficher la liste</button>
         </div>
     </div>
+
+    
     <div *ngIf=" listeJoursFerieByAnnee" class="row">
         <table class="table table-striped mb-5">
             <thead>
@@ -21,13 +23,15 @@
                 </tr>
             </thead>
             <ul class="list-unstyled mt-5 ml-5">
-                <li *ngFor="let abs of listeJoursFerieByAnnee">
+                <li *ngFor="let jfRtt of listeJoursFerieByAnnee">
                     <tbody>
                         <tr>
-                            <td>{{abs.jourSemaine}}</td>
-                            <td>{{abs.typeConge}}</td>
-                            <td>{{abs.datePremierJourAbsence}}</td>
-                            <td>{{abs.commentaireAbsence}}</td>
+                            <td>{{jfRtt.jourDeLaSemaine}}</td>
+                            <td>{{jfRtt.typeConge}}</td>
+                            <td>{{jfRtt.datePremierJourAbsence}}</td>
+                            <td>{{jfRtt.commentaireAbsence}}</td>
+                            <td> <a (click)="toModificationJfRttForm(jfRtt)" class="btn btn-primary">Modifier</a>  </td>
+                            <td> <a (click)="toSupressionJfRttForm(jfRtt)" type="button" class="btn btn-primary">Supprimer</a>  </td>
                         </tr>
                     </tbody>
                 </li>
