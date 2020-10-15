@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { SelectBarSynthetique } from 'src/app/entities/SelectBarSynthetique.model';
 import { CalendrierMois } from 'src/app/enum/calendrier-mois.enum';
 
 @Component({
@@ -14,12 +15,21 @@ export class SelectbarComponent implements OnInit {
 
   enumsMois = CalendrierMois;
   departements = [];
-  annees= ["2021"];
-  constructor() { }
+  annees = ["2020", "2021"];
+
+  constructor() { 
+
+  }
+
   ngOnInit(): void {
   }
 
   chooseInterval(f) {
-    this.selectionPicked.emit(f);
+    const selection = new SelectBarSynthetique();
+    selection.annee = f.value.annees;
+    selection.mois = f.value.enumsMois
+    selection.departement = "DIGINAMIC";
+    
+    return this.selectionPicked.emit(selection);
   }
 }

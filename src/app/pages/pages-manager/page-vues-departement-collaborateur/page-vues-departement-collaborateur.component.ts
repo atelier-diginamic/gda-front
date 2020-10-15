@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AbsenceService } from 'src/app/services/absence.service';
-import { Router } from '@angular/router';
-import { Absence } from 'src/app/entities/absence.model';
 import { SelectBarSynthetique } from 'src/app/entities/SelectBarSynthetique.model';
+import { map } from 'rxjs/operators';
+import { DepartementVue } from 'src/app/entities/DepartementVue.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-page-vues-departement-collaborateur',
@@ -10,25 +11,40 @@ import { SelectBarSynthetique } from 'src/app/entities/SelectBarSynthetique.mode
   styleUrls: ['./page-vues-departement-collaborateur.component.scss']
 })
 export class PageVuesDepartementCollaborateurComponent implements OnInit {
-  dataCalendrier = [];
+
   selectBar = new SelectBarSynthetique();
-  constructor(private absenceService : AbsenceService, private router : Router) { }
+  departementVueTab: any[];
+  joursMaxMois;
+  constructor(private absenceService : AbsenceService) { }
 
 
   ngOnInit(): void {
-   // this.afficherListeValidationDemandeAccepte();
+    
   }
 
   afficherListeValidationDemandeAccepte(departement: string, mois: string, annee: string) {
-    this.dataCalendrier = [];
-
-    this.absenceService.calendrierVuueDepartementData(departement, mois, annee)
-      .subscribe(absences => console.log(absences), error => console.log(error));
+    return this.absenceService.calendrierVuueDepartementData(departement, mois, annee)
+      .pipe(
+          map(abs => {
+            this.departementVueTab = Object.values(abs);
+           this.joursMaxMois = Number(this.departementVueTab[0].joursMaxMois.toString());
+            console.log(this.departementVueTab[0].joursMaxMois);
+          })
+      );
   }
 
-  getForm(formulaire) {
-    console.log(formulaire)
+  getForm(selection) {
+    this.afficherListeValidationDemandeAccepte("DIGINAMIC", selection.mois, selection.annee).subscribe(
+      succes => console.log(this.departementVueTab),
+      err => console.log(err)
+    );
+
   }
+
+  counter(i) : any[] {
+    return new Array(i)
+  }
+
 }
   
 
