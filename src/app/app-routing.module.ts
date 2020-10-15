@@ -28,7 +28,7 @@ import { PageGestionAbsenceAdministrateurComponent} from './pages/pages-administ
 import { PagePlanningAbsenceAdministrateurComponent} from './pages/pages-administrateur/page-planning-absence-administrateur/page-planning-absence-administrateur.component';
 import { PageJoursFeriesAdministrateurComponent} from './pages/pages-administrateur/page-jours-feries-administrateur/page-jours-feries-administrateur.component';
 import { CalendrierAbsencesComponent } from './composants/calendrier-absences/calendrier-absences.component';
-import { AbsenceFormComponent } from './composants/forms/absence-form/absence-form.component';
+import { AbsenceFormComponent } from './composants/absence-form/absence-form.component';
 import { PageVuesSynthetiquesHistogrammeComponent } from './pages/pages-manager/page-vues-synthetiques-histogramme/page-vues-synthetiques-histogramme.component';
 import { PageVuesDepartementCollaborateurComponent } from './pages/pages-manager/page-vues-departement-collaborateur/page-vues-departement-collaborateur.component';
 

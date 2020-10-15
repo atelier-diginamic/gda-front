@@ -3,10 +3,10 @@ import { Absence } from 'src/app/entities/absence.model';
 import { AbsenceService } from 'src/app/services/absence.service';
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
-import { FormControl } from '@angular/forms';
+
 
 @Component({
-  selector: 'app-creer-absence',
+  selector: 'app-absence-form',
   templateUrl: './absence-form.component.html',
   styleUrls: ['./absence-form.component.scss']
 })

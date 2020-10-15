@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+  import { Component, OnInit } from '@angular/core';
 import { Absence } from 'src/app/entities/absence.model';
 import { AbsenceService } from '../../services/absence.service';
 
@@ -45,4 +45,36 @@ export class VisualisationjoursferiesComponent implements OnInit {
         });
   }
 
+  toModificationJfRttForm( jfRttAModifie : Absence ){
+
+    let customAbs : Absence = new Absence();
+    customAbs.typeConge =  jfRttAModifie.typeConge;
+    customAbs.datePremierJourAbsence =  jfRttAModifie.datePremierJourAbsence;
+    customAbs.commentaireAbsence =  jfRttAModifie.commentaireAbsence;
+
+    this.absService.publierJfRttAModifie(customAbs);
+
+  }
+
+  toSupressionJfRttForm( jfRttToDelete : Absence ){
+
+    let jfRttFromVisu : Absence = new Absence();
+    jfRttFromVisu.typeConge = jfRttToDelete.typeConge;
+    jfRttFromVisu.datePremierJourAbsence = jfRttToDelete.datePremierJourAbsence;
+    jfRttFromVisu.commentaireAbsence = jfRttToDelete.commentaireAbsence;
+
+    this.absService.supprimerJourFerieRTT(jfRttFromVisu)
+      .subscribe( reponseFromBack => {
+        this.erreurTechnique = false;
+        alert("Succès : "+ reponseFromBack)
+      },
+        error => {
+          this.erreurTechnique = true;
+          console.log(error);
+        });
+  }
+
+
 }
+
+
