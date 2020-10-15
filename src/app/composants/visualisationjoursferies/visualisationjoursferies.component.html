@@ -1,18 +1,23 @@
-<H1>visualisation des jours fériés et RTT employeurs</H1>
-
+<div class="text-center text-info mt-5">
+    <H1>Visualisation des jours fériés et RTT employeurs</H1>
+</div>
 <div class="container-fluid align-content-center col-6">
-
-    <div class="input-group mb-5">
-        <input type="text" class="form-control mt-5" placeholder="Selectionner une annee pour afficher la liste"
-            aria-label="Recipient's username" aria-describedby="button-addon2" #saisieAnnee>
-        <div class="input-group-append">
-            <button class="btn btn-primary btn-outline mt-5" type="button"
-                (click)="afficherListeJoursFeries(saisieAnnee.value)">Afficher la liste</button>
+   
+        <div class="input-group mb-5">
+            <input type="text" class="form-control mt-5" placeholder="Selectionner une annee pour afficher la liste"
+                aria-label="Recipient's username" aria-describedby="button-addon2" #saisieAnnee>
+            <div class="input-group-append">
+                <button class="btn btn-primary btn-outline mt-5" type="button"
+                    (click)="afficherListeJoursFeries(saisieAnnee.value)">Afficher la liste</button>
+            </div>
         </div>
-    </div>
+       
+        <div class="text-center">
+            <img style="height:5em"
+            src="https://www.badjietdissardavocats.fr/wp-content/uploads/2018/05/Jours-f%C3%A9ri%C3%A9s-ponts-cong%C3%A9s-pay%C3%A9s.png">
+        </div>
 
-    
-    <div *ngIf=" listeJoursFerieByAnnee" class="row">
+    <div *ngIf=" listeJoursFerieByAnnee" class="row mt-3">
         <table class="table table-striped mb-5">
             <thead>
                 <tr>
