@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
 import {AuthComponent} from './auth/auth.component';
 import {TechComponent} from './composants/tech/tech.component';
 import { NavbarComponent } from './composants/navbar/navbar.component';
-import {AbsenceFormComponent } from './composants/forms/absence-form/absence-form.component';
+import {AbsenceFormComponent } from './composants/absence-form/absence-form.component';
 import { VisuAbsencesComponent } from './composants/visu-absences/visu-absences.component';
 import { GestionAbsenceComponent } from './composants/gestion-absence/gestion-absence.component';
 import { AbsenceService } from './services/absence.service';
@@ -58,8 +58,10 @@ import { SelectBarComponent } from './pages/pages-manager/page-vues-synthetiques
 import { DropdownComponent } from './pages/pages-manager/page-vues-synthetiques-histogramme/dropdown/dropdown.component';
 import { HistogrammeService } from './services/histogramme.service';
 import { VisualisationjoursferiesComponent } from './composants/visualisationjoursferies/visualisationjoursferies.component';
+import { JourFerieFormComponent } from './jour-ferie-form/jour-ferie-form.component';
 import { ValidationDemandesComponent } from './composants/validation-demandes/validation-demandes.component';
 import { SelectbarComponent } from './pages/pages-manager/page-vues-departement-collaborateur/selectbar/selectbar.component';
+
 
 
 // --------- !CALENDRIER ANGULAR OFFICIEL! -------------- \\
@@ -109,6 +111,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     SelectBarComponent,
     DropdownComponent,
     VisualisationjoursferiesComponent,
+    JourFerieFormComponent,
     ValidationDemandesComponent,
     SelectbarComponent,
 

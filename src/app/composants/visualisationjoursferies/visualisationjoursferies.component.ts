@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+  import { Component, OnInit } from '@angular/core';
 import { Absence } from 'src/app/entities/absence.model';
 import { AbsenceService } from '../../services/absence.service';
 
@@ -44,5 +44,17 @@ export class VisualisationjoursferiesComponent implements OnInit {
           console.log(error);
         });
   }
+
+  toModificationJfRttForm( absenceAModifie : Absence ){
+
+    let customAbs : Absence = new Absence();
+    customAbs.typeConge = absenceAModifie.typeConge;
+    customAbs.datePremierJourAbsence = absenceAModifie.datePremierJourAbsence;
+    customAbs.commentaireAbsence = absenceAModifie.commentaireAbsence;
+
+    this.absService.publicJfRttAModifie(customAbs);
+
+  }
+
 
 }

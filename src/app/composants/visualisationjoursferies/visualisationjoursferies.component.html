@@ -26,10 +26,11 @@
                 <li *ngFor="let abs of listeJoursFerieByAnnee">
                     <tbody>
                         <tr>
-                            <td>{{abs.jourSemaine}}</td>
+                            <td>{{abs.jourDeLaSemaine}}</td>
                             <td>{{abs.typeConge}}</td>
                             <td>{{abs.datePremierJourAbsence}}</td>
                             <td>{{abs.commentaireAbsence}}</td>
+                            <td> <a (click)="toModificationJfRttForm(abs)" class="btn btn-primary">Modifier</a>  </td>
                         </tr>
                     </tbody>
                 </li>

@@ -23,6 +23,7 @@ export class AbsenceService {
  
 
   absenceAModifie : Subject<Absence> = new Subject<Absence>();
+  jfRttAModifie : Subject<Absence> = new Subject<Absence>();
 
 
   constructor(private http : HttpClient) {
@@ -37,6 +38,23 @@ export class AbsenceService {
     }; 
     
       return this.http.post(`${environment.baseUrl}${environment.apiCreerAbsence}`,
+      { 
+        idCollegue: this.idUtilisateur,
+        datePremierJourAbsence: absence.datePremierJourAbsence,
+        dateDernierJourAbsence: absence.dateDernierJourAbsence,
+        typeConge: absence.typeConge,
+        commentaireAbsence: absence.commentaireAbsence,
+      })
+  }
+
+  creerJourFerieRTT( absence : Absence ){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    }; 
+    
+      return this.http.post(`${environment.baseUrl}${environment.apiCreerJourFerieRTT}`,
       { 
         idCollegue: this.idUtilisateur,
         datePremierJourAbsence: absence.datePremierJourAbsence,
@@ -62,6 +80,22 @@ export class AbsenceService {
         typeConge: absence.typeConge,
         commentaireAbsence: absence.commentaireAbsence,
         statutDemande : absence.statutDemande,
+      })
+  }
+
+  
+  modifierJourFerieRTT( absence : Absence ) : Observable<Object> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    }; 
+    
+      return this.http.put(`${environment.baseUrl}${environment.apiModifierJourFerieRTT}`,
+      { 
+        datePremierJourAbsence: absence.datePremierJourAbsence,
+        typeConge: absence.typeConge,
+        commentaireAbsence: absence.commentaireAbsence,
       })
   }
 
@@ -104,7 +138,7 @@ export class AbsenceService {
 
 
   listerJoursFeriesEtRTT(saisieAnnee : number) : Observable<Absence[]> {
-        return this.http.get<Absence[]>(`${environment.baseUrl}${environment.apiVisualisationJoursFeriesEtRTT}${saisieAnnee}`)
+        return this.http.get<Absence[]>(`${environment.baseUrl}${environment.apiVisualisationJoursFeriesRTT}${saisieAnnee}`)
   }
 
   publierAbsenceAModifie( absenceParam : Absence) : void {
@@ -129,6 +163,14 @@ export class AbsenceService {
 
   abonnerAbsenceAModifie() {
     return this.absenceAModifie.asObservable();
+  }
+
+  publicJfRttAModifie ( absenceParam : Absence ) : void {
+    return this.jfRttAModifie.next(absenceParam);
+  }
+
+  abonnerJfRttAModifie() {
+    return this.jfRttAModifie.asObservable();
   }
   
   validerAbsence(absence : Absence) : Observable<Object> {

@@ -14,11 +14,15 @@ export const config = {
   apiHistogramme: 'absence/manager/histogramme',
   apiNbCongePayeRestant : 'collegue/nbCongePayeRestants?idUtilisateur',
   apiNbRttRestant : 'collegue/nbRttRestants?idUtilisateur',
-  apiVisualisationJoursFeriesEtRTT : 'absence/joursferies/',
+  apiCreerJourFerieRTT : 'jourFerieRTT/create',
+  apiModifierJourFerieRTT : 'jourFerieRTT/modifier',
+  apiSupprimerJourFerieRTT : 'jourFerieRTT/delete',
+  apiVisualisationJoursFeriesRTT : 'jourFerieRTT/joursferies/',
   apiListeEnAttente : 'absence/liste/en-attente',
   apiValiderAbsence : 'absence/valider',
   apiRefuserAbsence : 'absence/rejeter',
   apiListeAbsenceValider : 'absence/liste/valider',
   apiVueCalendrierDepartement: 'vueSynthetique/calendrier',
   apiExportAbsence : 'export/absence/'
+
 };
