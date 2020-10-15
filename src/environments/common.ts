@@ -14,6 +14,7 @@ export const config = {
   apiHistogramme: 'absence/manager/histogramme',
   apiNbCongePayeRestant : 'collegue/nbCongePayeRestants?idUtilisateur',
   apiNbRttRestant : 'collegue/nbRttRestants?idUtilisateur',
+
   apiCreerJourFerieRTT : 'jourFerieRTT/create',
   apiModifierJourFerieRTT : 'jourFerieRTT/modifier',
   apiSupprimerJourFerieRTT : 'jourFerieRTT/supprimer',
@@ -24,5 +25,6 @@ export const config = {
   apiListeAbsenceValider : 'absence/liste/valider',
   apiVueCalendrierDepartement: 'vueSynthetique/calendrier',
   apiExportAbsence : 'export/absence/'
+
 
 };
