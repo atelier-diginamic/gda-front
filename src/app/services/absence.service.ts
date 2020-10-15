@@ -210,7 +210,7 @@ export class AbsenceService {
       datePremierJourAbsence: absence.datePremierJourAbsence,
       dateDernierJourAbsence: absence.dateDernierJourAbsence,
       typeConge: absence.typeConge,
-      commentaireAbsence: absence.commentaireAbsence,
+      commentaireAbsence: absence.commentaireAbsence
     })
 }
 

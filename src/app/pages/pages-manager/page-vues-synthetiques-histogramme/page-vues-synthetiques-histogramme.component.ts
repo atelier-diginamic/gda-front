@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Histogramme } from 'src/app/entities/histogramme.model';
 import { HistogrammeService } from 'src/app/services/histogramme.service';
 import { SelectBarSynthetique } from 'src/app/entities/SelectBarSynthetique.model';
 
@@ -12,8 +11,7 @@ export class PageVuesSynthetiquesHistogrammeComponent implements OnInit {
 
 
   constructor(private srvhisto: HistogrammeService) { }
-  histogramme = new Histogramme();
-  title = 'Population (in millions)';
+
 
   selectBarSynthetique = new SelectBarSynthetique();
 
