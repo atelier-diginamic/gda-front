@@ -24,11 +24,21 @@
     <div class="d-flex justify-content-start ml-5 mb-2"> 
       <!--  <h1 class="display-4">Gestion des Absences</h1> -->
       <ng-container *ngIf="collegueConnecte | async as col">
-        <div class="lead" *ngIf="!col.estAnonyme()">
-          <p> Utilisateur connecté : {{col.email}}</p>
+        <div class="wrapper" *ngIf="!col.estAnonyme()">
+          <article>
+            <div class="overlay">
+              <img style="height:5em"src="https://www.kronosglobal.fr/sites/default/files/images/reference/Kronos-product-icons_400px_0000s_0039_Absence-Management_1.png">
+            </div>
+          </article>
+        
+          <article>
+            <div class="overlay">
+              <p> Utilisateur connecté : {{col.email}}</p>
           <p>Le rôle : {{getRoles(col)}}</p>
           <p>Le ID : {{ getId() }} </p> 
-          
+            </div>
+          </article>
+         
           <button  class="btn btn-danger" (click)="seDeconnecter()">Se déconnecter</button>
         </div>
       </ng-container>
