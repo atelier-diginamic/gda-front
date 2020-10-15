@@ -115,6 +115,14 @@ export class AbsenceService {
   //   return this.http.get<Absence[]>(`${environment.baseUrl}${environment.apiListeAbsence}`);
   // }
 
+  listeAbsencesEnAttente() : Observable<Absence[]> {
+    return this.http.get<Absence[]>(`${environment.baseUrl}${environment.apiListeEnAttente}`)
+  }
+
+  listeAbsenceValider() : Observable<Absence[]> {
+    return this.http.get<Absence[]>(`${environment.baseUrl}${environment.apiListeAbsenceValider}`)
+  }
+
   listerAbsencesByUser() : Observable<Absence[]> {
     
     return this.http.get<Absence[]>(`${environment.baseUrl}${environment.apiVisualisationDesAbsencesByUser}${this.idUtilisateur}`)
@@ -137,6 +145,22 @@ export class AbsenceService {
     return this.absenceAModifie.next(absenceParam);
   }
 
+  calendrierVuueDepartementData(departement: string, mois: string, annee: string) : Observable<Object> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    }; 
+    
+      return this.http.post(`${environment.baseUrl}${environment.apiVueCalendrierDepartement}`,
+      { 
+        departement : departement,
+        mois: mois,
+        annee: annee
+      })
+  }
+
+
   abonnerAbsenceAModifie() {
     return this.absenceAModifie.asObservable();
   }
@@ -149,4 +173,39 @@ export class AbsenceService {
     return this.jfRttAModifie.asObservable();
   }
   
+  validerAbsence(absence : Absence) : Observable<Object> {
+    const httpOptions = {
+    headers: new HttpHeaders({
+      "Content-Type": "application/json"
+    })
+  }; 
+  
+    return this.http.put(`${environment.baseUrl}${environment.apiValiderAbsence}`,
+    { 
+      idAbsence : absence.idAbsence,
+      datePremierJourAbsence: absence.datePremierJourAbsence,
+      dateDernierJourAbsence: absence.dateDernierJourAbsence,
+      typeConge: absence.typeConge,
+      commentaireAbsence: absence.commentaireAbsence,
+    })
+}
+
+  refuserAbsence(absence : Absence): Observable<Object> {
+    const httpOptions = {
+    headers: new HttpHeaders({
+      "Content-Type": "application/json"
+    })
+  }; 
+  
+    return this.http.put(`${environment.baseUrl}${environment.apiRefuserAbsence}`,
+    { 
+      idAbsence : absence.idAbsence,
+      datePremierJourAbsence: absence.datePremierJourAbsence,
+      dateDernierJourAbsence: absence.dateDernierJourAbsence,
+      typeConge: absence.typeConge,
+      commentaireAbsence: absence.commentaireAbsence,
+    })
+}
+
+
 }

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { EventEmitter } from 'protractor';
-import { Histogramme } from 'src/app/entities/histogramme.model';
+import { SelectBarSynthetique } from 'src/app/entities/SelectBarSynthetique.model';
 import { CalendrierMois } from 'src/app/enum/calendrier-mois.enum';
 import { HistogrammeService } from 'src/app/services/histogramme.service';
 
@@ -13,7 +13,7 @@ export class SelectBarComponent implements OnInit {
 
   constructor(private histogrammeService : HistogrammeService) { }
   @Input()
-  histogramme
+  selectBarSynthetique
 
   
   enumsMois = CalendrierMois;
@@ -29,7 +29,7 @@ export class SelectBarComponent implements OnInit {
 
   chooseInterval(f) : void {
     const absences = [];
-    this.histogrammeService.getIntervalHistogramme(this.histogramme.departement, this.histogramme.mois, this.histogramme.annee)
+    this.histogrammeService.getIntervalHistogramme(this.selectBarSynthetique.departement, this.selectBarSynthetique.mois, this.selectBarSynthetique.annee)
                            .subscribe(absences => {
                              
                          

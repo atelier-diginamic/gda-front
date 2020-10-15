@@ -23,7 +23,6 @@ import { AbsenceService } from './services/absence.service';
 import { MenuService } from './services/menu.service';
 
 
-
 /* Import PAGES */
 
 // Collegue
@@ -60,6 +59,9 @@ import { DropdownComponent } from './pages/pages-manager/page-vues-synthetiques-
 import { HistogrammeService } from './services/histogramme.service';
 import { VisualisationjoursferiesComponent } from './composants/visualisationjoursferies/visualisationjoursferies.component';
 import { JourFerieFormComponent } from './jour-ferie-form/jour-ferie-form.component';
+import { ValidationDemandesComponent } from './composants/validation-demandes/validation-demandes.component';
+import { SelectbarComponent } from './pages/pages-manager/page-vues-departement-collaborateur/selectbar/selectbar.component';
+
 
 
 // --------- !CALENDRIER ANGULAR OFFICIEL! -------------- \\
@@ -80,6 +82,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     VisuAbsencesComponent,
     CalendrierAbsencesComponent,
    AbsenceFormComponent,
+   ValidationDemandesComponent,
+   PageVuesDepartementCollaborateurComponent,
    
 
 
@@ -89,7 +93,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     PageJoursFeriesCollegueComponent,
     PagePlanningAbsenceCollegueComponent,
 
-    /* Pages COLLEGUE */
+    /* Pages manager */
     PageAcceuilManagerComponent,
     PageValidationDemandesManagerComponent,
     PageGestionAbsenceManagerComponent,
@@ -97,7 +101,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     PageJoursFeriesManagerComponent,
     PagePlanningAbsenceManagerComponent,
 
-    /* Pages COLLEGUE */
+    /* Pages administrateur */
     PageAcceuilAdministrateurComponent,
     PageGestionAbsenceAdministrateurComponent,
     PageJoursFeriesAdministrateurComponent,
@@ -108,6 +112,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     DropdownComponent,
     VisualisationjoursferiesComponent,
     JourFerieFormComponent,
+    ValidationDemandesComponent,
+    SelectbarComponent,
 
   ],
   imports: [
