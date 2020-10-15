@@ -19,5 +19,6 @@ export const config = {
   apiValiderAbsence : 'absence/valider',
   apiRefuserAbsence : 'absence/rejeter',
   apiListeAbsenceValider : 'absence/liste/valider',
-  apiVueCalendrierDepartement: 'vueSynthetique/calendrier'
+  apiVueCalendrierDepartement: 'vueSynthetique/calendrier',
+  apiExportAbsence : 'export/absence/'
 };
