@@ -24,6 +24,7 @@ export class AbsenceService {
 
   absenceAModifie : Subject<Absence> = new Subject<Absence>();
   jfRttAModifie : Subject<Absence> = new Subject<Absence>();
+  jfRttASupprimer : Subject<Absence> = new Subject<Absence>();
 
 
   constructor(private http : HttpClient) {
@@ -84,7 +85,7 @@ export class AbsenceService {
   }
 
   
-  modifierJourFerieRTT( absence : Absence ) : Observable<Object> {
+  modifierJourFerieRTT( jfRttAModifie : Absence ) : Observable<Object> {
     const httpOptions = {
       headers: new HttpHeaders({
         "Content-Type": "application/json"
@@ -93,9 +94,24 @@ export class AbsenceService {
     
       return this.http.put(`${environment.baseUrl}${environment.apiModifierJourFerieRTT}`,
       { 
-        datePremierJourAbsence: absence.datePremierJourAbsence,
-        typeConge: absence.typeConge,
-        commentaireAbsence: absence.commentaireAbsence,
+        datePremierJourAbsence: jfRttAModifie.datePremierJourAbsence,
+        typeConge: jfRttAModifie.typeConge,
+        commentaireAbsence: jfRttAModifie.commentaireAbsence,
+      })
+  }
+
+  supprimerJourFerieRTT ( jfRttASuppprimer : Absence ):  Observable<Object> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    }; 
+      console.log("coucou 2.0");
+      return this.http.put(`${environment.baseUrl}${environment.apiSupprimerJourFerieRTT}`,
+      { 
+        datePremierJourAbsence: jfRttASuppprimer.datePremierJourAbsence,
+        typeConge: jfRttASuppprimer.typeConge,
+        commentaireAbsence: jfRttASuppprimer.commentaireAbsence,
       })
   }
 
@@ -165,8 +181,16 @@ export class AbsenceService {
     return this.absenceAModifie.asObservable();
   }
 
-  publicJfRttAModifie ( absenceParam : Absence ) : void {
+  publierJfRttAModifie ( absenceParam : Absence ) : void {
     return this.jfRttAModifie.next(absenceParam);
+  }
+
+  publierJfRttASupprimer  ( jfRttParam : Absence ) : void {
+    return this.jfRttAModifie.next(jfRttParam);
+  }
+
+  abonnerJfRttASupprimer (){
+    return this.jfRttASupprimer.asObservable();
   }
 
   abonnerJfRttAModifie() {

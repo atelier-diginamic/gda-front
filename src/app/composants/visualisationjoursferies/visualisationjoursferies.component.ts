@@ -45,16 +45,36 @@ export class VisualisationjoursferiesComponent implements OnInit {
         });
   }
 
-  toModificationJfRttForm( absenceAModifie : Absence ){
+  toModificationJfRttForm( jfRttAModifie : Absence ){
 
     let customAbs : Absence = new Absence();
-    customAbs.typeConge = absenceAModifie.typeConge;
-    customAbs.datePremierJourAbsence = absenceAModifie.datePremierJourAbsence;
-    customAbs.commentaireAbsence = absenceAModifie.commentaireAbsence;
+    customAbs.typeConge =  jfRttAModifie.typeConge;
+    customAbs.datePremierJourAbsence =  jfRttAModifie.datePremierJourAbsence;
+    customAbs.commentaireAbsence =  jfRttAModifie.commentaireAbsence;
 
-    this.absService.publicJfRttAModifie(customAbs);
+    this.absService.publierJfRttAModifie(customAbs);
 
+  }
+
+  toSupressionJfRttForm( jfRttToDelete : Absence ){
+
+    let jfRttFromVisu : Absence = new Absence();
+    jfRttFromVisu.typeConge = jfRttToDelete.typeConge;
+    jfRttFromVisu.datePremierJourAbsence = jfRttToDelete.datePremierJourAbsence;
+    jfRttFromVisu.commentaireAbsence = jfRttToDelete.commentaireAbsence;
+
+    this.absService.supprimerJourFerieRTT(jfRttFromVisu)
+      .subscribe( reponseFromBack => {
+        this.erreurTechnique = false;
+        alert("Succès : "+ reponseFromBack)
+      },
+        error => {
+          this.erreurTechnique = true;
+          console.log(error);
+        });
   }
 
 
 }
+
+

@@ -16,7 +16,7 @@ export const config = {
   apiNbRttRestant : 'collegue/nbRttRestants?idUtilisateur',
   apiCreerJourFerieRTT : 'jourFerieRTT/create',
   apiModifierJourFerieRTT : 'jourFerieRTT/modifier',
-  apiSupprimerJourFerieRTT : 'jourFerieRTT/delete',
+  apiSupprimerJourFerieRTT : 'jourFerieRTT/supprimer',
   apiVisualisationJoursFeriesRTT : 'jourFerieRTT/joursferies/',
   apiListeEnAttente : 'absence/liste/en-attente',
   apiValiderAbsence : 'absence/valider',
