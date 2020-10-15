@@ -1,4 +1,4 @@
-export class Histogramme {
+export class SelectBarSynthetique {
 
     public mois: string;
     public annee: string;

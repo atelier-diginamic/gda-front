@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbsenceService } from 'src/app/services/absence.service';
 import { Router } from '@angular/router';
 import { Absence } from 'src/app/entities/absence.model';
+import { SelectBarSynthetique } from 'src/app/entities/SelectBarSynthetique.model';
 
 @Component({
   selector: 'app-page-vues-departement-collaborateur',
@@ -9,42 +10,25 @@ import { Absence } from 'src/app/entities/absence.model';
   styleUrls: ['./page-vues-departement-collaborateur.component.scss']
 })
 export class PageVuesDepartementCollaborateurComponent implements OnInit {
-
+  dataCalendrier = [];
+  selectBar = new SelectBarSynthetique();
   constructor(private absenceService : AbsenceService, private router : Router) { }
-  erreurTechnique: boolean;
-  listeAllAbsences: Absence[];
-  listeAllAbsencesValider : Absence[];
-  aucuneAbsenceTrouvee: boolean;
+
 
   ngOnInit(): void {
-    this.afficherListeValidationDemandeAccepte();
+   // this.afficherListeValidationDemandeAccepte();
   }
 
-  afficherListeValidationDemandeAccepte() {
-    this.listeAllAbsences = [];
-    this.listeAllAbsencesValider = [];
-    this.absenceService.listeAbsenceValider()
-    .subscribe(listeFromBack => {
+  afficherListeValidationDemandeAccepte(departement: string, mois: string, annee: string) {
+    this.dataCalendrier = [];
 
-      this.erreurTechnique = false;
-      if (listeFromBack.length > 0) {
-        this.aucuneAbsenceTrouvee = false;
-        this.listeAllAbsences = listeFromBack;
-      } else {
-        this.aucuneAbsenceTrouvee = true;   
-      }
-      for (var absence of this.listeAllAbsences) {
-        //console.log(absence);
-        this.listeAllAbsencesValider.push(absence);
-      }
-    },
-      error => {
-        this.erreurTechnique = true;
-        console.log(error);
-      });
+    this.absenceService.calendrierVuueDepartementData(departement, mois, annee)
+      .subscribe(absences => console.log(absences), error => console.log(error));
   }
 
-  
+  getForm(formulaire) {
+    console.log(formulaire)
+  }
 }
   
 
