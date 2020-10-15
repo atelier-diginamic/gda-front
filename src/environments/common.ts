@@ -15,5 +15,10 @@ export const config = {
   apiNbCongePayeRestant : 'collegue/nbCongePayeRestants?idUtilisateur',
   apiNbRttRestant : 'collegue/nbRttRestants?idUtilisateur',
   apiVisualisationJoursFeriesEtRTT : 'absence/joursferies/',
+  apiListeEnAttente : 'absence/liste/en-attente',
+  apiValiderAbsence : 'absence/valider',
+  apiRefuserAbsence : 'absence/rejeter',
+  apiListeAbsenceValider : 'absence/liste/valider',
+  apiVueCalendrierDepartement: 'vueSynthetique/calendrier',
   apiExportAbsence : 'export/absence/'
 };
