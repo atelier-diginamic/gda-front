@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HistogrammeService } from 'src/app/services/histogramme.service';
 import { SelectBarSynthetique } from 'src/app/entities/SelectBarSynthetique.model';
+import { BinomeDataHisto } from 'src/app/entities/binomeDataHisto.model';
 
 @Component({
   selector: 'app-page-vues-synthetiques-histogramme',
@@ -10,31 +11,39 @@ import { SelectBarSynthetique } from 'src/app/entities/SelectBarSynthetique.mode
 export class PageVuesSynthetiquesHistogrammeComponent implements OnInit {
 
 
-  constructor(private srvhisto: HistogrammeService) { }
+  constructor(private histoService: HistogrammeService) { }
 
-
+  afficherHisto = false;
   selectBarSynthetique = new SelectBarSynthetique();
 
    title = "Nombre de jours d'absence";
 
    type = 'ColumnChart';
-   data = [
-      ["2012", 12],
-      ["2013", 12],
-      ["2014", 12],
-      ["2015", 12],
-      ["2016", 12]
-   ];
+   
+   data = [];
+
+   tabDataTampon : BinomeDataHisto[];
+   
 
    columnNames = ['Year', 'Asia'];
    options = {};
-   width = 550;
-   height = 400;
+   width = 2050;
+   height = 600;
    annee: string;
    
   ngOnInit(): void {
 
     this.annee = this.selectBarSynthetique.annee;
+
+    this.histoService.abonnerDataFromBack()
+      .subscribe( tabBinome => { this.tabDataTampon = tabBinome; 
+                                 for (let binome of this.tabDataTampon){
+                                  this.data.push([binome.dateDuJour,binome.comptageAbsenceDuJour])
+                                  this.afficherHisto = true;
+                                 }
+                                },
+                  error => alert("Erreur durant le comptage") 
+      )
    
   }
 
@@ -43,6 +52,6 @@ export class PageVuesSynthetiquesHistogrammeComponent implements OnInit {
   }
 
   exportToExel() {
-    this.srvhisto.getExportToExcel().subscribe();
+    this.histoService.getExportToExcel().subscribe();
    }
 }

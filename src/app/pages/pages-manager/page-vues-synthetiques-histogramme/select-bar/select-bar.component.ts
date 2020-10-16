@@ -1,6 +1,8 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { EventEmitter } from 'protractor';
+import { BinomeDataHisto } from 'src/app/entities/binomeDataHisto.model';
 import { SelectBarSynthetique } from 'src/app/entities/SelectBarSynthetique.model';
+import { TabComptage } from 'src/app/entities/tabComptage.model';
 import { CalendrierMois } from 'src/app/enum/calendrier-mois.enum';
 import { HistogrammeService } from 'src/app/services/histogramme.service';
 
@@ -26,14 +28,20 @@ export class SelectBarComponent implements OnInit {
     this.annees.push("2020", "2021");
   }
 
+  dataFromBack : BinomeDataHisto[] = []// Construction du jeu de donnée pour le graphique envoyée depuis le back
 
-  chooseInterval(f) : void {
+
+  choisirMoisComptageAbsence(f) : void {
     const absences = [];
-    this.histogrammeService.getIntervalHistogramme(this.selectBarSynthetique.departement, this.selectBarSynthetique.mois, this.selectBarSynthetique.annee)
-                           .subscribe(absences => {
-                             
-                         
-                             console.log("Les absences histogrammes ", absences);
+    this.histogrammeService.getComptageAbsencesIntervalHistogramme( this.selectBarSynthetique.mois, this.selectBarSynthetique.annee)
+                           .subscribe( tabComptages=> { 
+                             console.log
+                              for ( let i in tabComptages){
+                                let newDay = new BinomeDataHisto( tabComptages[i][0] , parseInt(tabComptages[i][1]))
+                                console.log( newDay.dateDuJour , newDay.comptageAbsenceDuJour );
+                                this.dataFromBack.push( newDay )
+                              }
+                              this.histogrammeService.publierDataFromBack(this.dataFromBack);
                            },
                            error => console.log("erreur ", error));
 

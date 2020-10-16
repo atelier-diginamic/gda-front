@@ -1,4 +1,4 @@
-<form (ngSubmit)="chooseInterval(f)" #f="ngForm" class="col-6">
+<form (ngSubmit)="choisirMoisComptageAbsence(f)" #f="ngForm" class="col-6">
     <div class="row">
         <div class="col-3">
             <app-dropdown [(ngModel)]="selectBarSynthetique.departement" [valeurDropDown]="departements"  [name]="'departements'" [title]="'Département'" ngDefaultControl></app-dropdown>

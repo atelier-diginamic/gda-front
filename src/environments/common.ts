@@ -11,7 +11,7 @@ export const config = {
   apiVisualisationDesAbsencesByUser: 'absence/visualisation/user/',
   apiCreerAbsence: 'absence/create',
   apiModifierAbsence : 'absence/modifier',
-  apiHistogramme: 'absence/manager/histogramme',
+  apiHistogramme: 'vueSynthethique/histogramme',
   apiNbCongePayeRestant : 'collegue/nbCongePayeRestants?idUtilisateur',
   apiNbRttRestant : 'collegue/nbRttRestants?idUtilisateur',
 
