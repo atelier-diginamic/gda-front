@@ -15,6 +15,7 @@ export class PageVuesDepartementCollaborateurComponent implements OnInit {
 
   selectBar = new SelectBarSynthetique();
   departementVueTab: DepartementVue[];
+  start = 0;
   joursMaxMois;
   error : boolean = false;
   constructor(private vueService : VueDepartementService) { }

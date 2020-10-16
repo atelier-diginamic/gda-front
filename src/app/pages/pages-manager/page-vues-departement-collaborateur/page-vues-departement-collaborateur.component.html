@@ -19,10 +19,10 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr *ngFor="let objet of departementVueTab; let indexDepartement = index;">
                     <td *ngFor="let jour of counter(joursMaxMois); let indexColonne = index" scope="col">
-                        <span *ngFor="let objet of departementVueTab; let indexDepartement = index" >
-                            <th *ngIf="indexColonne === 0 && indexDepartement === 0" scope="row">{{ objet.nomCollegue }}</th>
+                        <span  >
+                            <th *ngIf="indexColonne === 0" scope="row">{{ objet.nomCollegue }}</th>
                             <span *ngFor="let jour of objet.tableauJours">
                                 <span *ngIf="jour === indexColonne">{{ objet.typeCongePremiereLettre }}</span>
                             </span>
