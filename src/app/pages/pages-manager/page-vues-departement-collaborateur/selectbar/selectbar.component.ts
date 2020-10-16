@@ -14,7 +14,7 @@ export class SelectbarComponent implements OnInit {
   selectBar;
 
   enumsMois = CalendrierMois;
-  departements = [];
+  departements = ["DIGINAMIC"];
   annees = ["2020", "2021"];
 
   constructor() { 

@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AbsenceService } from 'src/app/services/absence.service';
 import { SelectBarSynthetique } from 'src/app/entities/SelectBarSynthetique.model';
 import { map } from 'rxjs/operators';
-import { DepartementVue } from 'src/app/entities/DepartementVue.model';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-page-vues-departement-collaborateur',
@@ -13,13 +11,17 @@ import { Observable } from 'rxjs';
 export class PageVuesDepartementCollaborateurComponent implements OnInit {
 
   selectBar = new SelectBarSynthetique();
-  departementVueTab: any[];
+  departementVueTab: Object;
   joursMaxMois;
+  index = 1;
   constructor(private absenceService : AbsenceService) { }
 
 
   ngOnInit(): void {
-    
+    this.afficherListeValidationDemandeAccepte("DIGINAMIC", this.selectBar.mois, this.selectBar.annee).subscribe(
+      success => console.log(success),
+      err => console.log(err)
+    );
   }
 
   afficherListeValidationDemandeAccepte(departement: string, mois: string, annee: string) {
@@ -27,18 +29,16 @@ export class PageVuesDepartementCollaborateurComponent implements OnInit {
       .pipe(
           map(abs => {
             this.departementVueTab = Object.values(abs);
-           this.joursMaxMois = Number(this.departementVueTab[0].joursMaxMois.toString());
-            console.log(this.departementVueTab[0].joursMaxMois);
+            this.joursMaxMois = Number(this.departementVueTab[0].joursMaxMois.toString());
           })
       );
   }
 
   getForm(selection) {
     this.afficherListeValidationDemandeAccepte("DIGINAMIC", selection.mois, selection.annee).subscribe(
-      succes => console.log(this.departementVueTab),
+      success => console.log(success),
       err => console.log(err)
     );
-
   }
 
   counter(i) : any[] {

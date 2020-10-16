@@ -26,7 +26,7 @@ export class HistogrammeService {
     let i = 1; // Commence à 1 car premier mois de l'année = 1
     for ( let mois in CalendrierMois){
       myMapping[i] = mois;
-      i++
+      i++;
     }
 
     let moisRequete = myMapping.indexOf(mois); // Retourne le numéro du mois
@@ -35,7 +35,7 @@ export class HistogrammeService {
 
   getExportToExcel() : Observable <Blob> {
     window.open("http://localhost:8080/export/absence", '_blank');
-  return this.http.get <Blob>(`${environment.baseUrl}${environment.apiExportAbsence}`)
+    return this.http.get <Blob>(`${environment.baseUrl}${environment.apiExportAbsence}`);
   }
 
   abonnerDataFromBack(){
@@ -43,7 +43,7 @@ export class HistogrammeService {
   }
 
   publierDataFromBack(tabFromBack : BinomeDataHisto[]){
-    return this.dataFromBack.next(tabFromBack)
+    return this.dataFromBack.next(tabFromBack);
   }
 
 }

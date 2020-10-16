@@ -41,8 +41,8 @@ export class PageVuesSynthetiquesHistogrammeComponent implements OnInit {
                                   this.data.push([binome.dateDuJour.substring(8,10), binome.comptageAbsenceDuJour])
                                   this.afficherHisto = true;
                                  }
-                                },
-                  error => alert("Erreur durant le comptage") 
+                            },
+                  error => alert("Erreur durant le comptage")
       )
    
   }

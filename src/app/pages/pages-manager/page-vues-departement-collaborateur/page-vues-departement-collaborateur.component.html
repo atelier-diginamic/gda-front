@@ -1,23 +1,23 @@
 <app-selectbar (selectionPicked)="getForm($event)" [(selectBar)]="selectBar"></app-selectbar>
 
-<div class="container m-auto">
+<div class="container-fluid">
     <div class="col-12 text-info mt-5">
         <div class="text-center">
             <h1>Vue par département par jour et par collaborateur</h1>
         </div>
     </div>
     <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th  *ngFor="let jour of counter(joursMaxMois); let i = index" scope="col">{{ i }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
         <!-- <app-selectbar [(vueParJour)]="vueParJour"></app-selectbar> -->
     </div>
     
 </div>
-        <table class="table table-striped">
-            <thead>
-                <tr *ngFor="let jour of counter(joursMaxMois); let i = index">
-                    <th scope="col">{{ i }}</th>
-                </tr>
-            </thead>
-            <tbody>
-               
-            </tbody>
-        </table>
