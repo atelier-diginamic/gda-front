@@ -16,6 +16,7 @@ export class PageVuesDepartementCollaborateurComponent implements OnInit {
   selectBar = new SelectBarSynthetique();
   departementVueTab: DepartementVue[];
   joursMaxMois;
+  error : boolean = false;
   constructor(private vueService : VueDepartementService) { }
 
 
@@ -25,7 +26,7 @@ export class PageVuesDepartementCollaborateurComponent implements OnInit {
       this.joursMaxMois = tableau[0].joursMaxMois;
      
     }, 
-    error => console.log(error));
+    error => this.error = true);
   }
 
   afficherListeValidationDemandeAccepte(departement: string, mois: string, annee: string) {

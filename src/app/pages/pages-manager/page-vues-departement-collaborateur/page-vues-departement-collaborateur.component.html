@@ -11,18 +11,20 @@
     </div>
     
 </div>
-        <table class="table table-striped">
+        <table class="table table-bordered " *ngIf="departementVueTab != undefined">
             <thead>
                 <tr>
-                    <th *ngFor="let jour of counter(joursMaxMois); let i = index" scope="col">{{ i }}</th>
+                    <th *ngFor="let jour of counter(joursMaxMois); let i = index" scope="col">
+                        <span *ngIf="i > 0">{{ i }}</span></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td *ngFor="let jour of counter(joursMaxMois); let indexCol = index" scope="col">
-                        <span *ngFor="let objet of departementVueTab" >
+                    <td *ngFor="let jour of counter(joursMaxMois); let indexColonne = index" scope="col">
+                        <span *ngFor="let objet of departementVueTab; let indexDepartement = index" >
+                            <th *ngIf="indexColonne === 0 && indexDepartement === 0" scope="row">{{ objet.nomCollegue }}</th>
                             <span *ngFor="let jour of objet.tableauJours">
-                                <span *ngIf="jour === indexCol">{{ objet.nomCollegue }}</span>
+                                <span *ngIf="jour === indexColonne">{{ objet.typeCongePremiereLettre }}</span>
                             </span>
                         </span>
                         
