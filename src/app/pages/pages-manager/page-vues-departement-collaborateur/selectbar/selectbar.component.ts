@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SelectBarSynthetique } from 'src/app/entities/SelectBarSynthetique.model';
 import { CalendrierMois } from 'src/app/enum/calendrier-mois.enum';
+import { HistogrammeService } from 'src/app/services/histogramme.service';
 
 @Component({
   selector: 'app-selectbar',
@@ -17,7 +18,7 @@ export class SelectbarComponent implements OnInit {
   departements = ["Diginamic"];
   annees = ["2020", "2021"];
 
-  constructor() { 
+  constructor(private histoService: HistogrammeService) { 
 
   }
 
@@ -33,7 +34,7 @@ export class SelectbarComponent implements OnInit {
     return this.selectionPicked.emit(selection);
   }
 
-  // exportToExel() {
-  //   this.histoService.getExportToExcel().subscribe();
-  //  }
+  exportToExel() {
+     this.histoService.getExportToExcel().subscribe();
+    }
 }
