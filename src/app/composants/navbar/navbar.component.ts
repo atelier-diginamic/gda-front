@@ -62,4 +62,9 @@ export class NavbarComponent implements OnInit {
     console.log("Role User  = " + this.roleUtilisateur);
   }
 
+  seDeconnecter() {
+    this.authSrv.seDeconnecter().subscribe(
+      () => this.router.navigate([''])
+    );
+  }
 }

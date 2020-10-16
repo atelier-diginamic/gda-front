@@ -1,6 +1,6 @@
 <!-- <button class="btn btn-blue" > Afficher toutes les absences</button> -->
 <div class="container-fluid align-content-center ">
-    <button class="btn btn-success mt-5 ml-5" (click)="afficherListeAbsenceByUser()">Afficher mes absences
+    <button class="btn btn-primary mt-5 ml-5" (click)="afficherListeAbsenceByUser()">Afficher mes absences
         enregistrées et mon solde</button>
     <div *ngIf="listeAbsencesByUser" class="row">
 
@@ -16,7 +16,6 @@
                         <p class="card-text text-dark">Statut de la demande : {{abs.statutDemande}}</p>
                         <a (click)="toModificationAbsenceForm(abs)" class="btn btn-primary">Modifier</a>
                     </div>
-
                 </div>
 
 

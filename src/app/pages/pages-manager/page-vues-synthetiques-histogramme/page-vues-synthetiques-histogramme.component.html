@@ -1,5 +1,5 @@
 
-<h1>Histogramme par département et par jour</h1>
+<h1 class="text-center text-info mt-5">Histogramme par département et par jour</h1>
 
 <app-select-bar [(selectBarSynthetique)]="selectBarSynthetique"></app-select-bar>
 
@@ -12,6 +12,9 @@
    [width]="width"
    [height]="height" *ngIf="afficherHisto">
 </google-chart>
-<p>Annee : {{recupAnneeSelected()}}</p>
+<p class="font-weight-bold text-primary">Année selectionnée : {{recupAnneeSelected()}}</p>
 
-<button type="button" class="btn btn-primary btn-lg" (click)="exportToExel()">Export Excel</button>
+
+   <img type="button" class="rounded" style="height:5em"
+   src="https://cdn.1min30.com/wp-content/uploads/2017/10/Logo-Excel.jpg" (click)="exportToExel()">
+

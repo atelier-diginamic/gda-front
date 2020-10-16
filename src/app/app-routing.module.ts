@@ -58,10 +58,12 @@ const routes: Routes =  [
 
 
   /* ROUTES ADMIN */
+
   { path: 'admin/accueil',  component: PageAcceuilAdministrateurComponent, canActivate: [ StatutConnecteService ]},
   { path: 'admin/gestionAbsence', component: PageGestionAbsenceAdministrateurComponent, canActivate: [ StatutConnecteService ]},
   { path: 'admin/planningAbsence', component: PagePlanningAbsenceAdministrateurComponent, canActivate: [ StatutConnecteService ]},
-  { path: 'admin/collegue/joursFeries', component : PageJoursFeriesAdministrateurComponent, canActivate: [ StatutConnecteService ] }
+  { path: 'admin/collegue/joursFeries', component : PageJoursFeriesAdministrateurComponent, canActivate: [ StatutConnecteService ] },
+
 ];
 
 
