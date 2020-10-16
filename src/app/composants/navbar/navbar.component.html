@@ -1,14 +1,15 @@
  <!--NAVBAR -->
- <div class="container-fluid p-0">
+ <div class="container-fluid p-0" *ngIf="collegueConnecte | async as col">
     <nav
       ngbNav
       #nav="ngbNav"
       class="navbar"
-      [activeId]="route.fragment | async"
+      [activeId]="route.fragment | async" 
+      *ngIf="!col.estAnonyme()"
     >
       <div class="container">
-        <div *ngIf="collegueConnecte | async as col" >
-          <div class="d-flex" *ngIf="roleUtilisateur === 'collegue' || roleUtilisateur === 'admin'; else elseBlock">
+        <div>
+          <div class="d-flex" *ngIf="col.roles == rangCollegue || col.roles == rangAdmin ; else elseBlock">
             <div *ngFor="let link of linksCollegueEtAdmin">
               <!-- HOME -->
               <a

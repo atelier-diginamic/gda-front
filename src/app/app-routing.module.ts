@@ -41,27 +41,27 @@ const routes: Routes =  [
   { path: 'connexion', component: AuthComponent},
   
   /* ROUTES COLLEGUES */
-  { path: 'collegue/accueil',  component:  PageAcceuilCollegueComponent, canActivate: [ AuthGuard ] },
-  { path: 'collegue/gestionAbsence', component: PageGestionAbsenceCollegueComponent, canActivate: [ AuthGuard ]},
-  { path: 'collegue/planningAbsence', component : PagePlanningAbsenceCollegueComponent, canActivate: [ AuthGuard ]},
-  { path: 'collegue/joursFeries', component : PageJoursFeriesCollegueComponent, canActivate: [ AuthGuard ] },
+  { path: 'collegue/accueil',  component:  PageAcceuilCollegueComponent, canActivate: [ StatutConnecteService ] },
+  { path: 'collegue/gestionAbsence', component: PageGestionAbsenceCollegueComponent, canActivate: [ StatutConnecteService]},
+  { path: 'collegue/planningAbsence', component : PagePlanningAbsenceCollegueComponent, canActivate: [ StatutConnecteService ]},
+  { path: 'collegue/joursFeries', component : PageJoursFeriesCollegueComponent, canActivate: [ StatutConnecteService ] },
   
   /* ROUTES MANAGER */
-  { path: 'manager/accueil',  component: PageAcceuilManagerComponent, canActivate: [ AuthGuard ]},
-  { path: 'manager/gestionAbsence', component: PageGestionAbsenceManagerComponent, canActivate: [ AuthGuard ]},
-  { path: 'manager/planningAbsence', component : CalendrierAbsencesComponent, canActivate: [ AuthGuard ]},
-  { path: 'manager/validationDemandeAbsence', component : PageValidationDemandesManagerComponent, canActivate: [ AuthGuard ]},
-  { path: 'manager/vueSynthetique', component : PageVuesSynthetiquesManagerComponent, canActivate: [ AuthGuard ]},
-  { path: 'manager/vueSynthetique/histogramme', component: PageVuesSynthetiquesHistogrammeComponent, canActivate: [ AuthGuard ] },
-  { path: 'manager/vueSynthetique/departement-collaborateur', component: PageVuesDepartementCollaborateurComponent, canActivate: [ AuthGuard ] },
-  { path: 'manager/joursFeries', component: PageJoursFeriesManagerComponent ,canActivate: [ AuthGuard ] },
+  { path: 'manager/accueil',  component: PageAcceuilManagerComponent, canActivate: [ StatutConnecteService ]},
+  { path: 'manager/gestionAbsence', component: PageGestionAbsenceManagerComponent, canActivate: [ StatutConnecteService ]},
+  { path: 'manager/planningAbsence', component : CalendrierAbsencesComponent, canActivate: [ StatutConnecteService ]},
+  { path: 'manager/validationDemandeAbsence', component : PageValidationDemandesManagerComponent, canActivate: [ StatutConnecteService ]},
+  { path: 'manager/vueSynthetique', component : PageVuesSynthetiquesManagerComponent, canActivate: [ StatutConnecteService ]},
+  { path: 'manager/vueSynthetique/histogramme', component: PageVuesSynthetiquesHistogrammeComponent, canActivate: [ StatutConnecteService ] },
+  { path: 'manager/vueSynthetique/departement-collaborateur', component: PageVuesDepartementCollaborateurComponent, canActivate: [ StatutConnecteService ] },
+  { path: 'manager/joursFeries', component: PageJoursFeriesManagerComponent ,canActivate: [ StatutConnecteService ] },
 
 
   /* ROUTES ADMIN */
-  { path: 'admin/accueil',  component: PageAcceuilAdministrateurComponent, canActivate: [ AuthGuard ]},
-  { path: 'admin/gestionAbsence', component: PageGestionAbsenceAdministrateurComponent, canActivate: [ AuthGuard ]},
-  { path: 'admin/planningAbsence', component: PagePlanningAbsenceAdministrateurComponent, canActivate: [ AuthGuard ]},
-  { path: 'admin/collegue/joursFeries', component : PageJoursFeriesAdministrateurComponent, canActivate: [ AuthGuard ] }
+  { path: 'admin/accueil',  component: PageAcceuilAdministrateurComponent, canActivate: [ StatutConnecteService ]},
+  { path: 'admin/gestionAbsence', component: PageGestionAbsenceAdministrateurComponent, canActivate: [ StatutConnecteService ]},
+  { path: 'admin/planningAbsence', component: PagePlanningAbsenceAdministrateurComponent, canActivate: [ StatutConnecteService ]},
+  { path: 'admin/collegue/joursFeries', component : PageJoursFeriesAdministrateurComponent, canActivate: [ StatutConnecteService ] }
 ];
 
 
