@@ -14,7 +14,7 @@ export class SelectbarComponent implements OnInit {
   selectBar;
 
   enumsMois = CalendrierMois;
-  departements = [];
+  departements = ["Diginamic"];
   annees = ["2020", "2021"];
 
   constructor() { 
@@ -32,4 +32,8 @@ export class SelectbarComponent implements OnInit {
     
     return this.selectionPicked.emit(selection);
   }
+
+  // exportToExel() {
+  //   this.histoService.getExportToExcel().subscribe();
+  //  }
 }

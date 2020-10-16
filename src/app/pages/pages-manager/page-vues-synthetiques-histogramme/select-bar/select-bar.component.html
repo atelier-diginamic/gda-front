@@ -1,12 +1,12 @@
-<form (ngSubmit)="choisirMoisComptageAbsence(f)" #f="ngForm" class="col-6">
-    <div class="row">
+<form (ngSubmit)="choisirMoisComptageAbsence(f)" #f="ngForm" class="col-12">
+    <div class="row  mt-5 mb-5">
         <div class="col-2">
             <app-dropdown [(ngModel)]="selectBarSynthetique.mois" [valeurDropDown]="enumsMois" [name]="'enumsMois'" [title]="'Mois'" ngDefaultControl></app-dropdown>
         </div>
         <div class="col-2">
             <app-dropdown [(ngModel)]="selectBarSynthetique.annee" [valeurDropDown]="annees" [name]="'annees'" [title]="'Année'" ngDefaultControl></app-dropdown>
         </div>
-        <button type="submit" class="btn btn-info">Rechercher</button>
-        <button class="btn btn-danger" (click)="refresh()"> Reset Diagramme </button>
+        <button type="submit" class="btn btn-info ml-3">Rechercher</button>
+        <button class="btn btn-danger ml-5" (click)="refresh()"> Reset Diagramme </button>
     </div>
 </form>
