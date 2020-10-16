@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AbsenceService } from 'src/app/services/absence.service';
 import { SelectBarSynthetique } from 'src/app/entities/SelectBarSynthetique.model';
-import { map } from 'rxjs/operators';
+import { DepartementVue } from 'src/app/entities/DepartementVue.model';
+import { VueDepartementService } from 'src/app/services/vue-departement.service';
 
 @Component({
   selector: 'app-page-vues-departement-collaborateur',
@@ -11,27 +11,25 @@ import { map } from 'rxjs/operators';
 export class PageVuesDepartementCollaborateurComponent implements OnInit {
 
   selectBar = new SelectBarSynthetique();
-  departementVueTab: Object;
+  departementVueTab: DepartementVue[];
+  start = 0;
   joursMaxMois;
-  index = 1;
-  constructor(private absenceService : AbsenceService) { }
+  error : boolean = false;
+  constructor(private vueService : VueDepartementService) { }
 
 
   ngOnInit(): void {
-    this.afficherListeValidationDemandeAccepte("DIGINAMIC", this.selectBar.mois, this.selectBar.annee).subscribe(
-      success => console.log(success),
-      err => console.log(err)
-    );
+    this.vueService.abonnerObservable().subscribe(tableau => {
+      this.departementVueTab = this.getIntervalDate(tableau);
+      this.joursMaxMois = tableau[0].joursMaxMois;
+     
+    }, 
+    error => this.error = true);
   }
 
   afficherListeValidationDemandeAccepte(departement: string, mois: string, annee: string) {
-    return this.absenceService.calendrierVuueDepartementData(departement, mois, annee)
-      .pipe(
-          map(abs => {
-            this.departementVueTab = Object.values(abs);
-            this.joursMaxMois = Number(this.departementVueTab[0].joursMaxMois.toString());
-          })
-      );
+    return this.vueService.calendrierVuueDepartementData(departement, mois, annee)
+      
   }
 
   getForm(selection) {
@@ -45,6 +43,19 @@ export class PageVuesDepartementCollaborateurComponent implements OnInit {
     return new Array(i)
   }
 
+  getIntervalDate(departementVue: DepartementVue[]) :  DepartementVue[]{
+    for(let i = 0; i < departementVue.length; i++) {
+      const tableauEachJours: number[] = [];
+      const jourDebut: number = new Date(departementVue[i].datePremierJourAbsence).getDate();
+      const jourFin: number = new Date(departementVue[i].dateDernierJourAbsence).getDate();
+      for (let i = jourDebut; i <= jourFin; i++) {
+        tableauEachJours.push(i);
+      }
+
+      departementVue[i].tableauJours = tableauEachJours;
+    }
+    return departementVue;
+  }
 }
   
 

@@ -7,17 +7,31 @@
         </div>
     </div>
     <div class="container">
-        <table class="table table-striped">
+        <!-- <app-selectbar [(vueParJour)]="vueParJour"></app-selectbar> -->
+    </div>
+    
+
+        <table class="table table-bordered " *ngIf="departementVueTab != undefined">
             <thead>
                 <tr>
-                    <th  *ngFor="let jour of counter(joursMaxMois); let i = index" scope="col">{{ i }}</th>
+                    <th *ngFor="let jour of counter(joursMaxMois); let i = index" scope="col">
+                        <span *ngIf="i > 0">{{ i }}</span></th>
                 </tr>
             </thead>
             <tbody>
-                
+                <tr *ngFor="let objet of departementVueTab; let indexDepartement = index;">
+                    <td *ngFor="let jour of counter(joursMaxMois); let indexColonne = index" scope="col">
+                        <span  >
+                            <th *ngIf="indexColonne === 0" scope="row">{{ objet.nomCollegue }}</th>
+                            <span *ngFor="let jour of objet.tableauJours">
+                                <span *ngIf="jour === indexColonne">{{ objet.typeCongePremiereLettre }}</span>
+                            </span>
+                        </span>
+                        
+                    </td>
+                </tr>
             </tbody>
         </table>
         <!-- <app-selectbar [(vueParJour)]="vueParJour"></app-selectbar> -->
     </div>
-    
-</div>
+
