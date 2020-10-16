@@ -21,6 +21,10 @@ export class NavbarComponent implements OnInit {
  idUtilisateur : string  = "";
  roleUtilisateur : string = localStorage.getItem("roleUtilisateur").toString();
 
+ rangCollegue = ["1"];
+ rangAdmin = ["1", "3"];
+
+
   links = [
     { title: 'Accueil', fragment: `${this.roleUtilisateur}/accueil` },
     { title: 'Gestion des absences', fragment: `${this.roleUtilisateur}/gestionAbsence` },
@@ -58,4 +62,9 @@ export class NavbarComponent implements OnInit {
     console.log("Role User  = " + this.roleUtilisateur);
   }
 
+  seDeconnecter() {
+    this.authSrv.seDeconnecter().subscribe(
+      () => this.router.navigate([''])
+    );
+  }
 }

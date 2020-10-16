@@ -1,14 +1,15 @@
  <!--NAVBAR -->
- <div class="container-fluid p-0">
+ <div class="container-fluid p-0" *ngIf="collegueConnecte | async as col">
     <nav
       ngbNav
       #nav="ngbNav"
       class="navbar"
-      [activeId]="route.fragment | async"
-    >
+      [activeId]="route.fragment | async" 
+      *ngIf="!col.estAnonyme()">
+      <img style="height:5em" src="https://www.kronosglobal.fr/sites/default/files/images/reference/Kronos-product-icons_400px_0000s_0039_Absence-Management_1.png">
       <div class="container">
-        <div *ngIf="collegueConnecte | async as col" >
-          <div class="d-flex" *ngIf="roleUtilisateur === 'collegue' || roleUtilisateur === 'admin'; else elseBlock">
+        <div>
+          <div class="d-flex" *ngIf="col.roles == rangCollegue || col.roles == rangAdmin ; else elseBlock">
             <div *ngFor="let link of linksCollegueEtAdmin">
               <!-- HOME -->
               <a
@@ -41,6 +42,10 @@
         </div>
       </div>
       <div [ngbNavOutlet]="nav"></div>
+      <div class="align-items-start mt-3">
+        <button type="submit" class="btn btn-success bg-light ml-4"><a class="text-dark" href="javascript:history.go(-1)">Retour</a></button>
+     <button  class="btn btn-danger ml-3 mb-1" (click)="seDeconnecter()"> Se déconnecter </button>
+      </div>
     </nav>
     <!-- Fin Container Nav Bar-->
   </div> 
