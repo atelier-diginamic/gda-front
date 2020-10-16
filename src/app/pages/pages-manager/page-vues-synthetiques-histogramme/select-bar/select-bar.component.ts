@@ -1,10 +1,13 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { EventEmitter } from 'protractor';
 import { BinomeDataHisto } from 'src/app/entities/binomeDataHisto.model';
 import { SelectBarSynthetique } from 'src/app/entities/SelectBarSynthetique.model';
 import { TabComptage } from 'src/app/entities/tabComptage.model';
 import { CalendrierMois } from 'src/app/enum/calendrier-mois.enum';
 import { HistogrammeService } from 'src/app/services/histogramme.service';
+
+
 
 @Component({
   selector: 'app-select-bar',
@@ -13,7 +16,7 @@ import { HistogrammeService } from 'src/app/services/histogramme.service';
 })
 export class SelectBarComponent implements OnInit {
 
-  constructor(private histogrammeService : HistogrammeService) { }
+  constructor(private histogrammeService : HistogrammeService,private router : Router) { }
   @Input()
   selectBarSynthetique
 
@@ -46,6 +49,11 @@ export class SelectBarComponent implements OnInit {
                            error => console.log("erreur ", error));
 
   }
+
+  refresh(){
+    location.reload();
+  }
+  
 
 
 }

@@ -15,20 +15,18 @@ export class PageVuesSynthetiquesHistogrammeComponent implements OnInit {
 
   afficherHisto = false;
   selectBarSynthetique = new SelectBarSynthetique();
+  //moisDuChart : string = '';
 
-   title = "Nombre de jours d'absence";
-
+   title = "Nombre d'absences par jour" ;
    type = 'ColumnChart';
-   
    data = [];
-
    tabDataTampon : BinomeDataHisto[];
    
 
-   columnNames = ['Year', 'Asia'];
+   columnNames = [ 'Nombre de collegues absents' , "Jour du mois"];
    options = {};
-   width = 2050;
-   height = 600;
+   width = 1500;
+   height = 700;
    annee: string;
    
   ngOnInit(): void {
@@ -36,9 +34,11 @@ export class PageVuesSynthetiquesHistogrammeComponent implements OnInit {
     this.annee = this.selectBarSynthetique.annee;
 
     this.histoService.abonnerDataFromBack()
-      .subscribe( tabBinome => { this.tabDataTampon = tabBinome; 
+      .subscribe( tabBinome => { this.tabDataTampon = tabBinome;
+                                 // this.moisDuChart = new Date(this.tabDataTampon[0].dateDuJour).toLocaleDateString('default', { month: 'long' })
+                                  //console.log("test : " + new Date(this.tabDataTampon[0].dateDuJour).toLocaleDateString('default', { month: 'long' }))
                                  for (let binome of this.tabDataTampon){
-                                  this.data.push([binome.dateDuJour,binome.comptageAbsenceDuJour])
+                                  this.data.push([binome.dateDuJour.substring(8,10), binome.comptageAbsenceDuJour])
                                   this.afficherHisto = true;
                                  }
                                 },
@@ -47,7 +47,7 @@ export class PageVuesSynthetiquesHistogrammeComponent implements OnInit {
    
   }
 
-  test() {
+  recupAnneeSelected() {
     return this.selectBarSynthetique.annee;
   }
 

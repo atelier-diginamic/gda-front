@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
  roleUtilisateur : string = localStorage.getItem("roleUtilisateur").toString();
 
   links = [
-    { title: 'Accueil', fragment: `/${this.roleUtilisateur}/accueil` },
+    { title: 'Accueil', fragment: `${this.roleUtilisateur}/accueil` },
     { title: 'Gestion des absences', fragment: `${this.roleUtilisateur}/gestionAbsence` },
     { title: 'Planning des absences', fragment: `${this.roleUtilisateur}/planningAbsence` },
     { title: 'Validation demandes', fragment: `${this.roleUtilisateur}/validationDemandeAbsence` },
