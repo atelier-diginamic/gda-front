@@ -14,10 +14,7 @@
 </google-chart>
 <p class="font-weight-bold text-primary">Année selectionnée : {{recupAnneeSelected()}}</p>
 
-<button type="button" class="btn btn-primary btn-lg" (click)="exportToExel()">
-   <img style="height:5em"
-   src="https://cdn.1min30.com/wp-content/uploads/2017/10/Logo-Excel.jpg">
-</button>
-<div class="text-right">
-   <button type="submit" class="btn btn-success ml-4"><a class="text-dark" href="javascript:history.go(-1)">Retour</a></button>
-</div>
+
+   <img type="button" class="rounded" style="height:5em"
+   src="https://cdn.1min30.com/wp-content/uploads/2017/10/Logo-Excel.jpg" (click)="exportToExel()">
+
