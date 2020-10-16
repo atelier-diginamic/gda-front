@@ -1,5 +1,6 @@
 footer {
-    color : white;
+	color : white;
+	background-color: #1abc9c !important;
     margin-top: 3rem ;
 }
 
@@ -8,4 +9,15 @@ body {
 	min-height: 100vh;
 	display: grid;
 	grid-template-rows: auto 1fr auto;
+}
+.flotte {
+	float:right;
+	}
+	img {
+		vertical-align:middle;
+	}
+
+
+footer button {
+	margin-left: 5rem;
 }

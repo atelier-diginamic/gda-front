@@ -1,6 +1,8 @@
 
 <h1>Histogramme par département et par jour</h1>
-<app-select-bar [(histogramme)]="histogramme"></app-select-bar>
+
+<app-select-bar [(selectBarSynthetique)]="selectBarSynthetique"></app-select-bar>
+
 <google-chart #chart
    [title]="title"
    [type]="type"
@@ -8,6 +10,8 @@
    [options]="options"
    [columns]="columnNames"
    [width]="width"
-   [height]="height">
+   [height]="height" *ngIf="afficherHisto">
 </google-chart>
-<p>Annee : {{test()}}</p>
+<p>Annee : {{recupAnneeSelected()}}</p>
+
+<button type="button" class="btn btn-primary btn-lg" (click)="exportToExel()">Export Excel</button>

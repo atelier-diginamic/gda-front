@@ -1,0 +1,51 @@
+
+
+<form class="mt-5" (ngSubmit)=" modeModification ? modifierJourFerie() : creerJourFerie() " #f="ngForm">
+    
+    <div class="form-group">
+    <!---------------------------- DATE DE DEBUT -------------------------->
+      <label for="datePremierJourAbsence">Date du jour férié / RTT </label>
+      <input type="date" class="form-control" id="datePremierJourAbsence" name="datePremierJourAbsence" placeholder="" [(ngModel)]="jourFerieForm.datePremierJourAbsence" #champ1="ngModel">
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="champ1.dirty && checkerDateFormVue() === false">
+        <span>Vous ne pouvez pas déclarer férié un jour dans le passé.</span>
+    </div>
+     <!---------------------------- !DATE DE DEBUT! -------------------------->
+
+
+    <!---------------------------- DATE DE FIN -------------------------->
+    <!-- <div class="form-group">
+        <label for="dateDernierJourAbsence">Date de fin</label>
+        <input type="date" class="form-control" id="dateDernierJourAbsence" name="dateDernierJourAbsence" [(ngModel)]="jourFerieForm.dateDernierJourAbsence" #champ2="ngModel">
+    </div> -->
+     <!---------------------------- !DATE DE FIN! -------------------------->
+
+
+    <div class="form-group">
+        <label for="typeConge">Type de congé </label>
+
+            <select name="typeConge" id="typeConge"  [(ngModel)]="jourFerieForm.typeConge" class="form-control" #champ3="ngModel">
+
+                <option value="RTT_EMPLOYEUR"> RTT employeur </option>
+                <option value="JOUR_FERIE"> Jour Ferié</option>
+
+            </select>
+
+    </div>
+
+    <div class="form-group">
+        <label for="motif">Commentaire</label>
+        <div>
+            <input type="text" class="form-control" id="motif"  name="motif" placeholder="Obligatoire" [(ngModel)]="jourFerieForm.commentaireAbsence" #champ4="ngModel" 
+           [required]="true">
+        </div>
+    </div>
+
+    <div class="alert alert-danger" role="alert" *ngIf="champ3.dirty && champ4.invalid">>
+        <span>Le commentaire concernant un jour férié ou un RTT Employeur est obligatoire.</span>
+    </div>
+
+    <button *ngIf="modeModification"  type="submit" class="btn btn-primary"> Modifier cette absence </button>
+    <button *ngIf="!modeModification" type="submit" class="btn btn-primary">Déclarer {{champ3.value}} </button>
+    <button (click)="f.resetForm({})" class="btn btn-danger ml-2">Annuler</button>
+</form>

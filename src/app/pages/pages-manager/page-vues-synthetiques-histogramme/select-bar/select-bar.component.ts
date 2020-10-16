@@ -1,8 +1,13 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { EventEmitter } from 'protractor';
-import { Histogramme } from 'src/app/entities/histogramme.model';
+import { BinomeDataHisto } from 'src/app/entities/binomeDataHisto.model';
+import { SelectBarSynthetique } from 'src/app/entities/SelectBarSynthetique.model';
+import { TabComptage } from 'src/app/entities/tabComptage.model';
 import { CalendrierMois } from 'src/app/enum/calendrier-mois.enum';
 import { HistogrammeService } from 'src/app/services/histogramme.service';
+
+
 
 @Component({
   selector: 'app-select-bar',
@@ -11,9 +16,9 @@ import { HistogrammeService } from 'src/app/services/histogramme.service';
 })
 export class SelectBarComponent implements OnInit {
 
-  constructor(private histogrammeService : HistogrammeService) { }
+  constructor(private histogrammeService : HistogrammeService,private router : Router) { }
   @Input()
-  histogramme
+  selectBarSynthetique
 
   
   enumsMois = CalendrierMois;
@@ -26,18 +31,29 @@ export class SelectBarComponent implements OnInit {
     this.annees.push("2020", "2021");
   }
 
+  dataFromBack : BinomeDataHisto[] = []// Construction du jeu de donnée pour le graphique envoyée depuis le back
 
-  chooseInterval(f) : void {
+
+  choisirMoisComptageAbsence(f) : void {
     const absences = [];
-    this.histogrammeService.getIntervalHistogramme(this.histogramme.departement, this.histogramme.mois, this.histogramme.annee)
-                           .subscribe(absences => {
-                             
-                         
-                             console.log("Les absences histogrammes ", absences);
+    this.histogrammeService.getComptageAbsencesIntervalHistogramme( this.selectBarSynthetique.mois, this.selectBarSynthetique.annee)
+                           .subscribe( tabComptages=> { 
+                             console.log
+                              for ( let i in tabComptages){
+                                let newDay = new BinomeDataHisto( tabComptages[i][0] , parseInt(tabComptages[i][1]))
+                                console.log( newDay.dateDuJour , newDay.comptageAbsenceDuJour );
+                                this.dataFromBack.push( newDay )
+                              }
+                              this.histogrammeService.publierDataFromBack(this.dataFromBack);
                            },
                            error => console.log("erreur ", error));
 
   }
+
+  refresh(){
+    location.reload();
+  }
+  
 
 
 }

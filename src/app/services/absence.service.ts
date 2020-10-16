@@ -23,6 +23,8 @@ export class AbsenceService {
  
 
   absenceAModifie : Subject<Absence> = new Subject<Absence>();
+  jfRttAModifie : Subject<Absence> = new Subject<Absence>();
+  jfRttASupprimer : Subject<Absence> = new Subject<Absence>();
 
 
   constructor(private http : HttpClient) {
@@ -37,6 +39,23 @@ export class AbsenceService {
     }; 
     
       return this.http.post(`${environment.baseUrl}${environment.apiCreerAbsence}`,
+      { 
+        idCollegue: this.idUtilisateur,
+        datePremierJourAbsence: absence.datePremierJourAbsence,
+        dateDernierJourAbsence: absence.dateDernierJourAbsence,
+        typeConge: absence.typeConge,
+        commentaireAbsence: absence.commentaireAbsence,
+      })
+  }
+
+  creerJourFerieRTT( absence : Absence ){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    }; 
+    
+      return this.http.post(`${environment.baseUrl}${environment.apiCreerJourFerieRTT}`,
       { 
         idCollegue: this.idUtilisateur,
         datePremierJourAbsence: absence.datePremierJourAbsence,
@@ -65,6 +84,37 @@ export class AbsenceService {
       })
   }
 
+  
+  modifierJourFerieRTT( jfRttAModifie : Absence ) : Observable<Object> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    }; 
+    
+      return this.http.put(`${environment.baseUrl}${environment.apiModifierJourFerieRTT}`,
+      { 
+        datePremierJourAbsence: jfRttAModifie.datePremierJourAbsence,
+        typeConge: jfRttAModifie.typeConge,
+        commentaireAbsence: jfRttAModifie.commentaireAbsence,
+      })
+  }
+
+  supprimerJourFerieRTT ( jfRttASuppprimer : Absence ):  Observable<Object> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    }; 
+      console.log("coucou 2.0");
+      return this.http.put(`${environment.baseUrl}${environment.apiSupprimerJourFerieRTT}`,
+      { 
+        datePremierJourAbsence: jfRttASuppprimer.datePremierJourAbsence,
+        typeConge: jfRttASuppprimer.typeConge,
+        commentaireAbsence: jfRttASuppprimer.commentaireAbsence,
+      })
+  }
+
 
   // Controle si le jour de debut d'absence est à J +2
   checkDay(datePremierJourAbsence: Date) : boolean {
@@ -81,6 +131,14 @@ export class AbsenceService {
   //   return this.http.get<Absence[]>(`${environment.baseUrl}${environment.apiListeAbsence}`);
   // }
 
+  listeAbsencesEnAttente() : Observable<Absence[]> {
+    return this.http.get<Absence[]>(`${environment.baseUrl}${environment.apiListeEnAttente}`)
+  }
+
+  listeAbsenceValider() : Observable<Absence[]> {
+    return this.http.get<Absence[]>(`${environment.baseUrl}${environment.apiListeAbsenceValider}`)
+  }
+
   listerAbsencesByUser() : Observable<Absence[]> {
     
     return this.http.get<Absence[]>(`${environment.baseUrl}${environment.apiVisualisationDesAbsencesByUser}${this.idUtilisateur}`)
@@ -96,15 +154,82 @@ export class AbsenceService {
 
 
   listerJoursFeriesEtRTT(saisieAnnee : number) : Observable<Absence[]> {
-        return this.http.get<Absence[]>(`${environment.baseUrl}${environment.apiVisualisationJoursFeriesEtRTT}${saisieAnnee}`)
+        return this.http.get<Absence[]>(`${environment.baseUrl}${environment.apiVisualisationJoursFeriesRTT}${saisieAnnee}`)
   }
 
   publierAbsenceAModifie( absenceParam : Absence) : void {
     return this.absenceAModifie.next(absenceParam);
   }
 
+  calendrierVuueDepartementData(departement: string, mois: string, annee: string) : Observable<Object> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    }; 
+    
+      return this.http.post(`${environment.baseUrl}${environment.apiVueCalendrierDepartement}`,
+      { 
+        departement : departement,
+        mois: mois,
+        annee: annee
+      })
+  }
+
+
   abonnerAbsenceAModifie() {
     return this.absenceAModifie.asObservable();
   }
+
+  publierJfRttAModifie ( absenceParam : Absence ) : void {
+    return this.jfRttAModifie.next(absenceParam);
+  }
+
+  publierJfRttASupprimer  ( jfRttParam : Absence ) : void {
+    return this.jfRttAModifie.next(jfRttParam);
+  }
+
+  abonnerJfRttASupprimer (){
+    return this.jfRttASupprimer.asObservable();
+  }
+
+  abonnerJfRttAModifie() {
+    return this.jfRttAModifie.asObservable();
+  }
   
+  validerAbsence(absence : Absence) : Observable<Object> {
+    const httpOptions = {
+    headers: new HttpHeaders({
+      "Content-Type": "application/json"
+    })
+  }; 
+  
+    return this.http.put(`${environment.baseUrl}${environment.apiValiderAbsence}`,
+    { 
+      idAbsence : absence.idAbsence,
+      datePremierJourAbsence: absence.datePremierJourAbsence,
+      dateDernierJourAbsence: absence.dateDernierJourAbsence,
+      typeConge: absence.typeConge,
+      commentaireAbsence: absence.commentaireAbsence
+    })
+}
+
+  refuserAbsence(absence : Absence): Observable<Object> {
+    const httpOptions = {
+    headers: new HttpHeaders({
+      "Content-Type": "application/json"
+    })
+  }; 
+  
+    return this.http.put(`${environment.baseUrl}${environment.apiRefuserAbsence}`,
+    { 
+      idAbsence : absence.idAbsence,
+      datePremierJourAbsence: absence.datePremierJourAbsence,
+      dateDernierJourAbsence: absence.dateDernierJourAbsence,
+      typeConge: absence.typeConge,
+      commentaireAbsence: absence.commentaireAbsence,
+    })
+}
+
+
 }

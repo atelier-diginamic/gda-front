@@ -1,25 +1,29 @@
 <!-- <button class="btn btn-blue" > Afficher toutes les absences</button> -->
-<div class="container-fluid align-content-center">
-    <button class="btn btn-primary" (click)="afficherListeAbsenceByUser()">Afficher mes absences enregistrées</button>
+<div class="container-fluid align-content-center ">
+    <button class="btn btn-success mt-5 ml-5" (click)="afficherListeAbsenceByUser()">Afficher mes absences
+        enregistrées et mon solde</button>
     <div *ngIf="listeAbsencesByUser" class="row">
 
         <ul class="list-unstyled mt-5 ml-5">
-            <li *ngFor="let abs of listeAbsencesByUser" >
-            
-                <div class="card mb-3" style="width: 9rem;">
-                    <div class="card-body ">
-                        <h5 class="card-title">{{abs.typeConge}}</h5>
-                        <p class="card-text">Du {{abs.datePremierJourAbsence}} au {{abs.dateDernierJourAbsence}}</p> 
-                        <p class="card-text">{{abs.commentaireAbsence}}</p>
-                        <p class="card-text">{{abs.statutDemande}}</p>
+            <li *ngFor="let abs of listeAbsencesByUser">
+
+                <div class="card mb-3 border border-dark rounded" style="width:auto;">
+                    <div class="card-body  font-weight-bold text-center">
+                        <h5 class="card-title text-danger ">Type : {{abs.typeConge}}</h5>
+                        <p class="card-text text-info">Du {{abs.datePremierJourAbsence}} au
+                            {{abs.dateDernierJourAbsence}}</p>
+                        <p class="card-text text-info ">Motif : {{abs.commentaireAbsence}}</p>
+                        <p class="card-text text-dark">Statut de la demande : {{abs.statutDemande}}</p>
                         <a (click)="toModificationAbsenceForm(abs)" class="btn btn-primary">Modifier</a>
                     </div>
                 </div>
-               
-                
+
+
             </li>
         </ul>
     </div>
-    <div *ngIf="nbCPRestants != null">{{nbCPRestants}}  : jour de CP restants</div>
-    <div *ngIf="nbRTTRestants != null">{{nbRTTRestants}}  : jour de RTT restants</div>
+    <div class="text-left font-weight-bold">
+        <div class="font-weight : bold" *ngIf="nbCPRestants != null">{{nbCPRestants}} : jour(s) de CP restants</div>
+        <div *ngIf="nbRTTRestants != null">{{nbRTTRestants}} : jour(s) de RTT restants</div>
+    </div>
 </div>
