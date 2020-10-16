@@ -12,6 +12,7 @@ export const config = {
   apiCreerAbsence: 'absence/create',
   apiModifierAbsence : 'absence/modifier',
   apiHistogramme: 'vueSynthethique/histogramme',
+  apiVueCalendrierDepartement: 'vueSynthethique/calendrier',
   apiNbCongePayeRestant : 'collegue/nbCongePayeRestants?idUtilisateur',
   apiNbRttRestant : 'collegue/nbRttRestants?idUtilisateur',
 
@@ -23,7 +24,6 @@ export const config = {
   apiValiderAbsence : 'absence/valider',
   apiRefuserAbsence : 'absence/rejeter',
   apiListeAbsenceValider : 'absence/liste/valider',
-  apiVueCalendrierDepartement: 'vueSynthetique/calendrier',
   apiExportAbsence : 'export/absence/'
 
 
