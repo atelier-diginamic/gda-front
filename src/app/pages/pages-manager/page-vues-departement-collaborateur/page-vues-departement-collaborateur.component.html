@@ -13,11 +13,20 @@
 </div>
         <table class="table table-striped">
             <thead>
-                <tr *ngFor="let jour of counter(joursMaxMois); let i = index">
-                    <th scope="col">{{ i }}</th>
+                <tr>
+                    <th *ngFor="let jour of counter(joursMaxMois); let i = index" scope="col">{{ i }}</th>
                 </tr>
             </thead>
             <tbody>
-               
+                <tr>
+                    <td *ngFor="let jour of counter(joursMaxMois); let indexCol = index" scope="col">
+                        <span *ngFor="let objet of departementVueTab" >
+                            <span *ngFor="let jour of objet.tableauJours">
+                                <span *ngIf="jour === indexCol">{{ objet.nomCollegue }}</span>
+                            </span>
+                        </span>
+                        
+                    </td>
+                </tr>
             </tbody>
         </table>

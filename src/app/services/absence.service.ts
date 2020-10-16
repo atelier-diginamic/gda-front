@@ -111,20 +111,7 @@ export class AbsenceService {
     return this.absenceAModifie.next(absenceParam);
   }
 
-  calendrierVuueDepartementData(departement: string, mois: string, annee: string) : Observable<Object> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        "Content-Type": "application/json"
-      })
-    }; 
-    
-      return this.http.post(`${environment.baseUrl}${environment.apiVueCalendrierDepartement}`,
-      { 
-        departement : departement,
-        mois: mois,
-        annee: annee
-      })
-  }
+
 
 
   abonnerAbsenceAModifie() {

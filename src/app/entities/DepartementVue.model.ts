@@ -3,8 +3,8 @@ export class DepartementVue {
     public typeCongePremiereLettre : string;
     public datePremierJourAbsence : Date;
     public dateDernierJourAbsence : Date;
-    public joursMaxMois : number
-
+    public joursMaxMois : number;
+    public tableauJours: number[];
 
     
     constructor(params: any) {
